@@ -1,0 +1,154 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+5g.KillerID_Company_User_ProfileSettings,Chrome 149.0.7827.114,"Sprint 5c - KillerID_User Profile 의 Recovery email 변경 + Profile picture 설정 + Login History popup UI 검증 3 cases (C10089~C10091). state-changing: C10089 (Recovery email baseline capture/restore), C10090 (picture upload, baseline 복원 자동화 불가 — KillerID remove picture 기능 부재). 검증 패턴: Native alert getAlertText 3-Tier (C10089), baseline src vs after src 비교 + JS info dump (C10090), Spy verifyElementVisible + JS body text (C10091).",,16-06-2026 03:47:45,16-06-2026 03:50:50,3m - 4.783s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10089_Recovery 이메일 변경,Chrome 149.0.7827.114,"[C10089] Change the recovery email
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 로 로그인 + PW 검증 완료 된 세션 (C10073 결과)
+- KillerID Profile 페이지 진입 상태
+- Security 탭 진입 가능 (C10088 결과)
+
+🧪 단계:
+1. 'Security' 탭 클릭
+2. Edit 모드 진입 ('Edit' 버튼 클릭 + PW popup 통과)
+3. Recovery email 입력
+4. Save
+5. Logout
+6. 'Forgot Password?' 클릭
+7. user email 입력
+8. 'Continue' 클릭
+
+✅ 결과값:
+- 새 Recovery email 로 password recovery code 전송 됨
+  (""Password recovery code is sent to the new recovery email"")
+
+🔧 자동화 노트:
+- ⚠️ state-changing — 4-Phase teardown 필수 (baseline recovery email capture/restore)
+- 매우 복잡 한 flow — Logout + Forgot Password + same-browser 재로그인 패턴 (Sprint 4d 의 C10075 유사)
+- precondition setup: loginAsDomainUserViaProfile + Security tab + Edit + PW 검증
+- Phase 0 (사전 조건): Security tab Edit 진입 후 현재 Recovery email value 를 capture
+- Phase 1 (Setup): Profile login + Security tab + Edit + PW
+- Phase 2 (Main):
+  1. 테스트 Recovery email 입력 (예: 'demo3.test@netkillersoft.com' — 실제 수신 가능 한 test email 권장)
+  2. Save 클릭
+  3. Logout (Sprint 4d 의 DomainUserActions.logout helper 재사용)
+  4. 'Forgot Password?' 링크 클릭
+  5. user email (demo3@demo.netkillersoft.com) 입력
+  6. 'Continue' 클릭
+  7. Verify: alert/toast/페이지 변화 — ""Password recovery code is sent"" 또는 유사 메시지 확인
+- Phase 3 (Teardown): baseline Recovery email 로 복원 — 재로그인 + Security tab + Edit + Recovery email setText(baseline) + Save
+- 신규 spy 필요:
+  * input_RecoveryEmail (Security tab Edit mode 의 Recovery email input)
+  * a_ForgotPassword (login page 의 'Forgot Password?' 링크)
+  * input_ForgotPasswordEmail (Forgot Password page 의 email input)
+  * button_Continue (Forgot Password page 의 Continue 버튼)
+- Verify 한계: 실제 email 수신 검증 어려움 — 'Continue' 클릭 후 alert/toast/redirect 검증 까지 만
+- ⚠️ Recovery email 의 baseline 값 — demo3 의 원래 recovery email (자동 capture)",,16-06-2026 03:47:45,16-06-2026 03:50:01,2m - 16.100s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 03:47:46,16-06-2026 03:47:46,0.003s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 03:47:46,16-06-2026 03:47:46,0.002s,PASSED
+"DEMO3_ENCRYPTED_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 03:47:46,16-06-2026 03:47:46,0.002s,PASSED
+"TEST_RECOVERY_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 03:47:46,16-06-2026 03:47:46,0.002s,PASSED
+"DEFAULT_RECOVERY_EMAIL = ""admin@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 03:47:46,16-06-2026 03:47:46,0.002s,PASSED
+"baselineRecoveryEmail = """"",Chrome 149.0.7827.114,,,16-06-2026 03:47:46,16-06-2026 03:47:46,0.002s,PASSED
+baselineCaptured = false,Chrome 149.0.7827.114,,,16-06-2026 03:47:46,16-06-2026 03:47:46,0.002s,PASSED
+stateChangedByTest = false,Chrome 149.0.7827.114,,,16-06-2026 03:47:46,16-06-2026 03:47:46,0.002s,PASSED
+mainTestError = null,Chrome 149.0.7827.114,,,16-06-2026 03:47:46,16-06-2026 03:47:46,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 03:47:46,16-06-2026 03:50:00,2m - 14.053s,FAILED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 03:50:00,16-06-2026 03:50:00,0.109s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 03:50:00,16-06-2026 03:50:00,0.010s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 03:50:00,16-06-2026 03:50:01,0.866s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10090_Profile 사진 설정,Chrome 149.0.7827.114,"[C10090] Set the Profile picture
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 로 로그인 + Profile 페이지 진입 (사진 변경 은 Edit mode 진입 불필요 — Update Photo 클릭 만)
+
+🧪 단계:
+1. 'Update Photo' 클릭
+2. PC 에서 valid image file 선택
+
+✅ 결과값:
+- 선택한 image 가 upload + profile picture 로 설정 됨
+  (""Selected image is uploaded and set as a profile picture"")
+
+🔧 자동화 노트:
+- ⚠️ state-changing — Profile picture 업로드 (file upload)
+- 자동화 시 file upload 처리: WebUI.uploadFile(input_FilePicker, '[test image path]')
+  * 또는 input[type=file] 의 setText(filePath) 사용
+- 테스트 image 파일 위치: [project]/test-assets/profile_picture_test.png (또는 임의 valid image)
+  * .gitignore 추가 필요 (image 파일 자체 는 commit 안 함 — placeholder 만 commit)
+- Phase 0 (사전 조건): 현재 Profile picture 의 src URL capture (img element 의 src attribute)
+- Phase 1 (Setup): Profile login (Edit mode 불필요)
+- Phase 2 (Main):
+  1. 'Update Photo' 버튼 클릭
+  2. File picker 의 input[type=file] 에 test image path 입력
+  3. (해당 시) 'Save' / 'Upload' 버튼 클릭
+  4. Verify: img element 의 src 가 새 URL 로 변경 확인 (예: 기본 placeholder → 사용자 의 upload URL)
+- Phase 3 (Teardown): baseline picture 로 복원
+  * 단 KillerID 가 'remove picture' 기능 제공 안 하 면 — 다른 test image 또는 빈 placeholder 로 복원 (또는 사용자 manual cleanup)
+- 신규 spy 필요:
+  * a_UpdatePhoto (좌측 패널 의 'Update Photo' 링크/버튼)
+  * input_FilePicker (file 선택 dialog 의 input[type=file] — 단 popup/modal 안 일 수도)
+  * img_ProfilePicture (verify 대상 — Profile 사진 element)
+- ⚠️ Selenium 의 native file dialog 우회: WebUI.uploadFile + input[type=file] 사용 (file picker UI 안 거치고 직접 file path 전달)
+- 의문: 'Save' 단계 가 있는지 unclear — Update Photo 클릭 → file 선택 → 자동 업로드 (Save 불필요) 인지 또는 별도 confirm 필요 한지 — Spy capture 시 확인",,16-06-2026 03:50:01,16-06-2026 03:50:26,24.462s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 03:50:01,16-06-2026 03:50:01,0.001s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 03:50:01,16-06-2026 03:50:01,0.001s,PASSED
+"TEST_IMAGE_PATH = getProjectDir() + ""/Include/fixtures/sample_transparent_image.png""",Chrome 149.0.7827.114,,,16-06-2026 03:50:01,16-06-2026 03:50:01,0.001s,PASSED
+"baselinePictureSrc = """"",Chrome 149.0.7827.114,,,16-06-2026 03:50:01,16-06-2026 03:50:01,0.001s,PASSED
+baselineCaptured = false,Chrome 149.0.7827.114,,,16-06-2026 03:50:01,16-06-2026 03:50:01,0.001s,PASSED
+stateChangedByTest = false,Chrome 149.0.7827.114,,,16-06-2026 03:50:01,16-06-2026 03:50:01,0.000s,PASSED
+mainTestError = null,Chrome 149.0.7827.114,,,16-06-2026 03:50:01,16-06-2026 03:50:01,0.000s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 03:50:01,16-06-2026 03:50:25,23.753s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 03:50:25,16-06-2026 03:50:25,0.097s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 03:50:25,16-06-2026 03:50:25,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 03:50:25,16-06-2026 03:50:26,0.454s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10091_Login History popup UI 검증,Chrome 149.0.7827.114,"[C10091] Verify the Login History popup UI
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 로 로그인 + Profile 페이지 진입
+
+🧪 단계:
+1. 'Login History' 클릭
+
+✅ 결과값:
+- Login History popup 표시 + calendar 보임
+  (""Login History popup with calendar is displayed"")
+- Login 활동 있는 날짜 = 파란색 표시
+  (""Days with the login activity are colored blue"")
+- Login 활동 없는 날짜 = 색 없음
+  (""Days without the login activity are not colored"")
+
+🔧 자동화 노트:
+- 분류: verify only — popup UI 만 확인, state 변경 없음, teardown 불필요
+- precondition setup: loginAsDomainUserViaProfile (Edit mode 불필요 — Login History 는 Profile 페이지 의 별도 button)
+- Phase 1 (Setup): Profile login
+- Phase 2 (Main):
+  1. 'Login History' 버튼 클릭
+  2. popup 나타나는 대기 (delay + waitForElementVisible)
+  3. Verify:
+     - Calendar element 의 visibility 확인 (popup 안 의 calendar / date grid)
+     - 파란색 날짜 의 css class 또는 style 확인 (예: '.has-login' 또는 background-color: blue)
+     - 색 없는 날짜 의 default style 확인
+- 종료: popup 닫기 (X 버튼 / backdrop 클릭 / Esc 키)
+- 신규 spy 필요:
+  * a_LoginHistory (Profile 페이지 의 'Login History' 버튼/링크)
+  * div_LoginHistoryPopup (popup container — verify 대상)
+  * div_Calendar (popup 안 의 calendar element)
+- ⚠️ 색 verify 방법:
+  * JS 로 element 의 computed style 확인 (window.getComputedStyle(el).backgroundColor === 'rgb(0, 0, 255)' 또는 유사)
+  * 또는 class name 확인 (예: 'login-day' / 'active-day' 등) — KillerID 의 실제 class 이름 은 Spy capture 시 확인
+- Verify 단순화: popup 표시 + calendar 존재 + 최소 1개 의 active day class 확인 만 (색 자체 verify 보다 class-based — 더 robust)",,16-06-2026 03:50:26,16-06-2026 03:50:50,24.014s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 03:50:26,16-06-2026 03:50:26,0.001s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 03:50:26,16-06-2026 03:50:26,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 03:50:26,16-06-2026 03:50:49,23.107s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 03:50:49,16-06-2026 03:50:49,0.100s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 03:50:49,16-06-2026 03:50:49,0.004s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 03:50:49,16-06-2026 03:50:50,0.677s,PASSED

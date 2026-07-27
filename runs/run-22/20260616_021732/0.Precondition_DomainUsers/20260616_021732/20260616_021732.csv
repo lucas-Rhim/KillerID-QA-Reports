@@ -1,0 +1,34 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+0.Precondition_DomainUsers,Chrome 149.0.7827.114,[Precondition] Collection(0519) 맨 앞 실행 — 도메인 user(demo3/demo5) 를 baseline 으로 강제 복원하여 Cross-RUN 오염(직전 run 의 불완전 teardown 으로 인한 789 잔류/lock)을 self-correct. NON-FATAL (reset 실패해도 후속 suite 진행).,,16-06-2026 02:18:16,16-06-2026 02:22:39,4m - 23.202s,PASSED
+,,,,,,,
+Test Cases/_Precondition/Reset_DomainUsers_Baseline,Chrome 149.0.7827.114,"[Precondition] Collection 무인 회귀 시작 전 도메인 user 를 baseline 상태로 강제 복원.
+
+목적 (Rule #6 Cross-RUN 오염 방어):
+- 직전 run 의 teardown 이 불완전했거나(C10095 가 demo3=789 잔류) demo3 계정이 lock 으로 남은 경우,
+  이 precondition 이 Collection 맨 앞에서 admin reset → demo3 = netkiller567! + lock 해제 로 self-correct.
+- demo5 (2SV user) 도 동일하게 baseline 복원.
+
+동작:
+- AdminActions.resetDomainUserToBaseline('demo3@demo.netkillersoft.com', 'netkiller567!')
+- AdminActions.resetDomainUserToBaseline('demo5@demo.netkillersoft.com', 'netkiller567!')
+
+설계:
+- NON-FATAL: reset 결과가 RESET_OK 아니어도 throw 안 함 (precondition 이 후속 suite 를 막지 않도록).
+  단 결과를 comment 로 명확 기록 → 실패 시 원인 추적.
+- AMBIGUOUS 매칭 시 reset 중단(엉뚱한 계정 보호, Rule #17).",,16-06-2026 02:18:16,16-06-2026 02:22:39,4m - 22.980s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 02:18:17,16-06-2026 02:18:17,0.008s,PASSED
+"comment(""[PRECOND] ════════ Collection 시작 전 도메인 user baseline 복원 ════════"")",Chrome 149.0.7827.114,,,16-06-2026 02:18:17,16-06-2026 02:18:17,0.069s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 02:18:17,16-06-2026 02:18:51,34.022s,PASSED
+delay(2),Chrome 149.0.7827.114,,,16-06-2026 02:18:51,16-06-2026 02:18:53,2.008s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 02:18:53,16-06-2026 02:19:30,36.970s,PASSED
+delay(2),Chrome 149.0.7827.114,,,16-06-2026 02:19:30,16-06-2026 02:19:32,2.005s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 02:19:32,16-06-2026 02:19:59,27.435s,PASSED
+delay(2),Chrome 149.0.7827.114,,,16-06-2026 02:19:59,16-06-2026 02:20:01,2.005s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 02:20:01,16-06-2026 02:20:36,34.808s,PASSED
+delay(2),Chrome 149.0.7827.114,,,16-06-2026 02:20:36,16-06-2026 02:20:38,2.003s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 02:20:38,16-06-2026 02:21:14,35.866s,PASSED
+delay(2),Chrome 149.0.7827.114,,,16-06-2026 02:21:14,16-06-2026 02:21:16,2.007s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 02:21:16,16-06-2026 02:22:39,1m - 22.876s,FAILED
+"comment(""[PRECOND] ════════ baseline 복원 완료 — Collection 본 suite 진행 ════════"")",Chrome 149.0.7827.114,,,16-06-2026 02:22:39,16-06-2026 02:22:39,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:22:39,16-06-2026 02:22:39,0.007s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:22:39,16-06-2026 02:22:39,0.033s,PASSED

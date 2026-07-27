@@ -1,0 +1,176 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+1. KillerID_Company_Company Details,Chrome 149.0.7827.114,,,16-06-2026 02:22:43,16-06-2026 02:27:39,4m - 55.480s,ERROR
+,,,,,,,
+Test Cases/KillerID_Company_Company Details/C9938(T88020)_회사 정보 탭에서 편집 모드로 들어갑니다,Chrome 149.0.7827.114,"C9938_회사 정보 탭에서 편집 모드로 들어갑니다
+TestRail: C9938 (T88020) - Enter the Edit mode on the Company Details tab
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 왼쪽 메뉴에서 'Company'를 클릭하세요
+3. 'Company Details' 탭에서 'Edit' 버튼을 클릭하세요
+4. Organization Name, Country, Header Logo, Theme Logo, Contact Information, Timezone 등 모든 필드가 편집 가능한 상태인지 확인하세요
+
+결과값
+편집 모드가 열리고, 모든 필드를 편집할 수 있습니다.",,16-06-2026 02:22:43,16-06-2026 02:23:10,26.877s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 02:22:43,16-06-2026 02:23:06,22.163s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 02:23:06,16-06-2026 02:23:06,0.523s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:23:06,16-06-2026 02:23:06,0.012s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:23:06,16-06-2026 02:23:10,3.975s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Company Details/C9939(T88021)_조직명과 국가를 변경하세요,Chrome 149.0.7827.114,"C9939_조직명과 국가를 변경하세요
+TestRail: C9939 (T88021) - Change the Organization Name and the Country
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Company Details 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Organization Name 필드에 새로운 조직명을 입력하세요
+5. Country 드롭다운에서 국가를 선택하세요
+6. 'Save' 버튼을 클릭하세요
+7. 페이지를 새로고침하고 변경 사항이 저장되었는지 확인하세요
+
+결과값
+기관명과 국가가 성공적으로 저장됩니다.",,16-06-2026 02:23:10,16-06-2026 02:23:55,44.918s,PASSED
+runTimestamp = SimpleDateFormat(MMdd:HH:mm).format(new java.util.Date()),Chrome 149.0.7827.114,,,16-06-2026 02:23:10,16-06-2026 02:23:10,0.002s,PASSED
+"orgName = ""automation test "" + runTimestamp",Chrome 149.0.7827.114,,,16-06-2026 02:23:10,16-06-2026 02:23:10,0.002s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 02:23:10,16-06-2026 02:23:53,42.798s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 02:23:53,16-06-2026 02:23:53,0.426s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:23:53,16-06-2026 02:23:53,0.004s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:23:53,16-06-2026 02:23:55,1.545s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Company Details/C9940(T88022)_헤더 로고를 업로드하세요,Chrome 149.0.7827.114,"C9940_헤더 로고를 업로드하세요
+TestRail: C9940 (T88022) - Upload the Header Logo
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Company Details 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Header Logo 섹션에서 로고 이미지 파일을 업로드하세요
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하세요
+7. 업로드된 헤더 로고가 네비게이션 바에 표시되는지 확인하세요
+
+결과값
+업로드된 헤더 로고가 네비게이션 바에 표시됩니다. 모든 도메인 사용자는 업데이트된 헤더 로고를 볼 수 있습니다.",,16-06-2026 02:23:55,16-06-2026 02:24:28,32.778s,PASSED
+"logoFilePath = getProjectDir() + ""/Include/fixtures/sample_transparent_image.png""",Chrome 149.0.7827.114,,,16-06-2026 02:23:55,16-06-2026 02:23:55,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 02:23:55,16-06-2026 02:24:26,31.248s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 02:24:26,16-06-2026 02:24:27,0.394s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:24:27,16-06-2026 02:24:27,0.004s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:24:27,16-06-2026 02:24:28,1.010s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Company Details/C9941(T88023)_업로드된 헤더 로고를 제거,Chrome 149.0.7827.114,"C9941_업로드된 헤더 로고를 제거하세요
+TestRail: C9941 (T88023) - Remove the uploaded Header Logo
+
+사전 조건
+역할: 관리자
+헤더 로고가 이미 업로드되어 있어야 합니다. (C9940 선행)
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Company Details 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Header Logo 섹션에서 'Delete' 버튼을 클릭하세요
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하세요
+7. 헤더 로고가 제거되고 기본 KillerID 로고가 표시되는지 확인하세요
+
+결과값
+업로드된 헤더 로고가 제거되고, 기본 KillerID 로고가 네비게이션 바에 표시됩니다.",,16-06-2026 02:24:28,16-06-2026 02:25:22,54.502s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 02:24:28,16-06-2026 02:25:21,53.381s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 02:25:21,16-06-2026 02:25:22,0.443s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:25:22,16-06-2026 02:25:22,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:25:22,16-06-2026 02:25:22,0.571s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Company Details/C9942(T88024)_테마 로고를 업로드하세요,Chrome 149.0.7827.114,"C9942_테마 로고를 업로드하세요
+TestRail: C9942 (T88024) - Upload the Theme Logo
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Company Details 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Theme Logo 섹션에서 로고 이미지 파일을 업로드하세요
+5. 'Save' 버튼을 클릭하세요
+6. 도메인 로그인 페이지로 이동하세요
+7. 업로드된 테마 로고가 로그인 페이지에 표시되는지 확인하세요
+
+결과값
+업로드된 테마 로고가 도메인 로그인 페이지에 표시됩니다.",,16-06-2026 02:25:22,16-06-2026 02:26:09,46.221s,FAILED
+"logoFilePath = getProjectDir() + ""/Include/fixtures/sample_transparent_image.png""",Chrome 149.0.7827.114,,,16-06-2026 02:25:22,16-06-2026 02:25:22,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 02:25:22,16-06-2026 02:25:56,33.981s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 02:25:56,16-06-2026 02:26:07,10.856s,FAILED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:26:07,16-06-2026 02:26:07,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:26:07,16-06-2026 02:26:09,1.285s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Company Details/C9943(T88025)_업로드된 테마 로고를 제거하세요,Chrome 149.0.7827.114,"C9943_업로드된 테마 로고를 제거하세요
+TestRail: C9943 (T88025) - Remove the uploaded Theme Logo
+
+사전 조건
+역할: 관리자
+테마 로고가 이미 업로드되어 있어야 합니다. (C9942 선행)
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Company Details 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Theme Logo 섹션에서 'Delete' 버튼을 클릭하세요
+5. 'Save' 버튼을 클릭하세요
+6. 도메인 로그인 페이지로 이동하세요
+7. 테마 로고가 제거되고 기본 KillerID 로고가 표시되는지 확인하세요
+
+결과값
+테마 로고가 제거되고, KillerID 기본 로고가 도메인 로그인 페이지에 표시됩니다.",,16-06-2026 02:26:09,16-06-2026 02:26:38,28.986s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 02:26:09,16-06-2026 02:26:36,27.160s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 02:26:36,16-06-2026 02:26:36,0.493s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:26:36,16-06-2026 02:26:36,0.006s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:26:36,16-06-2026 02:26:38,1.252s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Company Details/C9944(T88026)_연락처 정보를 변경하세요,Chrome 149.0.7827.114,"C9944_연락처 정보를 변경하세요
+TestRail: C9944 (T88026) - Change the Contact Information
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Company Details 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Contact Information 섹션에서 관리자 First Name을 변경하세요
+5. 관리자 Last Name을 변경하세요
+6. 'Save' 버튼을 클릭하세요
+7. 페이지를 새로고침하고 변경된 연락처 정보가 유지되는지 확인하세요
+
+결과값
+관리자 이름(First Name, Last Name)이 성공적으로 저장됩니다.",,16-06-2026 02:26:38,16-06-2026 02:27:14,36.347s,PASSED
+runTimestamp = SimpleDateFormat(MMdd:HH:mm).format(new java.util.Date()),Chrome 149.0.7827.114,,,16-06-2026 02:26:38,16-06-2026 02:26:38,0.001s,PASSED
+"adminFirstName = ""automation""",Chrome 149.0.7827.114,,,16-06-2026 02:26:38,16-06-2026 02:26:38,0.000s,PASSED
+adminLastName = runTimestamp,Chrome 149.0.7827.114,,,16-06-2026 02:26:38,16-06-2026 02:26:38,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 02:26:38,16-06-2026 02:27:12,34.127s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 02:27:12,16-06-2026 02:27:12,0.405s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:27:12,16-06-2026 02:27:12,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:27:12,16-06-2026 02:27:14,1.719s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Company Details/C9945(T88027)_회사 시간대 변경,Chrome 149.0.7827.114,"C9945_회사 시간대 변경
+TestRail: C9945 (T88027) - Change the Company Timezone
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Company Details 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Timezone 드롭다운에서 시간대를 선택하세요 (예: Asia/Seoul)
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하고 선택한 시간대가 유지되는지 확인하세요
+
+결과값
+선택한 시간대가 성공적으로 저장됩니다.",,16-06-2026 02:27:14,16-06-2026 02:27:39,24.658s,ERROR
+try,Chrome 149.0.7827.114,,,16-06-2026 02:27:14,16-06-2026 02:27:37,23.094s,PASSED
+catch (Exception e),Chrome 149.0.7827.114,,,16-06-2026 02:27:37,16-06-2026 02:27:37,0.030s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 02:27:37,16-06-2026 02:27:38,0.481s,ERROR
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:27:38,16-06-2026 02:27:38,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 02:27:38,16-06-2026 02:27:39,0.912s,PASSED

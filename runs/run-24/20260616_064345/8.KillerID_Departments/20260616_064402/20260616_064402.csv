@@ -1,0 +1,494 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+8.KillerID_Departments,Chrome 149.0.7827.114,"Round 8 - Departments 자동화 15건 (8a 조회 3 + 8b IP&StartURL 5 + 8c 2SV&세션 7). 대상 부서: Finance. manual 9건(부서 IP 로그인/2SV 로그인/Start URL 리다이렉트/GWS OU Sync 4/부서 삭제) 제외. 부서 액션은 호버→""...""→항목(동적 id org-level-popup<n> 회피, 텍스트 스코프 JS). 모달은 id 스코프 + getComputedStyle 표시판정. 부서 IP필터링은 회사 IP필터 OFF 시 안내 alert(게이팅) 검증. 세션 무효값은 native alert 검증. 모든 케이스 teardown 복원 내장.",,16-06-2026 08:55:00,16-06-2026 09:00:48,5m - 48.038s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10013_부서 구조 검증,Chrome 149.0.7827.114,"[C10013] Verify the Departments structure
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8a)
+
+📋 사전 조건:
+- admin 로그인 → Departments 영역 진입
+
+🧪 단계 (inferred):
+1. Departments(부서) 목록/트리 화면 진입
+2. 부서 계층 구조(GWS OU 동기화) 렌더 검증
+
+✅ 결과값:
+- 부서 트리/목록이 정상 표시 (Finance 포함)
+
+🔧 자동화 노트:
+- 캡처: Departments 탭/메뉴 진입점, 부서 트리/목록 컨테이너
+- 검증은 JS robust(부서명 텍스트 탐지)",,16-06-2026 08:55:00,16-06-2026 08:55:17,16.883s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:55:00,16-06-2026 08:55:00,0.002s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:55:00,16-06-2026 08:55:00,0.005s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:55:00,16-06-2026 08:55:00,0.003s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:55:00,16-06-2026 08:55:15,14.894s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:55:15,16-06-2026 08:55:15,0.139s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:55:15,16-06-2026 08:55:15,0.011s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:55:15,16-06-2026 08:55:17,1.432s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10014_부서 사용자 검증,Chrome 149.0.7827.114,"[C10014] Verify the Department users
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8a)
+
+📋 사전 조건:
+- admin 로그인 → Finance 부서 선택
+
+🧪 단계 (inferred):
+1. Finance 부서 클릭/선택
+2. 해당 부서 소속 사용자 목록 표시 검증
+
+✅ 결과값:
+- Finance 부서의 사용자 목록이 표시됨
+
+🔧 자동화 노트:
+- 캡처: 부서 선택 시 사용자 목록 영역
+- 0명 허용 분기(부서에 사용자 없을 수 있음)",,16-06-2026 08:55:17,16-06-2026 08:55:34,17.164s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:55:17,16-06-2026 08:55:17,0.003s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:55:17,16-06-2026 08:55:17,0.002s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:55:17,16-06-2026 08:55:17,0.002s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:55:17,16-06-2026 08:55:33,15.883s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:55:33,16-06-2026 08:55:33,0.103s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:55:33,16-06-2026 08:55:33,0.008s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:55:33,16-06-2026 08:55:34,1.024s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10015_부서 액션 검증,Chrome 149.0.7827.114,"[C10015] Verify the actions with Department
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8a)
+
+📋 사전 조건:
+- admin 로그인 → Finance 부서 선택/액션 메뉴
+
+🧪 단계 (inferred):
+1. Finance 부서의 액션(편집/IP필터/Start URL/2SV/Session/삭제 등) 가용성 검증
+
+✅ 결과값:
+- 부서 액션 UI(편집/설정 항목)가 노출됨
+
+🔧 자동화 노트:
+- 캡처: 부서 액션 버튼/메뉴(Edit, IP Filtering, Start URL, 2SV, Session Duration)",,16-06-2026 08:55:34,16-06-2026 08:55:48,14.434s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:55:34,16-06-2026 08:55:34,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:55:34,16-06-2026 08:55:34,0.002s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:55:34,16-06-2026 08:55:34,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:55:34,16-06-2026 08:55:47,12.773s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:55:47,16-06-2026 08:55:47,0.098s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:55:47,16-06-2026 08:55:47,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:55:47,16-06-2026 08:55:48,1.446s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10016_부서 IP 필터링 추가,Chrome 149.0.7827.114,"[C10016] Add IP Filtering to Department
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8b)
+
+📋 사전 조건:
+- admin 로그인 → Finance 부서 편집 → IP Filtering
+
+🧪 단계 (inferred):
+1. Finance IP Filtering 추가 모달 진입
+2. IP Zone 입력
+3. (lockout 방지) 저장은 검증 목적상 신중 — 입력/모달 동작 검증 위주
+
+✅ 결과값:
+- 부서 IP 필터 추가 UI 정상 동작
+
+🔧 자동화 노트:
+- 🚨 lockout 방지: 현재 접속 IP 차단되는 저장 금지. 회사 IP필터(C9991) 패턴 참고
+- 캡처: 부서 IP Filtering 모달 + Zone 입력 필드 + Save/Cancel
+- ⚠️ teardown: 추가분 제거",,16-06-2026 08:55:48,16-06-2026 08:56:06,17.536s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:55:49,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:55:49,0.002s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:55:49,0.001s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:55:49,0.001s,PASSED
+openDeptMenu = { java.lang.String dept -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:55:49,0.001s,PASSED
+"openDeptAction = { java.lang.String dept, java.lang.String action -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:55:49,0.001s,PASSED
+pollModal = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:55:49,0.001s,PASSED
+modalVisible = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:55:49,0.001s,PASSED
+"modalSet = { java.lang.String modalId, java.lang.String css, java.lang.String val -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:55:49,0.001s,PASSED
+"modalGet = { java.lang.String modalId, java.lang.String css -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:55:49,0.001s,PASSED
+"modalBtn = { java.lang.String modalId, java.lang.String txt -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:55:49,0.001s,PASSED
+"modalRadio = { java.lang.String modalId, java.lang.String labelText -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:55:49,0.001s,PASSED
+modalErrorText = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:55:49,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:55:49,16-06-2026 08:56:03,14.403s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:56:03,16-06-2026 08:56:04,1.442s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:56:04,16-06-2026 08:56:04,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:56:04,16-06-2026 08:56:06,1.381s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10017_부서 IP 필터 편집,Chrome 149.0.7827.114,"[C10017] Edit IP Filters of the Department
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8b)
+
+📋 사전 조건:
+- admin 로그인 → Finance IP Filtering 편집
+
+🧪 단계 (inferred):
+1. 기존 부서 IP Zone 편집 모달 진입
+2. 값 수정 동작 검증
+
+✅ 결과값:
+- 부서 IP 필터 편집 UI 정상 동작
+
+🔧 자동화 노트:
+- 🚨 lockout 방지. 캡처: 편집 모달
+- ⚠️ teardown: 원복",,16-06-2026 08:56:06,16-06-2026 08:56:23,16.959s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:06,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:06,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:06,0.001s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:06,0.001s,PASSED
+openDeptMenu = { java.lang.String dept -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:06,0.001s,PASSED
+"openDeptAction = { java.lang.String dept, java.lang.String action -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:06,0.002s,PASSED
+pollModal = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:06,0.001s,PASSED
+modalVisible = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:06,0.001s,PASSED
+"modalSet = { java.lang.String modalId, java.lang.String css, java.lang.String val -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:06,0.001s,PASSED
+"modalGet = { java.lang.String modalId, java.lang.String css -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:06,0.001s,PASSED
+"modalBtn = { java.lang.String modalId, java.lang.String txt -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:06,0.001s,PASSED
+"modalRadio = { java.lang.String modalId, java.lang.String labelText -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:06,0.001s,PASSED
+modalErrorText = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:06,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:56:06,16-06-2026 08:56:20,14.034s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:56:20,16-06-2026 08:56:21,1.442s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:56:21,16-06-2026 08:56:21,0.006s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:56:21,16-06-2026 08:56:23,1.265s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10020_부서 Start URL 설정,Chrome 149.0.7827.114,"[C10020] Set the Department Start URL
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8b)
+
+📋 사전 조건:
+- admin 로그인 → Finance 부서 편집 → Start URL
+
+🧪 단계 (inferred):
+1. Finance Start URL 필드에 테스트 URL 입력
+2. Save
+
+✅ 결과값:
+- 부서 Start URL 저장 성공
+
+🔧 자동화 노트:
+- AngularJS ng-model → JS native-setter + input/change (C10131/C10132 패턴)
+- 캡처: 부서 Start URL input + Save
+- ⚠️ teardown: 원래값(공란) 복원 (C10131 근본수정 패턴)",,16-06-2026 08:56:23,16-06-2026 08:56:50,27.072s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:23,0.002s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:23,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:23,0.001s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:23,0.001s,PASSED
+openDeptMenu = { java.lang.String dept -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:23,0.001s,PASSED
+"openDeptAction = { java.lang.String dept, java.lang.String action -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:23,0.001s,PASSED
+pollModal = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:23,0.001s,PASSED
+modalVisible = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:23,0.001s,PASSED
+"modalSet = { java.lang.String modalId, java.lang.String css, java.lang.String val -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:23,0.001s,PASSED
+"modalGet = { java.lang.String modalId, java.lang.String css -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:23,0.001s,PASSED
+"modalBtn = { java.lang.String modalId, java.lang.String txt -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:23,0.001s,PASSED
+"modalRadio = { java.lang.String modalId, java.lang.String labelText -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:23,0.001s,PASSED
+modalErrorText = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:23,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:56:23,16-06-2026 08:56:48,24.651s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:56:48,16-06-2026 08:56:49,1.151s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:56:49,16-06-2026 08:56:49,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:56:49,16-06-2026 08:56:50,1.016s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10021_부서 Start URL 편집,Chrome 149.0.7827.114,"[C10021] Edit the Department Start URL
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8b)
+
+📋 사전 조건:
+- admin 로그인 → Finance Start URL 편집
+
+🧪 단계 (inferred):
+1. 기존 Start URL 변경
+2. Save → 변경값 반영 검증
+
+✅ 결과값:
+- 부서 Start URL 편집/저장 성공
+
+🔧 자동화 노트:
+- C10020 동일 패턴 + teardown 복원",,16-06-2026 08:56:50,16-06-2026 08:57:25,35.156s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:56:50,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:56:50,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:56:50,0.001s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:56:50,0.001s,PASSED
+openDeptMenu = { java.lang.String dept -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:56:50,0.001s,PASSED
+"openDeptAction = { java.lang.String dept, java.lang.String action -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:56:50,0.001s,PASSED
+pollModal = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:56:50,0.001s,PASSED
+modalVisible = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:56:50,0.001s,PASSED
+"modalSet = { java.lang.String modalId, java.lang.String css, java.lang.String val -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:56:50,0.002s,PASSED
+"modalGet = { java.lang.String modalId, java.lang.String css -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:56:50,0.001s,PASSED
+"modalBtn = { java.lang.String modalId, java.lang.String txt -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:56:50,0.001s,PASSED
+"modalRadio = { java.lang.String modalId, java.lang.String labelText -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:56:50,0.001s,PASSED
+modalErrorText = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:56:50,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:56:50,16-06-2026 08:57:23,32.609s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:57:23,16-06-2026 08:57:24,1.146s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:57:24,16-06-2026 08:57:24,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:57:24,16-06-2026 08:57:25,1.185s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10023_Start URL 사용자 테이블 기록 검증,Chrome 149.0.7827.114,"[C10023] Verify the Start URL record on the User table
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8b)
+
+📋 사전 조건:
+- (선행) Finance Start URL 설정 → admin User 테이블 조회
+
+🧪 단계 (inferred):
+1. User 테이블에서 Finance 소속 사용자의 Start URL 컬럼 확인
+2. 설정한 Start URL 반영 검증
+
+✅ 결과값:
+- User 테이블 Start URL 컬럼에 부서 설정값 반영
+
+🔧 자동화 노트:
+- 부서 사용자 없으면 0건 허용
+- C10045(Start URL 정렬) 테이블 패턴 참고",,16-06-2026 08:57:25,16-06-2026 08:57:55,29.640s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:25,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:25,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:25,0.001s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:25,0.001s,PASSED
+openDeptMenu = { java.lang.String dept -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:25,0.001s,PASSED
+"openDeptAction = { java.lang.String dept, java.lang.String action -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:25,0.001s,PASSED
+pollModal = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:25,0.001s,PASSED
+modalVisible = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:25,0.001s,PASSED
+"modalSet = { java.lang.String modalId, java.lang.String css, java.lang.String val -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:25,0.001s,PASSED
+"modalGet = { java.lang.String modalId, java.lang.String css -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:25,0.001s,PASSED
+"modalBtn = { java.lang.String modalId, java.lang.String txt -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:25,0.001s,PASSED
+"modalRadio = { java.lang.String modalId, java.lang.String labelText -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:25,0.001s,PASSED
+modalErrorText = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:25,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:57:25,16-06-2026 08:57:52,26.963s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:57:52,16-06-2026 08:57:53,1.146s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:57:53,16-06-2026 08:57:53,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:57:53,16-06-2026 08:57:55,1.394s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10024_부서 2SV 활성화,Chrome 149.0.7827.114,"[C10024] Enable the Department 2SV
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8c)
+
+📋 사전 조건:
+- admin 로그인 → Finance 부서 편집 → 2SV
+
+🧪 단계 (inferred):
+1. Finance 2SV 토글 ON
+2. Save → 활성 검증
+
+✅ 결과값:
+- 부서 2SV 활성화 성공
+
+🔧 자동화 노트:
+- 캡처: 부서 2SV 토글/체크 + Save
+- ⚠️ teardown: 2SV OFF 복원 (Postcondition 보강 고려)",,16-06-2026 08:57:55,16-06-2026 08:58:17,22.482s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:57:55,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:57:55,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:57:55,0.001s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:57:55,0.001s,PASSED
+openDeptMenu = { java.lang.String dept -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:57:55,0.001s,PASSED
+"openDeptAction = { java.lang.String dept, java.lang.String action -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:57:55,0.001s,PASSED
+pollModal = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:57:55,0.001s,PASSED
+modalVisible = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:57:55,0.001s,PASSED
+"modalSet = { java.lang.String modalId, java.lang.String css, java.lang.String val -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:57:55,0.002s,PASSED
+"modalGet = { java.lang.String modalId, java.lang.String css -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:57:55,0.001s,PASSED
+"modalBtn = { java.lang.String modalId, java.lang.String txt -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:57:55,0.003s,PASSED
+"modalRadio = { java.lang.String modalId, java.lang.String labelText -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:57:55,0.003s,PASSED
+modalErrorText = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:57:55,0.003s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:57:55,16-06-2026 08:58:16,20.914s,FAILED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:58:16,16-06-2026 08:58:16,0.125s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:58:16,16-06-2026 08:58:16,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:58:16,16-06-2026 08:58:17,1.227s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10025_회사 2SV 활성 시 부서 2SV 팝업 검증,Chrome 149.0.7827.114,"[C10025] Verify the Department 2SV popup with Company 2SV enabled
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8c)
+
+📋 사전 조건:
+- (조건) 회사 2SV 활성 상태 → Finance 2SV 설정 시도
+
+🧪 단계 (inferred):
+1. 회사 Force-2SV ON 상태에서 부서 2SV 설정
+2. 안내 팝업 표출 검증
+
+✅ 결과값:
+- 회사 2SV 활성 시 부서 2SV 관련 팝업/안내 표시
+
+🔧 자동화 노트:
+- ⚠️ 회사 2SV ON 전제 필요(C10071 연계). 팝업 텍스트 robust 검증
+- ⚠️ teardown: 회사 2SV OFF 복원(zz Postcondition)",,16-06-2026 08:58:17,16-06-2026 08:58:39,22.263s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:17,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:17,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:17,0.000s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:17,0.000s,PASSED
+openDeptMenu = { java.lang.String dept -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:17,0.001s,PASSED
+"openDeptAction = { java.lang.String dept, java.lang.String action -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:17,0.001s,PASSED
+pollModal = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:17,0.001s,PASSED
+modalVisible = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:17,0.001s,PASSED
+"modalSet = { java.lang.String modalId, java.lang.String css, java.lang.String val -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:17,0.011s,PASSED
+"modalGet = { java.lang.String modalId, java.lang.String css -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:17,0.001s,PASSED
+"modalBtn = { java.lang.String modalId, java.lang.String txt -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:17,0.001s,PASSED
+"modalRadio = { java.lang.String modalId, java.lang.String labelText -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:17,0.000s,PASSED
+modalErrorText = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:17,0.000s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:58:17,16-06-2026 08:58:37,19.601s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:58:37,16-06-2026 08:58:38,1.144s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:58:38,16-06-2026 08:58:38,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:58:38,16-06-2026 08:58:39,1.386s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10027_부서 2SV 비활성화,Chrome 149.0.7827.114,"[C10027] Disable the Department 2SV
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8c)
+
+📋 사전 조건:
+- admin 로그인 → Finance 2SV OFF
+
+🧪 단계 (inferred):
+1. Finance 2SV 토글 OFF
+2. Save → 비활성 검증
+
+✅ 결과값:
+- 부서 2SV 비활성화 성공
+
+🔧 자동화 노트:
+- C10024 역동작. 부서 baseline = 2SV OFF 복원",,16-06-2026 08:58:39,16-06-2026 08:59:01,21.176s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:39,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:39,0.000s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:39,0.001s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:39,0.000s,PASSED
+openDeptMenu = { java.lang.String dept -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:39,0.001s,PASSED
+"openDeptAction = { java.lang.String dept, java.lang.String action -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:39,0.001s,PASSED
+pollModal = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:39,0.001s,PASSED
+modalVisible = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:39,0.002s,PASSED
+"modalSet = { java.lang.String modalId, java.lang.String css, java.lang.String val -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:39,0.001s,PASSED
+"modalGet = { java.lang.String modalId, java.lang.String css -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:39,0.001s,PASSED
+"modalBtn = { java.lang.String modalId, java.lang.String txt -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:39,0.001s,PASSED
+"modalRadio = { java.lang.String modalId, java.lang.String labelText -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:39,0.001s,PASSED
+modalErrorText = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:39,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:58:39,16-06-2026 08:58:59,19.736s,FAILED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:58:59,16-06-2026 08:58:59,0.143s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:58:59,16-06-2026 08:58:59,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:58:59,16-06-2026 08:59:01,1.173s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10028_부서 세션 시간 유효값 설정,Chrome 149.0.7827.114,"[C10028] Set the valid Department Session Duration
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8c)
+
+📋 사전 조건:
+- admin 로그인 → Finance 부서 편집 → Session Duration
+
+🧪 단계 (inferred):
+1. Finance Session Duration 에 유효값(1~720h) 입력
+2. Save → 저장 검증
+
+✅ 결과값:
+- 부서 세션 시간 유효값 저장 성공
+
+🔧 자동화 노트:
+- C9956(랜덤 유효값) 패턴. 캡처: 부서 Session Duration input + Save
+- ⚠️ teardown: 원래값 복원",,16-06-2026 08:59:01,16-06-2026 08:59:27,26.410s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:01,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:01,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:01,0.002s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:01,0.001s,PASSED
+openDeptMenu = { java.lang.String dept -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:01,0.001s,PASSED
+"openDeptAction = { java.lang.String dept, java.lang.String action -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:01,0.001s,PASSED
+pollModal = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:01,0.001s,PASSED
+modalVisible = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:01,0.001s,PASSED
+"modalSet = { java.lang.String modalId, java.lang.String css, java.lang.String val -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:01,0.001s,PASSED
+"modalGet = { java.lang.String modalId, java.lang.String css -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:01,0.001s,PASSED
+"modalBtn = { java.lang.String modalId, java.lang.String txt -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:01,0.001s,PASSED
+"modalRadio = { java.lang.String modalId, java.lang.String labelText -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:01,0.000s,PASSED
+modalErrorText = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:01,0.000s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:59:01,16-06-2026 08:59:24,23.757s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:59:24,16-06-2026 08:59:26,1.151s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:59:26,16-06-2026 08:59:26,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:59:26,16-06-2026 08:59:27,1.353s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10029_부서 세션 시간 무효값 설정,Chrome 149.0.7827.114,"[C10029] Set the invalid Department Session Duration
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8c)
+
+📋 사전 조건:
+- admin 로그인 → Finance Session Duration
+
+🧪 단계 (inferred):
+1. 무효값(0 또는 720 초과) 입력
+2. Save → 유효성 에러 메시지 검증
+
+✅ 결과값:
+- 무효값 거부 + 에러 메시지 표출 (1~720h)
+
+🔧 자동화 노트:
+- C9962/C9963 텍스트 기반 robust 검증 패턴 재사용",,16-06-2026 08:59:27,16-06-2026 08:59:51,24.297s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:27,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:27,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:27,0.001s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:27,0.001s,PASSED
+openDeptMenu = { java.lang.String dept -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:27,0.001s,PASSED
+"openDeptAction = { java.lang.String dept, java.lang.String action -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:27,0.001s,PASSED
+pollModal = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:27,0.001s,PASSED
+modalVisible = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:27,0.001s,PASSED
+"modalSet = { java.lang.String modalId, java.lang.String css, java.lang.String val -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:27,0.001s,PASSED
+"modalGet = { java.lang.String modalId, java.lang.String css -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:27,0.001s,PASSED
+"modalBtn = { java.lang.String modalId, java.lang.String txt -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:27,0.001s,PASSED
+"modalRadio = { java.lang.String modalId, java.lang.String labelText -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:27,0.001s,PASSED
+modalErrorText = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:27,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:59:27,16-06-2026 08:59:48,21.379s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:59:48,16-06-2026 08:59:50,1.114s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:59:50,16-06-2026 08:59:50,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:59:50,16-06-2026 08:59:51,1.680s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10030_부서 세션 시간 기설정값 검증,Chrome 149.0.7827.114,"[C10030] Verify the already set Department Session Duration value
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8c)
+
+📋 사전 조건:
+- (선행) C10028 로 값 설정됨
+
+🧪 단계 (inferred):
+1. Finance Session Duration 재진입
+2. 이전 설정값 영속 검증
+
+✅ 결과값:
+- 설정한 세션 시간 값이 유지되어 표시됨
+
+🔧 자동화 노트:
+- 설정→재진입 영속 확인 (C9956 이중확인 패턴)",,16-06-2026 08:59:51,16-06-2026 09:00:21,30.071s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 08:59:51,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 08:59:51,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 08:59:51,0.001s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 08:59:51,0.000s,PASSED
+openDeptMenu = { java.lang.String dept -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 08:59:51,0.000s,PASSED
+"openDeptAction = { java.lang.String dept, java.lang.String action -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 08:59:51,0.000s,PASSED
+pollModal = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 08:59:51,0.001s,PASSED
+modalVisible = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 08:59:51,0.000s,PASSED
+"modalSet = { java.lang.String modalId, java.lang.String css, java.lang.String val -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 08:59:51,0.001s,PASSED
+"modalGet = { java.lang.String modalId, java.lang.String css -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 08:59:51,0.001s,PASSED
+"modalBtn = { java.lang.String modalId, java.lang.String txt -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 08:59:51,0.001s,PASSED
+"modalRadio = { java.lang.String modalId, java.lang.String labelText -> ... }",Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 08:59:51,0.011s,PASSED
+modalErrorText = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 08:59:51,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:59:51,16-06-2026 09:00:19,27.561s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 09:00:19,16-06-2026 09:00:20,1.153s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 09:00:20,16-06-2026 09:00:20,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 09:00:20,16-06-2026 09:00:21,1.235s,PASSED
+,,,,,,,
+Test Cases/KillerID_Departments/C10031_무효값 팝업 닫기 후 세션 시간 검증,Chrome 149.0.7827.114,"[C10031] Verify the Department Session Duration value after closing the popup with invalid value
+Role: Admin | 대상 부서: Finance
+Section: KillerID/Departments (Round 8 Sprint 8c)
+
+📋 사전 조건:
+- admin 로그인 → Finance Session Duration
+
+🧪 단계 (inferred):
+1. 무효값 입력 → 팝업/에러
+2. Cancel(팝업 닫기)
+3. 세션 시간이 변경 안 됨(기존값 유지) 검증
+
+✅ 결과값:
+- 무효값 취소 시 기존 세션 시간 값 유지
+
+🔧 자동화 노트:
+- Cancel 후 값 불변 검증. teardown 불필요(변경 안 함)",,16-06-2026 09:00:21,16-06-2026 09:00:48,26.322s,PASSED
+"DEPT = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:21,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:21,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:21,0.001s,PASSED
+waitSideMenu = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:21,0.001s,PASSED
+openDeptMenu = { java.lang.String dept -> ... },Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:21,0.001s,PASSED
+"openDeptAction = { java.lang.String dept, java.lang.String action -> ... }",Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:21,0.001s,PASSED
+pollModal = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:21,0.000s,PASSED
+modalVisible = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:21,0.000s,PASSED
+"modalSet = { java.lang.String modalId, java.lang.String css, java.lang.String val -> ... }",Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:21,0.001s,PASSED
+"modalGet = { java.lang.String modalId, java.lang.String css -> ... }",Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:21,0.001s,PASSED
+"modalBtn = { java.lang.String modalId, java.lang.String txt -> ... }",Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:21,0.001s,PASSED
+"modalRadio = { java.lang.String modalId, java.lang.String labelText -> ... }",Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:21,0.001s,PASSED
+modalErrorText = { java.lang.String modalId -> ... },Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:21,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 09:00:21,16-06-2026 09:00:45,23.522s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 09:00:45,16-06-2026 09:00:46,1.114s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 09:00:46,16-06-2026 09:00:46,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 09:00:46,16-06-2026 09:00:48,1.554s,PASSED

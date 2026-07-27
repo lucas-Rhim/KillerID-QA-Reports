@@ -1,0 +1,289 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+5c.KillerID_Company_User_CrossSession,Chrome 149.0.7827.114,Sprint 4c - KillerID_User CrossSession scenarios. Phase 1+2 (10 cases). Execution order designed for state isolation: PW rotation (C10064/65/66) first → demo3 login cases (C10068/72) while demo3 is fresh → dual-session (C10063) → admin-only/fake-user (C10071/60/61) → C10062 LAST (force-logout 5min block 회피). C10062 must remain last because its 5-min force-logout window blocks subsequent demo3 logins.,,15-06-2026 10:14:19,15-06-2026 10:21:59,7m - 39.154s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10064_도메인 사용자 비밀번호 재설정,Chrome 149.0.7827.114,"[C10064] Reset the domain user(s) password
+Role: Admin
+Section: KillerID/User/Bulk Actions
+
+📋 사전 조건:
+- Admin 계정 으로 로그인 됨
+
+🧪 단계:
+1. User 탭 이동
+2. 1명 이상 의 user 체크
+3. 'Reset Password' 버튼 클릭
+4. New Password 입력
+5. Confirm New Password 입력
+6. Save 클릭
+
+✅ 결과값:
+- 'Password Updated Successfully' alert 표시
+- 선택된 user 의 password 변경 됨",,15-06-2026 10:14:20,15-06-2026 10:14:54,34.535s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:14:20,15-06-2026 10:14:20,0.004s,PASSED
+"OLD_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,15-06-2026 10:14:20,15-06-2026 10:14:20,0.003s,PASSED
+"NEW_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,15-06-2026 10:14:20,15-06-2026 10:14:20,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:14:20,15-06-2026 10:14:53,32.799s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:14:53,15-06-2026 10:14:53,0.133s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:14:53,15-06-2026 10:14:53,0.011s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:14:53,15-06-2026 10:14:54,1.004s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10065_이전 비밀번호로 로그인 시도,Chrome 149.0.7827.114,"[C10065] Login as a domain user with an old password
+Role: Domain User
+Section: KillerID/User/Bulk Actions
+
+📋 사전 조건:
+- Admin 이 해당 user 의 password 를 변경 함 (C10064 결과)
+
+🧪 단계:
+1. KillerID 로그인 페이지 진입 (id.netkiller.com)
+2. OLD credentials (이전 password) 로 로그인 시도
+
+✅ 결과값:
+- 'Bad Credentials' 메시지 표시
+- 로그인 실패 (User is not logged in)",,15-06-2026 10:14:54,15-06-2026 10:15:07,12.415s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:14:54,15-06-2026 10:14:54,0.003s,PASSED
+"OLD_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,15-06-2026 10:14:54,15-06-2026 10:14:54,0.003s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:14:54,15-06-2026 10:15:06,11.618s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:15:06,15-06-2026 10:15:06,0.093s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:15:06,15-06-2026 10:15:06,0.004s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:15:06,15-06-2026 10:15:07,0.592s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10066_새 비밀번호로 로그인,Chrome 149.0.7827.114,"[C10066] Login as a domain user with a new password
+Role: Domain User
+Section: KillerID/User/Bulk Actions
+
+📋 사전 조건:
+- Admin 이 해당 user 의 password 를 변경 함 (C10064 결과)
+
+🧪 단계:
+1. KillerID 로그인 페이지 진입 (id.netkiller.com)
+2. NEW credentials (새 password) 로 로그인 시도
+
+✅ 결과값:
+- User 가 KillerID Profile 에 로그인 됨",,15-06-2026 10:15:07,15-06-2026 10:15:47,40.611s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:15:07,15-06-2026 10:15:07,0.001s,PASSED
+"OLD_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,15-06-2026 10:15:07,15-06-2026 10:15:07,0.001s,PASSED
+"NEW_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,15-06-2026 10:15:07,15-06-2026 10:15:07,0.001s,PASSED
+demo3PwIsNew = true,Chrome 149.0.7827.114,,,15-06-2026 10:15:07,15-06-2026 10:15:07,0.001s,PASSED
+mainTestError = null,Chrome 149.0.7827.114,,,15-06-2026 10:15:07,15-06-2026 10:15:07,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:15:07,15-06-2026 10:15:46,39.663s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:15:46,15-06-2026 10:15:47,0.106s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:15:47,15-06-2026 10:15:47,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:15:47,15-06-2026 10:15:47,0.592s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10068_변경된 Start URL 도메인 사용자 측 검증,Chrome 149.0.7827.114,"[C10068] Verify the new Start URL as a domain user
+Role: Domain User
+Section: KillerID/User/Bulk Actions
+
+📋 사전 조건:
+- Admin 이 대상 user 의 Start URL 을 변경 함 (C10067 결과)
+- 변경 된 Start URL = test.bulk.example.com 같은 dev1 환경 dummy URL
+
+🧪 단계:
+1. id.netkiller.com 진입 (KillerID 로그인 페이지)
+2. valid credentials 입력 (domain user)
+3. 'Login as admin / Go to Profile' 체크박스 UN-check (domain user mode)
+4. 'Sign in' 클릭
+
+✅ 결과값:
+- User is redirected to the new Start URL set by the admin
+  (admin 이 설정 한 새 Start URL 로 redirect 됨)
+- 최종 URL 이 새 Start URL 을 포함
+
+🔧 자동화 노트:
+- Self-Contained: admin 으로 Start URL 변경 → demo3 로 verify → 원래 URL 로 복원
+- Suite 순서: C10067 (admin 변경) 의 동작 을 user 측 에서 검증",,15-06-2026 10:15:47,15-06-2026 10:16:58,1m - 10.550s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:15:47,15-06-2026 10:15:47,0.001s,PASSED
+"DEMO3_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,15-06-2026 10:15:47,15-06-2026 10:15:47,0.001s,PASSED
+"TEST_URL = ""https://test.bulk.example.com/c10068""",Chrome 149.0.7827.114,,,15-06-2026 10:15:47,15-06-2026 10:15:47,0.001s,PASSED
+"ORIGINAL_URL = ""https://www.google.com""",Chrome 149.0.7827.114,,,15-06-2026 10:15:47,15-06-2026 10:15:47,0.001s,PASSED
+urlChangedDuringTest = false,Chrome 149.0.7827.114,,,15-06-2026 10:15:47,15-06-2026 10:15:47,0.001s,PASSED
+mainTestError = null,Chrome 149.0.7827.114,,,15-06-2026 10:15:47,15-06-2026 10:15:47,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:15:47,15-06-2026 10:16:57,1m - 9.630s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:16:57,15-06-2026 10:16:57,0.102s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:16:57,15-06-2026 10:16:57,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:16:57,15-06-2026 10:16:58,0.594s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10072_비밀번호 검증 popup 표시 검증,Chrome 149.0.7827.114,"[C10072] Verify the Password Verification popup
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- Domain user 가 로그인 가능 한 상태
+
+🧪 단계:
+1. id.netkiller.com 진입
+2. Profile 로 로그인 (admin mode 가 아닌 Profile mode)
+3. 'Edit' 버튼 클릭
+
+✅ 결과값:
+- The Password Verification popup is displayed (Password Verification popup 표시 됨)
+- The popup title is '{current-user-first-name}, to continue, first verify it's you'
+  (popup title 이 위 형식 으로 표시 — first-name 동적 치환)
+
+🔧 자동화 노트:
+- Simple flow: 로그인 → Profile → Edit click → popup 검증
+- popup title 의 first-name 동적 검증: demo3 의 first-name 을 사전 추출 후 매칭
+- popup body 또는 popup container 에서 'verify it's you' 키워드 매칭 으로 확장 검증",,15-06-2026 10:16:58,15-06-2026 10:17:24,26.349s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:16:58,15-06-2026 10:16:58,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:16:58,15-06-2026 10:17:23,25.097s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:17:23,15-06-2026 10:17:23,0.101s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:17:23,15-06-2026 10:17:23,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:17:23,15-06-2026 10:17:24,1.032s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10063_강제 로그아웃 도메인 사용자 측 검증,Chrome 149.0.7827.114,"[C10063] Verify the forced logout as a domain user
+Role: Domain User
+Section: KillerID/User/Bulk Actions
+
+📋 사전 조건:
+- Domain User (demo3) 가 로그인 된 상태
+- Admin 이 해당 user 에게 Force Logout 실행 함
+
+🧪 단계:
+1. Domain User 의 페이지 에서 Refresh
+
+✅ 결과값:
+- User 가 강제 로그아웃 됨
+- 'You have been logged out by your admin. Please login again.' 메시지 표시",,15-06-2026 10:17:24,15-06-2026 10:17:25,1.069s,PASSED
+"TARGET_EMAIL = ""demo4@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:17:24,15-06-2026 10:17:24,0.001s,PASSED
+"DEMO3_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,15-06-2026 10:17:24,15-06-2026 10:17:24,0.000s,PASSED
+driverDomain = null,Chrome 149.0.7827.114,,,15-06-2026 10:17:24,15-06-2026 10:17:24,0.000s,PASSED
+driverAdmin = null,Chrome 149.0.7827.114,,,15-06-2026 10:17:24,15-06-2026 10:17:24,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:17:24,15-06-2026 10:17:24,0.009s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:17:24,15-06-2026 10:17:24,0.004s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:17:24,15-06-2026 10:17:24,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:17:24,15-06-2026 10:17:25,0.779s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10071_Company 2SV On 시 일괄 2SV 비활성화 차단,Chrome 149.0.7827.114,"[C10071] Disable 2SV for the selected users (Company 2SV On)
+Role: Admin
+Section: KillerID/User/Bulk Actions
+
+📋 사전 조건:
+- Company 2SV is enabled (Company 단위 2SV 가 활성화 됨)
+
+🧪 단계:
+1. User 탭 진입
+2. 1+ users 선택 (체크박스)
+3. '2-Step Verification' 버튼 클릭
+
+✅ 결과값:
+- Bulk 2SV options are disabled (Bulk 2SV 옵션 들 이 비활성화 됨)
+- Admin cannot disable 2SV for selected users when Company 2SV is enabled
+  (Company 2SV 가 enabled 일 때 admin 은 선택 한 사용자 의 2SV 를 비활성화 할 수 없음)
+
+🔧 자동화 노트:
+- Self-Contained: Company 2SV 토글 ON → 검증 → 토글 OFF (원래 상태 로 복원)
+- 음수 시나리오 (negative test) — 버튼 클릭 시 disable 상태 또는 비활성화 메시지 검증",,15-06-2026 10:17:25,15-06-2026 10:19:34,2m - 9.345s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:17:25,15-06-2026 10:17:25,0.001s,PASSED
+"ADMIN_EMAIL = ""admin@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:17:25,15-06-2026 10:17:25,0.001s,PASSED
+"COMPANY_EDIT_URL = ""https://dev1-dot-killerid-sso-sandbox.an.r.appspot.com/#!/company/edit?selectTab=0""",Chrome 149.0.7827.114,,,15-06-2026 10:17:25,15-06-2026 10:17:25,0.000s,PASSED
+"USERS_URL = ""https://dev1-dot-killerid-sso-sandbox.an.r.appspot.com/#!/users""",Chrome 149.0.7827.114,,,15-06-2026 10:17:25,15-06-2026 10:17:25,0.001s,PASSED
+company2svToggledByTest = false,Chrome 149.0.7827.114,,,15-06-2026 10:17:25,15-06-2026 10:17:25,0.000s,PASSED
+demo3Forced2SvByTest = false,Chrome 149.0.7827.114,,,15-06-2026 10:17:25,15-06-2026 10:17:25,0.001s,PASSED
+adminForced2SvByTest = false,Chrome 149.0.7827.114,,,15-06-2026 10:17:25,15-06-2026 10:17:25,0.001s,PASSED
+mainTestError = null,Chrome 149.0.7827.114,,,15-06-2026 10:17:25,15-06-2026 10:17:25,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:17:25,15-06-2026 10:19:33,2m - 7.753s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:19:33,15-06-2026 10:19:33,0.122s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:19:33,15-06-2026 10:19:33,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:19:33,15-06-2026 10:19:34,1.251s,PASSED
+,,,,,,,
+Test Cases/_Postcondition/Reset_2SV_AllAccounts,Chrome 149.0.7827.114,"[Postcondition] Collection(0519) 맨 끝 — 전 테스트 계정 2SV OFF baseline 복원.
+
+목적 (Rule #6/#19 Cross-RUN 오염 방어):
+- C10071 등 회사 Force-2SV ON 케이스로 전 계정이 2SV ON 강제될 수 있음. teardown 불완전 시 다음 run 의 로그인/2SV 케이스가 OTP 화면 등으로 cascade fail.
+- run 끝에서 ① 회사 Force-2SV OFF (먼저!) → ② admin/demo1/demo3/demo4/demo5 각 계정 2SV OFF.
+
+⚠️ 순서 결정적: 회사 2SV ON 이면 개별 2SV OFF 차단(spec) → 회사 OFF 를 반드시 먼저.
+설계: NON-FATAL (실패해도 throw X, comment 추적). C10071 검증 로직 재사용.
+시작 Precondition(0.Precondition_DomainUsers) 의 짝.",,15-06-2026 10:19:34,15-06-2026 10:21:00,1m - 25.219s,PASSED
+"COMPANY_EDIT_URL = ""https://dev1-dot-killerid-sso-sandbox.an.r.appspot.com/#!/company/edit?selectTab=0""",Chrome 149.0.7827.114,,,15-06-2026 10:19:35,15-06-2026 10:19:35,0.001s,PASSED
+"USERS_URL = ""https://dev1-dot-killerid-sso-sandbox.an.r.appspot.com/#!/users""",Chrome 149.0.7827.114,,,15-06-2026 10:19:35,15-06-2026 10:19:35,0.001s,PASSED
+"ACCOUNTS = [""admin@demo.netkillersoft.com"", ""demo1@demo.netkillersoft.com"", ""demo3@demo.netkillersoft.com"", ""demo4@demo.netkillersoft.com"", ""demo5@demo.netkillersoft.com""]",Chrome 149.0.7827.114,,,15-06-2026 10:19:35,15-06-2026 10:19:35,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:19:35,15-06-2026 10:19:35,0.001s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:19:35,15-06-2026 10:19:35,0.001s,PASSED
+getForce2SvState = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:19:35,15-06-2026 10:19:35,0.001s,PASSED
+clickForce2SvOff = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:19:35,15-06-2026 10:19:35,0.001s,PASSED
+cleanupUser2sv = { java.lang.String userEmail -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:19:35,15-06-2026 10:19:35,0.002s,PASSED
+"comment(""[POSTCOND] ════════ Collection 종료 — 전 계정 2SV OFF baseline 복원 ════════"")",Chrome 149.0.7827.114,,,15-06-2026 10:19:35,15-06-2026 10:19:35,0.002s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:19:35,15-06-2026 10:21:00,1m - 24.907s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:21:00,15-06-2026 10:21:00,0.155s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:21:00,15-06-2026 10:21:00,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:21:00,15-06-2026 10:21:00,0.012s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10060_GWS 에서 사용자 삭제 (KillerID 동기화),Chrome 149.0.7827.114,"[C10060] Delete the user from KillerID
+Role: GWS Admin
+Section: KillerID/User/Bulk Actions
+
+📋 사전 조건:
+- 대상 user (e.g., demo3) 가 GWS 와 KillerID 모두 에 존재
+- KillerID admin 권한 으로 Sync 가능
+
+🧪 단계:
+1. admin.google.com (Google Workspace) 이동
+2. 대상 user 를 GWS 에서 삭제
+3. KillerID Dashboard 이동
+4. User 탭 이동
+5. Sync 클릭 (GWS → KillerID 반영)
+6. 페이지 Refresh
+7. 삭제 한 user 의 email 로 검색
+
+✅ 결과값:
+- User is deleted from KillerID (KillerID 에서 user 가 삭제 됨)
+- 검색 결과 비어 있음
+
+⚠️ Destructive 위험:
+- 실제 GWS user 영구 삭제 → simulate 모드 또는 임시 user 사용 권장
+- 자동화 시 dry-run + KillerID 단독 검증 으로 대체 가능",,15-06-2026 10:21:00,15-06-2026 10:21:20,20.374s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:21:00,15-06-2026 10:21:00,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:21:00,15-06-2026 10:21:19,18.887s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:21:19,15-06-2026 10:21:19,0.101s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:21:19,15-06-2026 10:21:19,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:21:19,15-06-2026 10:21:20,1.283s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10061_삭제된 사용자 로그인 시도,Chrome 149.0.7827.114,"[C10061] Login as a deleted user
+Role: Domain User
+Section: KillerID/User/Bulk Actions
+
+📋 사전 조건:
+- User 가 GWS 와 KillerID 모두 에서 삭제 됨 (C10060 결과)
+
+🧪 단계:
+1. id.netkiller.com 진입
+2. 삭제 된 user 의 valid credentials 입력
+3. 'Sign in' 버튼 클릭
+
+✅ 결과값:
+- 'Bad Credentials' message is displayed ('Bad Credentials' 메시지 표시 됨)
+- User is not logged in (로그인 안 됨, URL=/page/login)
+- 한글 환경 에서는 '잘못된 아이디 또는 패스워드' 표시 가능
+
+⚠️ Destructive 의존:
+- C10060 의 실제 삭제 가 선행 되어야 함
+- 자동화 시 simulate 모드 (가상 user 또는 wrong-credentials 검증) 로 대체",,15-06-2026 10:21:20,15-06-2026 10:21:32,11.540s,PASSED
+"FAKE_DELETED_EMAIL = ""deleted_user_test_only_c10061@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:21:20,15-06-2026 10:21:20,0.000s,PASSED
+"FAKE_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,15-06-2026 10:21:20,15-06-2026 10:21:20,0.000s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:21:20,15-06-2026 10:21:30,10.164s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:21:30,15-06-2026 10:21:30,0.086s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:21:30,15-06-2026 10:21:30,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:21:30,15-06-2026 10:21:32,1.199s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10062_도메인 사용자 강제 로그아웃,Chrome 149.0.7827.114,"[C10062] Force Logout the domain user(s)
+Role: Admin
+Section: KillerID/User/Bulk Actions
+
+📋 사전 조건:
+- Admin 계정 으로 로그인 됨
+
+🧪 단계:
+1. User 탭 이동
+2. 1명 이상 의 user 체크
+3. 'Force Logout' 버튼 클릭
+
+✅ 결과값:
+- 'Users will be logged out within 5 minutes' alert 표시
+- 선택된 user 의 세션 종료",,15-06-2026 10:21:32,15-06-2026 10:21:59,26.945s,PASSED
+"TARGET_EMAIL = ""demo4@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:21:32,15-06-2026 10:21:32,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:21:32,15-06-2026 10:21:57,25.540s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:21:57,15-06-2026 10:21:57,0.101s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:21:57,15-06-2026 10:21:57,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:21:57,15-06-2026 10:21:59,1.202s,PASSED

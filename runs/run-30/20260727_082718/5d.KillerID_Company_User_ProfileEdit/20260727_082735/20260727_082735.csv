@@ -1,0 +1,150 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+5d.KillerID_Company_User_ProfileEdit,Chrome 149.0.7827.200,Sprint 4d - KillerID_User Profile Edit + PW Verification 5 cases (C10073~C10077). demo3 본인 profile 의 Edit 진입 + PW 검증 + session cache + 5회 lockout. C10077 destructive (demo3 자동 로그아웃) 마지막 — cool-down 가능.,,27-07-2026 10:36:22,27-07-2026 10:40:42,4m - 19.759s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10073_프로필 Edit 진입 (세션 첫 회) 비밀번호 검증,Chrome 149.0.7827.200,"[C10073] Enter the Profile Edit mode (1st time within a session)
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- Domain user (demo3) 로그인 가능 한 상태
+
+🧪 단계:
+1. id.netkiller.com 진입 + Profile 로 로그인
+2. Edit 버튼 클릭 → Password Verification popup 등장 (C10072 결과)
+3. 현재 user 의 password 입력
+4. 'Check' 버튼 클릭
+
+✅ 결과값:
+- The Profile Edit mode is opened (Profile 의 Edit 모드 진입)
+- Edit 가능한 필드들 표시 + 'Save' / 'Cancel' 버튼 visible
+
+🔧 자동화 노트:
+- spec 6.1: 첫 회 검증 → PW 입력 → Edit mode 진입
+- spy: input_Enter Password / button_Check (이미 등록)
+- Verify: Edit mode 진입 후 General 탭 의 Save 버튼 visible 또는 input field editable",,27-07-2026 10:36:22,27-07-2026 10:36:59,36.333s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.200,,,27-07-2026 10:36:23,27-07-2026 10:36:23,0.002s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.200,,,27-07-2026 10:36:23,27-07-2026 10:36:23,0.002s,PASSED
+"DEMO3_ENCRYPTED_PW = ""***REDACTED***""",Chrome 149.0.7827.200,,,27-07-2026 10:36:23,27-07-2026 10:36:23,0.002s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 10:36:23,27-07-2026 10:36:57,34.774s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 10:36:57,27-07-2026 10:36:58,0.130s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 10:36:58,27-07-2026 10:36:59,1.042s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 10:36:59,27-07-2026 10:36:59,0.004s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10074_프로필 Edit 진입 (세션 두 번째) 검증 면제,Chrome 149.0.7827.200,"[C10074] Enter the Profile Edit mode (2nd time within a session)
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 로 로그인 됨 + 같은 세션 에서 이미 한 번 PW 검증 완료 (C10073 결과)
+
+🧪 단계:
+1. (이미 PW 검증 완료 된 세션 에서) Edit 버튼 을 어떤 탭 에서 든 다시 클릭
+
+✅ 결과값:
+- The Profile Edit mode is opened without Password Verification
+  (PW Verification popup 안 뜨고 바로 Edit mode 진입)
+
+🔧 자동화 노트:
+- spec 6.1 의 핵심: 같은 세션 내 2번째 부터 PW 검증 생략 (session cache)
+- C10073 직후 같은 .groovy 안 에서 sequential 실행
+- Verify: Edit click 후 popup 안 뜨고 즉시 Edit mode 진입
+  (input_Enter Password spy 가 NOT visible 인지 확인 — negative verify)",,27-07-2026 10:36:59,27-07-2026 10:37:55,56.791s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.200,,,27-07-2026 10:36:59,27-07-2026 10:36:59,0.003s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.200,,,27-07-2026 10:36:59,27-07-2026 10:36:59,0.001s,PASSED
+"DEMO3_ENCRYPTED_PW = ""***REDACTED***""",Chrome 149.0.7827.200,,,27-07-2026 10:36:59,27-07-2026 10:36:59,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 10:36:59,27-07-2026 10:37:55,55.622s,FAILED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 10:37:55,27-07-2026 10:37:55,0.095s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 10:37:55,27-07-2026 10:37:55,0.784s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 10:37:55,27-07-2026 10:37:55,0.002s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10075_프로필 Edit 진입 (새 세션) 검증 재요구,Chrome 149.0.7827.200,"[C10075] Enter the Profile Edit mode (new session)
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 로 로그인 + PW 검증 완료 된 세션 (C10073 / C10074 결과)
+
+🧪 단계:
+1. header 의 Profile 버튼 클릭 → 메뉴 펼침
+2. Logout 클릭 → 로그아웃 됨
+3. 다시 demo3 로 Profile 로그인
+4. 어떤 탭 에서 든 Edit 버튼 클릭
+
+✅ 결과값:
+- The Password Verification popup is displayed (재검증 popup 등장)
+- The Edit mode is not opened until the password is not verified
+
+🔧 자동화 노트:
+- spec 6.1 의 보충: 새 세션 = 재검증 필요 (session invalidation)
+- closeBrowser → demo3 다시 login → Edit click → popup 검증
+- Verify: input_Enter Password spy visible == true",,27-07-2026 10:37:55,27-07-2026 10:38:58,1m - 2.474s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.200,,,27-07-2026 10:37:56,27-07-2026 10:37:56,0.001s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.200,,,27-07-2026 10:37:56,27-07-2026 10:37:56,0.000s,PASSED
+"DEMO3_ENCRYPTED_PW = ""***REDACTED***""",Chrome 149.0.7827.200,,,27-07-2026 10:37:56,27-07-2026 10:37:56,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 10:37:56,27-07-2026 10:38:57,1m - 1.499s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 10:38:57,27-07-2026 10:38:57,0.088s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 10:38:57,27-07-2026 10:38:58,0.758s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 10:38:58,27-07-2026 10:38:58,0.002s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10076_프로필 Edit 진입 잘못된 비밀번호 1회 시도,Chrome 149.0.7827.200,"[C10076] Enter the Profile Edit mode with invalid password
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 로 로그인 됨
+
+🧪 단계:
+1. id.netkiller.com 진입 + Profile 로 로그인
+2. 어떤 탭 에서 든 Edit 버튼 클릭 → PW Verification popup 등장
+3. 잘못된 password 입력 (예: 'WrongPW123!')
+4. 'Check' 버튼 클릭
+
+✅ 결과값:
+- 'Wrong Password. You have 4 attempts left to enter the correct password, after what you will be logged out.' alert 표시
+- The Profile Edit mode is not opened (Edit 모드 안 열림)
+
+🔧 자동화 노트:
+- Expected exact string: ""Wrong Password. You have 4 attempts left...""
+  (한글 환경 대응: ""잘못된 비밀번호"", ""4번 의 시도"", ""남았"" 같은 변형 도 매칭)
+- destructive 아님 (단순 잘못 시도 = 1회 차감 만)
+- Verify: alert 또는 in-page 메시지 의 ""4 attempts left"" 텍스트 매치",,27-07-2026 10:38:58,27-07-2026 10:39:28,29.905s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.200,,,27-07-2026 10:38:58,27-07-2026 10:38:58,0.000s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.200,,,27-07-2026 10:38:58,27-07-2026 10:38:58,0.000s,PASSED
+"WRONG_PW = ""***REDACTED***""",Chrome 149.0.7827.200,,,27-07-2026 10:38:58,27-07-2026 10:38:58,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 10:38:58,27-07-2026 10:39:27,28.692s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 10:39:27,27-07-2026 10:39:27,0.124s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 10:39:27,27-07-2026 10:39:28,0.935s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 10:39:28,27-07-2026 10:39:28,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10077_프로필 Edit 진입 잘못된 비밀번호 5회 시 자동 로그아웃,Chrome 149.0.7827.200,"[C10077] Enter the Profile Edit mode with invalid password for 5 times
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 로 로그인 됨 (fresh session, 잘못 시도 count = 0)
+
+🧪 단계:
+1. id.netkiller.com 진입 + Profile 로 로그인
+2. Edit 버튼 클릭 → PW Verification popup 등장
+3. 잘못된 password 를 5회 반복 입력 + Check 클릭
+   (매 시도 마다 ""attempts left"" 카운트 다운: 4 → 3 → 2 → 1 → 0)
+4. 5번째 잘못 입력 후 Check 클릭
+
+✅ 결과값:
+- The user is logged out from KillerID (자동 로그아웃)
+- URL 이 /page/login 으로 redirect 또는 logged-out state
+
+🔧 자동화 노트:
+- spec 6.1 의 lockout: ""잘못된 비밀번호 5회 입력 시 자동 로그아웃""
+- destructive 아님 (5회 시도 만 — demo3 PW 변경 X)
+  단, lockout 후 demo3 의 추가 시도 횟수 잠시 차단 가능 (서버 cool-down)
+- Verify: 5회 시도 후 URL 이 /page/login 또는 logged-out indicator
+- 🚨 NEXT-RUN 주의: 다른 demo3 login 테스트 와 시간 간격 권장 (lockout cool-down)",,27-07-2026 10:39:28,27-07-2026 10:40:42,1m - 14.124s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.200,,,27-07-2026 10:39:28,27-07-2026 10:39:28,0.003s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.200,,,27-07-2026 10:39:28,27-07-2026 10:39:28,0.000s,PASSED
+"WRONG_PW = ""***REDACTED***""",Chrome 149.0.7827.200,,,27-07-2026 10:39:28,27-07-2026 10:39:28,0.000s,PASSED
+MAX_ATTEMPTS = 5,Chrome 149.0.7827.200,,,27-07-2026 10:39:28,27-07-2026 10:39:28,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 10:39:28,27-07-2026 10:40:15,46.803s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 10:40:15,27-07-2026 10:40:41,26.297s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 10:40:41,27-07-2026 10:40:42,0.757s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 10:40:42,27-07-2026 10:40:42,0.001s,PASSED

@@ -1,0 +1,627 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+4.KillerID_Company_IP Filtering,Chrome 149.0.7827.200,,,27-07-2026 08:58:15,27-07-2026 09:14:31,16m - 15.937s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9985_IP 필터링 편집모드 진입,Chrome 149.0.7827.200,"C9985 - IP 필터링 탭 편집 모드 진입
+TestRail: C9985 - Enter the Edit mode on the IP Filtering tab
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > IP Filtering 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. IP Filtering 탭의 모든 필드가 편집 가능한 상태인지 확인하세요
+
+결과값: IP Filtering 탭의 모든 필드를 편집할 수 있습니다.",,27-07-2026 08:58:15,27-07-2026 08:58:43,27.787s,PASSED
+"callTestCase(findTestCase(""Common/COMMON_08_IP필터링_편집모드_진입""), [:])",Chrome 149.0.7827.200,,,27-07-2026 08:58:15,27-07-2026 08:58:36,21.119s,PASSED
+delay(1),Chrome 149.0.7827.200,,,27-07-2026 08:58:36,27-07-2026 08:58:37,1.003s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 08:58:37,27-07-2026 08:58:37,0.311s,PASSED
+"comment(""[C9985] Step 1~3: COMMON_08 executed - Edit mode entered"")",Chrome 149.0.7827.200,,,27-07-2026 08:58:37,27-07-2026 08:58:37,0.002s,PASSED
+"verifyElementVisible(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_ON""), STOP_ON_FAILURE)",Chrome 149.0.7827.200,,,27-07-2026 08:58:37,27-07-2026 08:58:38,0.251s,PASSED
+"verifyElementVisible(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_OFF""), STOP_ON_FAILURE)",Chrome 149.0.7827.200,,,27-07-2026 08:58:38,27-07-2026 08:58:38,0.241s,PASSED
+"comment(""[C9985] Verify 1: ON/OFF toggle buttons visible"")",Chrome 149.0.7827.200,,,27-07-2026 08:58:38,27-07-2026 08:58:38,0.002s,PASSED
+"verifyElementVisible(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Manage IP Zones""), STOP_ON_FAILURE)",Chrome 149.0.7827.200,,,27-07-2026 08:58:38,27-07-2026 08:58:38,0.239s,PASSED
+"comment(""[C9985] Verify 2: Manage IP Zones button visible"")",Chrome 149.0.7827.200,,,27-07-2026 08:58:38,27-07-2026 08:58:38,0.003s,PASSED
+"verifyElementVisible(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Save_Page""), STOP_ON_FAILURE)",Chrome 149.0.7827.200,,,27-07-2026 08:58:38,27-07-2026 08:58:38,0.243s,PASSED
+"verifyElementVisible(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Cancel_Page""), STOP_ON_FAILURE)",Chrome 149.0.7827.200,,,27-07-2026 08:58:38,27-07-2026 08:58:39,0.235s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 08:58:39,27-07-2026 08:58:39,0.290s,PASSED
+"comment(""[C9985] Verify 3: Save_Page / Cancel_Page buttons visible - all edit mode fields confirmed"")",Chrome 149.0.7827.200,,,27-07-2026 08:58:39,27-07-2026 08:58:39,0.002s,PASSED
+"click(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Cancel_Page""))",Chrome 149.0.7827.200,,,27-07-2026 08:58:39,27-07-2026 08:58:39,0.471s,PASSED
+delay(1),Chrome 149.0.7827.200,,,27-07-2026 08:58:39,27-07-2026 08:58:40,1.009s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 08:58:40,27-07-2026 08:58:41,0.280s,PASSED
+"comment(""[C9985] Cleanup: Cancel clicked - exited edit mode without state change"")",Chrome 149.0.7827.200,,,27-07-2026 08:58:41,27-07-2026 08:58:41,0.002s,PASSED
+"verifyElementVisible(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Edit""), STOP_ON_FAILURE)",Chrome 149.0.7827.200,,,27-07-2026 08:58:41,27-07-2026 08:58:41,0.236s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 08:58:41,27-07-2026 08:58:41,0.278s,PASSED
+"comment(""[C9985] ✅ PASS: Edit mode entered successfully and exited cleanly (read-mode confirmed)"")",Chrome 149.0.7827.200,,,27-07-2026 08:58:41,27-07-2026 08:58:41,0.010s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 08:58:41,27-07-2026 08:58:41,0.138s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:58:41,27-07-2026 08:58:43,1.269s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:58:43,27-07-2026 08:58:43,0.003s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9986_IP 필터링 활성화,Chrome 149.0.7827.200,"C9986 - IP 필터링 활성화
+TestRail: C9986 - Enable the IP Filtering
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > IP Filtering 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. 'IP Filtering' 토글을 On 으로 변경하세요
+5. 'Save' 버튼을 클릭하세요
+
+결과값: IP Filtering 이 활성화되고, IP Filter 가 할당된 도메인 사용자는 IP 가 필터와 일치해야 로그인할 수 있습니다.",,27-07-2026 08:58:43,27-07-2026 08:59:19,36.435s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 08:58:43,27-07-2026 08:58:43,0.002s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 08:58:43,27-07-2026 08:59:10,27.454s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 08:59:10,27-07-2026 08:59:18,7.802s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:59:18,27-07-2026 08:59:19,1.042s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:59:19,27-07-2026 08:59:19,0.002s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9987_IP 필터링 비활성화,Chrome 149.0.7827.200,"C9987 - IP 필터링 비활성화
+TestRail: C9987 - Disable the IP Filtering
+
+사전 조건: 관리자 역할, IP Filtering 이 On 상태
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > IP Filtering 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. 'IP Filtering' 토글을 Off 로 변경하세요
+5. 'Save' 버튼을 클릭하세요
+
+결과값: IP Filtering 이 비활성화되고, IP Filter 가 할당된 도메인 사용자는 IP Filter 검사를 받지 않습니다.",,27-07-2026 08:59:19,27-07-2026 09:00:05,45.907s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 08:59:19,27-07-2026 08:59:19,0.001s,PASSED
+"comment(""[C9987] Setup: Enabling IP Filtering as pre-condition"")",Chrome 149.0.7827.200,,,27-07-2026 08:59:19,27-07-2026 08:59:19,0.001s,PASSED
+"callTestCase(findTestCase(""Common/COMMON_08_IP필터링_편집모드_진입""), [:])",Chrome 149.0.7827.200,,,27-07-2026 08:59:19,27-07-2026 08:59:39,19.472s,PASSED
+"click(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_ON""))",Chrome 149.0.7827.200,,,27-07-2026 08:59:39,27-07-2026 08:59:39,0.300s,PASSED
+delay(1),Chrome 149.0.7827.200,,,27-07-2026 08:59:39,27-07-2026 08:59:40,1.003s,PASSED
+"click(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Save_Page""))",Chrome 149.0.7827.200,,,27-07-2026 08:59:40,27-07-2026 08:59:40,0.336s,PASSED
+waitForPageLoad(10),Chrome 149.0.7827.200,,,27-07-2026 08:59:40,27-07-2026 08:59:40,0.006s,PASSED
+delay(3),Chrome 149.0.7827.200,,,27-07-2026 08:59:40,27-07-2026 08:59:43,3.003s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 08:59:43,27-07-2026 08:59:44,0.489s,PASSED
+"comment(""[C9987] Setup completed: IP Filtering is now ON"")",Chrome 149.0.7827.200,,,27-07-2026 08:59:44,27-07-2026 08:59:44,0.001s,PASSED
+"waitForElementClickable(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Edit""), 10)",Chrome 149.0.7827.200,,,27-07-2026 08:59:44,27-07-2026 08:59:44,0.238s,PASSED
+"click(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Edit""))",Chrome 149.0.7827.200,,,27-07-2026 08:59:44,27-07-2026 08:59:44,0.430s,PASSED
+delay(2),Chrome 149.0.7827.200,,,27-07-2026 08:59:44,27-07-2026 08:59:46,2.004s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 08:59:46,27-07-2026 08:59:47,0.295s,PASSED
+"comment(""[C9987] Step 1~3: Re-entered edit mode"")",Chrome 149.0.7827.200,,,27-07-2026 08:59:47,27-07-2026 08:59:47,0.001s,PASSED
+"waitForElementClickable(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_OFF""), 10)",Chrome 149.0.7827.200,,,27-07-2026 08:59:47,27-07-2026 08:59:47,0.253s,PASSED
+"click(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_OFF""))",Chrome 149.0.7827.200,,,27-07-2026 08:59:47,27-07-2026 08:59:47,0.311s,PASSED
+delay(1),Chrome 149.0.7827.200,,,27-07-2026 08:59:47,27-07-2026 08:59:48,1.003s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 08:59:48,27-07-2026 08:59:49,0.283s,PASSED
+"comment(""[C9987] Step 4: OFF button clicked - toggle deactivated"")",Chrome 149.0.7827.200,,,27-07-2026 08:59:49,27-07-2026 08:59:49,0.001s,PASSED
+"click(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Save_Page""))",Chrome 149.0.7827.200,,,27-07-2026 08:59:49,27-07-2026 08:59:49,0.300s,PASSED
+waitForPageLoad(10),Chrome 149.0.7827.200,,,27-07-2026 08:59:49,27-07-2026 08:59:49,0.012s,PASSED
+delay(3),Chrome 149.0.7827.200,,,27-07-2026 08:59:49,27-07-2026 08:59:52,3.002s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 08:59:52,27-07-2026 08:59:52,0.580s,PASSED
+"comment(""[C9987] Step 5: Save_Page clicked"")",Chrome 149.0.7827.200,,,27-07-2026 08:59:52,27-07-2026 08:59:52,0.001s,PASSED
+"flexibleOffSpan = dynObj.call(""//span[contains(normalize-space(.), 'currently OFF') and "" + ""not(ancestor-or-self::*[contains(@style, 'display: none')]) and "" + ""not(ancestor-or-self::*[contains(@class, 'ng-hide')])]"")",Chrome 149.0.7827.200,,,27-07-2026 08:59:52,27-07-2026 08:59:52,0.003s,PASSED
+"visibleByText = waitForElementVisible(flexibleOffSpan, 10, OPTIONAL)",Chrome 149.0.7827.200,,,27-07-2026 08:59:52,27-07-2026 08:59:53,0.231s,PASSED
+"comment(""[C9987] Verify (a) Text-based span visible: "" + visibleByText)",Chrome 149.0.7827.200,,,27-07-2026 08:59:53,27-07-2026 08:59:53,0.001s,PASSED
+"editVisible = verifyElementVisible(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Edit""), OPTIONAL)",Chrome 149.0.7827.200,,,27-07-2026 08:59:53,27-07-2026 08:59:53,0.227s,PASSED
+"comment(""[C9987] Verify (b) button_Edit visible (read-mode): "" + editVisible)",Chrome 149.0.7827.200,,,27-07-2026 08:59:53,27-07-2026 08:59:53,0.001s,PASSED
+"offTextPresent = dynObj.call(""//*[contains(normalize-space(.), 'currently OFF')]"")",Chrome 149.0.7827.200,,,27-07-2026 08:59:53,27-07-2026 08:59:53,0.002s,PASSED
+"offTextPresentCheck = verifyElementPresent(offTextPresent, 5, OPTIONAL)",Chrome 149.0.7827.200,,,27-07-2026 08:59:53,27-07-2026 08:59:53,0.248s,PASSED
+"comment(""[C9987] Verify (c) \""currently OFF\"" text present: "" + offTextPresentCheck)",Chrome 149.0.7827.200,,,27-07-2026 08:59:53,27-07-2026 08:59:53,0.001s,PASSED
+"onBtnHidden = !(verifyElementVisible(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_ON""), OPTIONAL))",Chrome 149.0.7827.200,,,27-07-2026 08:59:53,27-07-2026 09:00:03,10.057s,WARNING
+"comment(""[C9987] Verify (d) button_ON hidden (not in edit mode): "" + onBtnHidden)",Chrome 149.0.7827.200,,,27-07-2026 09:00:03,27-07-2026 09:00:03,0.001s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 09:00:03,27-07-2026 09:00:04,0.277s,PASSED
+passed = visibleByText || editVisible && offTextPresentCheck,Chrome 149.0.7827.200,,,27-07-2026 09:00:04,27-07-2026 09:00:04,0.000s,PASSED
+assert passed,Chrome 149.0.7827.200,,,27-07-2026 09:00:04,27-07-2026 09:00:04,0.000s,PASSED
+"comment(""[C9987] ✅ PASS: IP Filtering is now OFF (confirmed via "" + (visibleByText) ? direct span visibility : edit-mode exit + text presence + "")"")",Chrome 149.0.7827.200,,,27-07-2026 09:00:04,27-07-2026 09:00:04,0.002s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:00:04,27-07-2026 09:00:04,0.095s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:00:04,27-07-2026 09:00:05,1.359s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9988_IP Zone 삭제,Chrome 149.0.7827.200,"C9988 - IP Zone 삭제
+TestRail: C9988 - Delete the IP Zone
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > IP Filtering 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. 'Add more zones' 버튼을 클릭하세요
+5. IP Zone 옆의 Delete 버튼을 클릭하세요
+6. 'Save' 버튼을 클릭하세요
+7. 'Save' 버튼을 다시 클릭하세요
+
+결과값: 해당 IP Zone 이 IP Filtering 테이블에서 삭제되고, 해당 Zone 이 할당되어 있던 도메인 사용자에게서도 제거됩니다.",,27-07-2026 09:00:05,27-07-2026 09:01:30,1m - 25.131s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.002s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.001s,PASSED
+"forceJsClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.001s,PASSED
+"robustClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.001s,PASSED
+waitForLoadingGone = { int maxSec -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.000s,PASSED
+"innerModalTitle = dynObj.call(""//h4[normalize-space(.)='Separate IP address with comma']"")",Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.002s,PASSED
+"addMoreRowsBtn = dynObj.call(""//div[@id='add-zone']//*[contains(normalize-space(.), 'Add more rows')][self::a or self::button]"")",Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.002s,PASSED
+"innerModalSave = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.001s,PASSED
+"outerModalSave = dynObj.call(""//div[@id='ip-filtering']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.002s,PASSED
+_ts9988 = System.currentTimeMillis(),Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.001s,PASSED
+_oct2 = _ts9988.intdiv(3600000) % 200 + 20,Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.007s,PASSED
+_oct3 = _ts9988.intdiv(60000) % 100 + 10,Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.000s,PASSED
+"targetZoneName = ""TC9988_Target_"" + _ts9988",Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.001s,PASSED
+"targetFromIp = ""10."" + _oct2 + ""."" + _oct3 + "".0""",Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.001s,PASSED
+"targetToIp = ""10."" + _oct2 + ""."" + _oct3 + "".255""",Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.001s,PASSED
+zoneCreated = false,Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.000s,PASSED
+zoneDeleted = false,Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:00:05,0.000s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:00:05,27-07-2026 09:01:29,1m - 23.817s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 09:01:29,27-07-2026 09:01:29,0.116s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:01:29,27-07-2026 09:01:30,0.822s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:01:30,27-07-2026 09:01:30,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9989_IP Zone 전체 삭제,Chrome 149.0.7827.200,"C9989 - IP Zone 전체 삭제
+TestRail: C9989 - Delete all IP Zones
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > IP Filtering 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. 'Add more zones' 버튼을 클릭하세요
+5. 모든 IP Zone 을 삭제하세요
+6. 'Save' 버튼을 클릭하세요
+7. 'Save' 버튼을 다시 클릭하세요
+
+결과값: IP Filtering 테이블에 'No Record Found' 텍스트가 표시됩니다.",,27-07-2026 09:01:30,27-07-2026 09:03:18,1m - 48.013s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.001s,PASSED
+"forceJsClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.001s,PASSED
+"robustClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.001s,PASSED
+waitForLoadingGone = { int maxSec -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.000s,PASSED
+"innerModalTitle = dynObj.call(""//h4[normalize-space(.)='Separate IP address with comma']"")",Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.002s,PASSED
+"addMoreRowsBtn = dynObj.call(""//div[@id='add-zone']//*[contains(normalize-space(.), 'Add more rows')][self::a or self::button]"")",Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.001s,PASSED
+"innerModalSave = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.001s,PASSED
+"outerModalSave = dynObj.call(""//div[@id='ip-filtering']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.002s,PASSED
+_ts9989 = System.currentTimeMillis(),Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.001s,PASSED
+_oct2 = _ts9989.intdiv(3600000) % 200 + 20,Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.000s,PASSED
+_oct3_1 = _ts9989.intdiv(60000) % 80 + 10,Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.000s,PASSED
+_oct3_2 = _oct3_1 + 80,Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.001s,PASSED
+_oct3_3 = _oct3_1 + 160,Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.001s,PASSED
+if (_oct3_3 > 254),Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.000s,PASSED
+"zoneNames = [""TC9989_Bulk_1_"" + _ts9989, ""TC9989_Bulk_2_"" + _ts9989, ""TC9989_Bulk_3_"" + _ts9989]",Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.001s,PASSED
+"oct3s = [_oct3_1, _oct3_2, _oct3_3]",Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.000s,PASSED
+zonesCreated = 0,Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.001s,PASSED
+zonesDeleted = 0,Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.000s,PASSED
+pendingCleanup = [],Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:01:31,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:01:31,27-07-2026 09:03:17,1m - 46.664s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 09:03:17,27-07-2026 09:03:17,0.116s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:03:17,27-07-2026 09:03:18,0.807s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:03:18,27-07-2026 09:03:18,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9990_잘못된 IPv4 Zone 저장,Chrome 149.0.7827.200,"C9990 - 잘못된 IPv4 Zone 저장
+TestRail: C9990 - Save the invalid IPv4 Zone
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > IP Filtering 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. 'Add more zones' 버튼을 클릭하세요
+5. 'Add more zones' 버튼을 한 번 더 클릭하세요
+6. 'Add more rows' 버튼을 클릭하세요
+7. 'Zone Name' 을 입력하세요
+8. 'From' 필드에 잘못된 IPv4 주소(옥텟 값 > 255)를 입력하세요
+9. 'To' 필드에 잘못된 IPv4 주소를 입력하세요
+10. 'Save' 버튼을 클릭하세요
+
+결과값: 'Please enter valid IP Address.' 알림이 표시되고, 잘못된 IP 주소는 저장되지 않습니다.",,27-07-2026 09:03:18,27-07-2026 09:04:03,44.522s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:03:18,27-07-2026 09:03:18,0.000s,PASSED
+"forceJsClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:03:18,27-07-2026 09:03:18,0.001s,PASSED
+"robustClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:03:18,27-07-2026 09:03:18,0.001s,PASSED
+"innerModalTitle = dynObj.call(""//h4[normalize-space(.)='Separate IP address with comma']"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:18,27-07-2026 09:03:18,0.002s,PASSED
+"addMoreRowsBtn = dynObj.call(""//div[@id='add-zone']//*[contains(normalize-space(.), 'Add more rows')][self::a or self::button]"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:18,27-07-2026 09:03:18,0.001s,PASSED
+"innerModalSave = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:18,27-07-2026 09:03:18,0.001s,PASSED
+"innerModalCancel = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Cancel']"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:18,27-07-2026 09:03:18,0.001s,PASSED
+"callTestCase(findTestCase(""Common/COMMON_08_IP필터링_편집모드_진입""), [:])",Chrome 149.0.7827.200,,,27-07-2026 09:03:18,27-07-2026 09:03:37,19.076s,PASSED
+delay(1),Chrome 149.0.7827.200,,,27-07-2026 09:03:37,27-07-2026 09:03:38,1.001s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 09:03:38,27-07-2026 09:03:39,0.270s,PASSED
+"comment(""[C9990] Step 1~3: COMMON_08 executed - Edit mode entered"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:39,27-07-2026 09:03:39,0.000s,PASSED
+"waitForElementClickable(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Manage IP Zones""), 10)",Chrome 149.0.7827.200,,,27-07-2026 09:03:39,27-07-2026 09:03:39,0.238s,PASSED
+"click(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Manage IP Zones""))",Chrome 149.0.7827.200,,,27-07-2026 09:03:39,27-07-2026 09:03:39,0.284s,PASSED
+delay(2),Chrome 149.0.7827.200,,,27-07-2026 09:03:39,27-07-2026 09:03:41,2.002s,PASSED
+"waitForElementVisible(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/h4_Manage IP Zones""), 10)",Chrome 149.0.7827.200,,,27-07-2026 09:03:41,27-07-2026 09:03:41,0.232s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 09:03:41,27-07-2026 09:03:42,0.275s,PASSED
+"comment(""[C9990] Step 4: Outer Manage IP Zones modal opened"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:42,27-07-2026 09:03:42,0.001s,PASSED
+"robustClick.call(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Add Zone""), ""Add Zone"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:42,27-07-2026 09:03:43,1.747s,PASSED
+delay(2),Chrome 149.0.7827.200,,,27-07-2026 09:03:43,27-07-2026 09:03:45,2.001s,PASSED
+"waitForElementVisible(innerModalTitle, 10, STOP_ON_FAILURE)",Chrome 149.0.7827.200,,,27-07-2026 09:03:45,27-07-2026 09:03:46,0.233s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 09:03:46,27-07-2026 09:03:46,0.271s,PASSED
+"comment(""[C9990] Step 5: Inner \""Separate IP address with comma\"" modal opened"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:46,27-07-2026 09:03:46,0.000s,PASSED
+"robustClick.call(addMoreRowsBtn, ""Add more rows"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:46,27-07-2026 09:03:48,1.767s,PASSED
+delay(1),Chrome 149.0.7827.200,,,27-07-2026 09:03:48,27-07-2026 09:03:49,1.002s,PASSED
+"lastZoneNameInput = dynObj.call(""(//div[@id='add-zone']//input[@name='zoneName'])[last()]"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:49,27-07-2026 09:03:49,0.001s,PASSED
+"waitForElementVisible(lastZoneNameInput, 10, STOP_ON_FAILURE)",Chrome 149.0.7827.200,,,27-07-2026 09:03:49,27-07-2026 09:03:49,0.226s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 09:03:49,27-07-2026 09:03:49,0.274s,PASSED
+"comment(""[C9990] Step 6: Add more rows clicked - new empty row added at bottom"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:49,27-07-2026 09:03:49,0.001s,PASSED
+"zoneName = ""TC9990_IPv4_Invalid_"" + System.currentTimeMillis()",Chrome 149.0.7827.200,,,27-07-2026 09:03:49,27-07-2026 09:03:49,0.000s,PASSED
+"setText(dynObj.call(""(//div[@id='add-zone']//input[@name='zoneName'])[last()]""), zoneName)",Chrome 149.0.7827.200,,,27-07-2026 09:03:49,27-07-2026 09:03:50,0.906s,PASSED
+"comment(""[C9990] Step 7: Zone Name entered (last row) = "" + zoneName)",Chrome 149.0.7827.200,,,27-07-2026 09:03:50,27-07-2026 09:03:50,0.009s,PASSED
+"invalidFromIp = ""999.999.999.999""",Chrome 149.0.7827.200,,,27-07-2026 09:03:50,27-07-2026 09:03:50,0.001s,PASSED
+"setText(dynObj.call(""(//div[@id='add-zone']//input[@name='fromIp'])[last()]""), invalidFromIp)",Chrome 149.0.7827.200,,,27-07-2026 09:03:50,27-07-2026 09:03:51,0.686s,PASSED
+"comment(""[C9990] Step 8: Invalid From IP entered = "" + invalidFromIp)",Chrome 149.0.7827.200,,,27-07-2026 09:03:51,27-07-2026 09:03:51,0.001s,PASSED
+"invalidToIp = ""999.999.999.999""",Chrome 149.0.7827.200,,,27-07-2026 09:03:51,27-07-2026 09:03:51,0.000s,PASSED
+"setText(dynObj.call(""(//div[@id='add-zone']//input[@name='toIp'])[last()]""), invalidToIp)",Chrome 149.0.7827.200,,,27-07-2026 09:03:51,27-07-2026 09:03:51,0.662s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 09:03:51,27-07-2026 09:03:52,0.277s,PASSED
+"comment(""[C9990] Step 9: Invalid To IP entered = "" + invalidToIp)",Chrome 149.0.7827.200,,,27-07-2026 09:03:52,27-07-2026 09:03:52,0.000s,PASSED
+"forceJsClick.call(innerModalSave, ""InnerModalSave"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:52,27-07-2026 09:03:53,1.040s,PASSED
+delay(2),Chrome 149.0.7827.200,,,27-07-2026 09:03:53,27-07-2026 09:03:55,2.001s,PASSED
+"comment(""[C9990] Step 10: Inner modal Save clicked with invalid IP (via JS click)"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:55,27-07-2026 09:03:55,0.001s,PASSED
+errorDetected = false,Chrome 149.0.7827.200,,,27-07-2026 09:03:55,27-07-2026 09:03:55,0.000s,PASSED
+"errorSource = ""none""",Chrome 149.0.7827.200,,,27-07-2026 09:03:55,27-07-2026 09:03:55,0.000s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:03:55,27-07-2026 09:03:56,1.040s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:03:56,27-07-2026 09:03:56,0.282s,PASSED
+if (!(errorDetected)),Chrome 149.0.7827.200,,,27-07-2026 09:03:56,27-07-2026 09:03:56,0.001s,PASSED
+if (!(errorDetected)),Chrome 149.0.7827.200,,,27-07-2026 09:03:56,27-07-2026 09:03:56,0.000s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 09:03:56,27-07-2026 09:03:56,0.283s,PASSED
+"comment(""[C9990] Verify: errorDetected="" + errorDetected + "", source="" + errorSource)",Chrome 149.0.7827.200,,,27-07-2026 09:03:56,27-07-2026 09:03:56,0.001s,PASSED
+"verifyElementVisible(innerModalTitle, STOP_ON_FAILURE)",Chrome 149.0.7827.200,,,27-07-2026 09:03:56,27-07-2026 09:03:57,0.227s,PASSED
+"comment(""[C9990] Verify: Inner modal still open - invalid IPv4 zone was NOT saved"")",Chrome 149.0.7827.200,,,27-07-2026 09:03:57,27-07-2026 09:03:57,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:03:57,27-07-2026 09:03:59,2.209s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:03:59,27-07-2026 09:04:00,1.418s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:04:00,27-07-2026 09:04:02,1.461s,PASSED
+"assert errorDetected : ""[C9990] FAIL: Expected validation error for invalid IPv4 but none detected""",Chrome 149.0.7827.200,,,27-07-2026 09:04:02,27-07-2026 09:04:02,0.000s,PASSED
+"comment(""[C9990] ✅ PASS: Invalid IPv4 Zone rejected (error source: "" + errorSource + "")"")",Chrome 149.0.7827.200,,,27-07-2026 09:04:02,27-07-2026 09:04:02,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:04:02,27-07-2026 09:04:02,0.096s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:04:02,27-07-2026 09:04:03,0.891s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:04:03,27-07-2026 09:04:03,0.000s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9991_유효한 IPv4 Zone 추가,Chrome 149.0.7827.200,"C9991 - 유효한 IPv4 Zone 추가
+TestRail: C9991 - Add a valid IPv4 Zone
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > IP Filtering 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. 'Add more zones' 버튼을 클릭하세요
+5. 'Add more zones' 버튼을 한 번 더 클릭하세요
+6. 'Add more rows' 버튼을 클릭하세요
+7. 'Zone Name' 을 입력하세요
+8. 'From' 필드에 유효한 IPv4 주소(0.0.0.0 ~ 255.255.255.255 범위)를 입력하세요
+9. 'To' 필드에 유효한 IPv4 주소를 입력하세요
+10. 'Save' 버튼을 클릭하세요
+11. 'Save' 버튼을 클릭하세요
+12. 'Save' 버튼을 클릭하세요
+
+결과값: 새 IP Zone 이 IP Filtering 목록에 추가됩니다.",,27-07-2026 09:04:03,27-07-2026 09:05:11,1m - 8.180s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:04:03,27-07-2026 09:04:03,0.001s,PASSED
+"forceJsClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:04:03,27-07-2026 09:04:03,0.001s,PASSED
+"robustClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:04:03,27-07-2026 09:04:03,0.000s,PASSED
+"innerModalTitle = dynObj.call(""//h4[normalize-space(.)='Separate IP address with comma']"")",Chrome 149.0.7827.200,,,27-07-2026 09:04:03,27-07-2026 09:04:03,0.002s,PASSED
+"addMoreRowsBtn = dynObj.call(""//div[@id='add-zone']//*[contains(normalize-space(.), 'Add more rows')][self::a or self::button]"")",Chrome 149.0.7827.200,,,27-07-2026 09:04:03,27-07-2026 09:04:03,0.002s,PASSED
+"innerModalSave = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:04:03,27-07-2026 09:04:03,0.001s,PASSED
+"outerModalSave = dynObj.call(""//div[@id='ip-filtering']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:04:03,27-07-2026 09:04:03,0.002s,PASSED
+"zoneName = ""TC9991_IPv4_Valid_"" + System.currentTimeMillis()",Chrome 149.0.7827.200,,,27-07-2026 09:04:03,27-07-2026 09:04:03,0.000s,PASSED
+zoneCreated = false,Chrome 149.0.7827.200,,,27-07-2026 09:04:03,27-07-2026 09:04:03,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:04:03,27-07-2026 09:04:54,50.948s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 09:04:54,27-07-2026 09:05:10,16.171s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:05:10,27-07-2026 09:05:11,0.948s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:05:11,27-07-2026 09:05:11,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9992_잘못된 IPv6 Zone 저장,Chrome 149.0.7827.200,"C9992 - 잘못된 IPv6 Zone 저장
+TestRail: C9992 - Save the invalid IPv6 Zone
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > IP Filtering 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. 'Add more zones' 버튼을 클릭하세요
+5. 'Add more zones' 버튼을 한 번 더 클릭하세요
+6. 'Add more rows' 버튼을 클릭하세요
+7. 'Zone Name' 을 입력하세요
+8. 'From' 필드에 잘못된 IPv6 주소(옥텟 4자 초과 또는 f 이상 문자)를 입력하세요
+9. 'To' 필드에 잘못된 IPv6 주소를 입력하세요
+10. 'Save' 버튼을 클릭하세요
+
+결과값: 'Please enter valid IP Address.' 알림이 표시되고, 잘못된 IP 주소는 저장되지 않습니다.",,27-07-2026 09:05:11,27-07-2026 09:05:56,44.808s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:05:11,27-07-2026 09:05:11,0.027s,PASSED
+"forceJsClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:05:11,27-07-2026 09:05:11,0.002s,PASSED
+"robustClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:05:11,27-07-2026 09:05:11,0.002s,PASSED
+"innerModalTitle = dynObj.call(""//h4[normalize-space(.)='Separate IP address with comma']"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:11,27-07-2026 09:05:11,0.003s,PASSED
+"addMoreRowsBtn = dynObj.call(""//div[@id='add-zone']//*[contains(normalize-space(.), 'Add more rows')][self::a or self::button]"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:11,27-07-2026 09:05:11,0.001s,PASSED
+"innerModalSave = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:11,27-07-2026 09:05:11,0.001s,PASSED
+"innerModalCancel = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Cancel']"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:11,27-07-2026 09:05:11,0.001s,PASSED
+"callTestCase(findTestCase(""Common/COMMON_08_IP필터링_편집모드_진입""), [:])",Chrome 149.0.7827.200,,,27-07-2026 09:05:11,27-07-2026 09:05:30,19.027s,PASSED
+delay(1),Chrome 149.0.7827.200,,,27-07-2026 09:05:30,27-07-2026 09:05:31,1.001s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 09:05:31,27-07-2026 09:05:31,0.280s,PASSED
+"comment(""[C9992] Step 1~3: COMMON_08 executed - Edit mode entered"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:31,27-07-2026 09:05:31,0.001s,PASSED
+"waitForElementClickable(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Manage IP Zones""), 10)",Chrome 149.0.7827.200,,,27-07-2026 09:05:31,27-07-2026 09:05:32,0.236s,PASSED
+"click(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Manage IP Zones""))",Chrome 149.0.7827.200,,,27-07-2026 09:05:32,27-07-2026 09:05:32,0.291s,PASSED
+delay(2),Chrome 149.0.7827.200,,,27-07-2026 09:05:32,27-07-2026 09:05:34,2.002s,PASSED
+"waitForElementVisible(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/h4_Manage IP Zones""), 10)",Chrome 149.0.7827.200,,,27-07-2026 09:05:34,27-07-2026 09:05:34,0.228s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 09:05:34,27-07-2026 09:05:34,0.275s,PASSED
+"comment(""[C9992] Step 4: Outer Manage IP Zones modal opened"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:34,27-07-2026 09:05:34,0.000s,PASSED
+"robustClick.call(findTestObject(""KillerID_company_ip_filtering/Page_demo.netkillersoft.com/button_Add Zone""), ""Add Zone"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:34,27-07-2026 09:05:36,1.752s,PASSED
+delay(2),Chrome 149.0.7827.200,,,27-07-2026 09:05:36,27-07-2026 09:05:38,2.001s,PASSED
+"waitForElementVisible(innerModalTitle, 10, STOP_ON_FAILURE)",Chrome 149.0.7827.200,,,27-07-2026 09:05:38,27-07-2026 09:05:38,0.227s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 09:05:38,27-07-2026 09:05:39,0.287s,PASSED
+"comment(""[C9992] Step 5: Inner modal opened"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:39,27-07-2026 09:05:39,0.001s,PASSED
+"robustClick.call(addMoreRowsBtn, ""Add more rows"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:39,27-07-2026 09:05:40,1.776s,PASSED
+delay(1),Chrome 149.0.7827.200,,,27-07-2026 09:05:40,27-07-2026 09:05:41,1.002s,PASSED
+"lastZoneNameInput = dynObj.call(""(//div[@id='add-zone']//input[@name='zoneName'])[last()]"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:41,27-07-2026 09:05:41,0.001s,PASSED
+"waitForElementVisible(lastZoneNameInput, 10, STOP_ON_FAILURE)",Chrome 149.0.7827.200,,,27-07-2026 09:05:41,27-07-2026 09:05:42,0.225s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 09:05:42,27-07-2026 09:05:42,0.277s,PASSED
+"comment(""[C9992] Step 6: New empty row added"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:42,27-07-2026 09:05:42,0.001s,PASSED
+"zoneName = ""TC9992_IPv6_Invalid_"" + System.currentTimeMillis()",Chrome 149.0.7827.200,,,27-07-2026 09:05:42,27-07-2026 09:05:42,0.000s,PASSED
+"setText(dynObj.call(""(//div[@id='add-zone']//input[@name='zoneName'])[last()]""), zoneName)",Chrome 149.0.7827.200,,,27-07-2026 09:05:42,27-07-2026 09:05:43,0.856s,PASSED
+"comment(""[C9992] Step 7: Zone Name entered (last row) = "" + zoneName)",Chrome 149.0.7827.200,,,27-07-2026 09:05:43,27-07-2026 09:05:43,0.007s,PASSED
+"invalidFromIp = ""fffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff""",Chrome 149.0.7827.200,,,27-07-2026 09:05:43,27-07-2026 09:05:43,0.000s,PASSED
+"setText(dynObj.call(""(//div[@id='add-zone']//input[@name='fromIp'])[last()]""), invalidFromIp)",Chrome 149.0.7827.200,,,27-07-2026 09:05:43,27-07-2026 09:05:44,0.876s,PASSED
+"comment(""[C9992] Step 8: Invalid IPv6 From IP = "" + invalidFromIp)",Chrome 149.0.7827.200,,,27-07-2026 09:05:44,27-07-2026 09:05:44,0.001s,PASSED
+"invalidToIp = ""fffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff""",Chrome 149.0.7827.200,,,27-07-2026 09:05:44,27-07-2026 09:05:44,0.000s,PASSED
+"setText(dynObj.call(""(//div[@id='add-zone']//input[@name='toIp'])[last()]""), invalidToIp)",Chrome 149.0.7827.200,,,27-07-2026 09:05:44,27-07-2026 09:05:45,0.842s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 09:05:45,27-07-2026 09:05:45,0.268s,PASSED
+"comment(""[C9992] Step 9: Invalid IPv6 To IP = "" + invalidToIp)",Chrome 149.0.7827.200,,,27-07-2026 09:05:45,27-07-2026 09:05:45,0.001s,PASSED
+"forceJsClick.call(innerModalSave, ""InnerModalSave"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:45,27-07-2026 09:05:46,1.034s,PASSED
+delay(2),Chrome 149.0.7827.200,,,27-07-2026 09:05:46,27-07-2026 09:05:48,2.001s,PASSED
+"comment(""[C9992] Step 10: Inner modal Save clicked with invalid IPv6 (via JS)"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:48,27-07-2026 09:05:48,0.001s,PASSED
+errorDetected = false,Chrome 149.0.7827.200,,,27-07-2026 09:05:48,27-07-2026 09:05:48,0.000s,PASSED
+"errorSource = ""none""",Chrome 149.0.7827.200,,,27-07-2026 09:05:48,27-07-2026 09:05:48,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:05:48,27-07-2026 09:05:49,1.046s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:05:49,27-07-2026 09:05:49,0.283s,PASSED
+if (!(errorDetected)),Chrome 149.0.7827.200,,,27-07-2026 09:05:49,27-07-2026 09:05:49,0.000s,PASSED
+if (!(errorDetected)),Chrome 149.0.7827.200,,,27-07-2026 09:05:49,27-07-2026 09:05:49,0.000s,PASSED
+takeScreenshot(),Chrome 149.0.7827.200,,,27-07-2026 09:05:49,27-07-2026 09:05:49,0.283s,PASSED
+"comment(""[C9992] Verify: errorDetected="" + errorDetected + "", source="" + errorSource)",Chrome 149.0.7827.200,,,27-07-2026 09:05:49,27-07-2026 09:05:49,0.002s,PASSED
+"verifyElementVisible(innerModalTitle, STOP_ON_FAILURE)",Chrome 149.0.7827.200,,,27-07-2026 09:05:49,27-07-2026 09:05:50,0.222s,PASSED
+"comment(""[C9992] Verify: Inner modal still open - invalid IPv6 zone was NOT saved"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:50,27-07-2026 09:05:50,0.000s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:05:50,27-07-2026 09:05:52,2.182s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:05:52,27-07-2026 09:05:53,1.409s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:05:53,27-07-2026 09:05:55,1.457s,PASSED
+"assert errorDetected : ""[C9992] FAIL: Expected validation error for invalid IPv6 but none detected""",Chrome 149.0.7827.200,,,27-07-2026 09:05:55,27-07-2026 09:05:55,0.000s,PASSED
+"comment(""[C9992] ✅ PASS: Invalid IPv6 Zone rejected (error source: "" + errorSource + "")"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:55,27-07-2026 09:05:55,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:05:55,27-07-2026 09:05:55,0.100s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:05:55,27-07-2026 09:05:56,0.867s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:05:56,27-07-2026 09:05:56,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9993_유효한 IPv6 Zone 추가,Chrome 149.0.7827.200,"C9993 - 유효한 IPv6 Zone 추가
+TestRail: C9993 - Add a valid IPv6 Zone
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > IP Filtering 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. 'Add more zones' 버튼을 클릭하세요
+5. 'Add more zones' 버튼을 한 번 더 클릭하세요
+6. 'Add more rows' 버튼을 클릭하세요
+7. 'Zone Name' 을 입력하세요
+8. 'From' 필드에 유효한 IPv6 주소(0000:0000:0000:0000:0000:0000:0000:0000 ~ ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff 범위)를 입력하세요
+9. 'To' 필드에 유효한 IPv6 주소를 입력하세요
+10. 'Save' 버튼을 클릭하세요
+11. 'Save' 버튼을 클릭하세요
+12. 'Save' 버튼을 클릭하세요
+
+결과값: 새 IP Zone 이 IP Filtering 목록에 추가됩니다.",,27-07-2026 09:05:56,27-07-2026 09:07:04,1m - 8.549s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:05:56,27-07-2026 09:05:56,0.003s,PASSED
+"forceJsClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:05:56,27-07-2026 09:05:56,0.001s,PASSED
+"robustClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:05:56,27-07-2026 09:05:56,0.001s,PASSED
+"innerModalTitle = dynObj.call(""//h4[normalize-space(.)='Separate IP address with comma']"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:56,27-07-2026 09:05:56,0.004s,PASSED
+"addMoreRowsBtn = dynObj.call(""//div[@id='add-zone']//*[contains(normalize-space(.), 'Add more rows')][self::a or self::button]"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:56,27-07-2026 09:05:56,0.003s,PASSED
+"innerModalSave = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:56,27-07-2026 09:05:56,0.001s,PASSED
+"outerModalSave = dynObj.call(""//div[@id='ip-filtering']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:05:56,27-07-2026 09:05:56,0.002s,PASSED
+"zoneName = ""TC9993_IPv6_Valid_"" + System.currentTimeMillis()",Chrome 149.0.7827.200,,,27-07-2026 09:05:56,27-07-2026 09:05:56,0.000s,PASSED
+zoneCreated = false,Chrome 149.0.7827.200,,,27-07-2026 09:05:56,27-07-2026 09:05:56,0.000s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:05:56,27-07-2026 09:06:47,51.208s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 09:06:47,27-07-2026 09:07:03,16.325s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:07:03,27-07-2026 09:07:04,0.808s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:07:04,27-07-2026 09:07:04,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9994_기존 IP Zone 잘못된 값 편집,Chrome 149.0.7827.200,"C9994 - 기존 IP Zone 잘못된 값 편집
+TestRail: C9994 - Edit the existing IP Zone with invalid values
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > IP Filtering 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. 'Manage IP Zones' 버튼 클릭 하세요
+5. 'Add zone' 버튼을 클릭하세요
+6. 'Add more rows' 버튼을 한 번 더 클릭하세요
+7. 기존 IP Zone 을 편집하세요 (이름 변경 + 잘못된 IP 범위 입력)
+8. 'Save' 버튼을 클릭하세요
+
+결과값: 'Please enter valid IP Address.' 알림이 표시되고, 잘못된 IP 주소는 저장되지 않습니다.",,27-07-2026 09:07:04,27-07-2026 09:08:32,1m - 27.848s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.000s,PASSED
+"forceJsClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.001s,PASSED
+"robustClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.001s,PASSED
+findRowIndexByZoneName = { java.lang.String zoneName -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.000s,PASSED
+waitForLoadingGone = { int maxSec -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.000s,PASSED
+"innerModalTitle = dynObj.call(""//h4[normalize-space(.)='Separate IP address with comma']"")",Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.003s,PASSED
+"addMoreRowsBtn = dynObj.call(""//div[@id='add-zone']//*[contains(normalize-space(.), 'Add more rows')][self::a or self::button]"")",Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.001s,PASSED
+"innerModalSave = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.001s,PASSED
+"innerModalCancel = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Cancel']"")",Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.000s,PASSED
+"outerModalSave = dynObj.call(""//div[@id='ip-filtering']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.001s,PASSED
+_ts = System.currentTimeMillis(),Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.000s,PASSED
+_oct3 = _ts.intdiv(60000) % 100 + 10,Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.001s,PASSED
+"baseZoneName = ""TC9994_Base_"" + _ts",Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.001s,PASSED
+"editedZoneName = ""TC9994_Edited_"" + _ts",Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.000s,PASSED
+"validFromIp = ""10.94."" + _oct3 + "".0""",Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.000s,PASSED
+"validToIp = ""10.94."" + _oct3 + "".255""",Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.001s,PASSED
+"invalidFromIp = ""999.999.999.999""",Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.000s,PASSED
+"invalidToIp = ""999.999.999.999""",Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.000s,PASSED
+baseZoneCreated = false,Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:07:05,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:07:05,27-07-2026 09:08:15,1m - 10.529s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 09:08:15,27-07-2026 09:08:31,16.138s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:08:31,27-07-2026 09:08:32,0.774s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.000s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9995_기존 IP Zone 유효한 값 편집,Chrome 149.0.7827.200,"C9995 - 기존 IP Zone 유효한 값 편집
+TestRail: C9995 - Edit the existing IP Zone with valid values
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > IP Filtering 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. 'Add more zones' 버튼을 클릭하세요
+5. 'Add more zones' 버튼을 한 번 더 클릭하세요
+6. 기존 IP Zone 을 편집하세요 (이름 변경 + 유효한 IP 범위 입력)
+7. 'Save' 버튼을 클릭하세요
+8. 'Save' 버튼을 클릭하세요
+9. 'Save' 버튼을 클릭하세요
+
+결과값: 기존 IP Zone 이 편집되어 IP Filtering 테이블에 표시됩니다.",,27-07-2026 09:08:32,27-07-2026 09:10:08,1m - 36.237s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.014s,PASSED
+"forceJsClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.001s,PASSED
+"robustClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.001s,PASSED
+findRowIndexByZoneName = { java.lang.String zoneName -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.002s,PASSED
+waitForLoadingGone = { int maxSec -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.000s,PASSED
+"innerModalTitle = dynObj.call(""//h4[normalize-space(.)='Separate IP address with comma']"")",Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.004s,PASSED
+"addMoreRowsBtn = dynObj.call(""//div[@id='add-zone']//*[contains(normalize-space(.), 'Add more rows')][self::a or self::button]"")",Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.001s,PASSED
+"innerModalSave = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.002s,PASSED
+"innerModalCancel = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Cancel']"")",Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.001s,PASSED
+"outerModalSave = dynObj.call(""//div[@id='ip-filtering']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.000s,PASSED
+ts = System.currentTimeMillis(),Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.001s,PASSED
+_oct3Init = ts.intdiv(60000) % 100 + 10,Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.000s,PASSED
+_oct3New = _oct3Init + 100,Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.002s,PASSED
+"baseZoneName = ""TC9995_Base_"" + ts",Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.001s,PASSED
+"editedZoneName = ""TC9995_Edited_"" + ts",Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.000s,PASSED
+"initialFromIp = ""10.95."" + _oct3Init + "".0""",Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.000s,PASSED
+"initialToIp = ""10.95."" + _oct3Init + "".255""",Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.000s,PASSED
+"newFromIp = ""10.95."" + _oct3New + "".0""",Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.000s,PASSED
+"newToIp = ""10.95."" + _oct3New + "".255""",Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.000s,PASSED
+baseZoneCreated = false,Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.002s,PASSED
+editSucceeded = false,Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:08:32,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:08:32,27-07-2026 09:09:51,1m - 18.916s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 09:09:51,27-07-2026 09:10:08,16.245s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.776s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9996_기존 IP 범위 잘못된 값 편집,Chrome 149.0.7827.200,"C9996 - 기존 IP 범위 잘못된 값 편집
+TestRail: C9996 - Edit the existing IP range with invalid values
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > IP Filtering 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. 'Add more zones' 버튼을 클릭하세요
+5. IP Zone 옆의 Edit 버튼을 클릭하세요
+6. 기존 IP 범위를 잘못된 값으로 편집하세요
+7. 'Save' 버튼을 클릭하세요
+
+결과값: 'Please enter valid IP Address.' 알림이 표시되고, 잘못된 IP 주소는 저장되지 않습니다.",,27-07-2026 09:10:08,27-07-2026 09:11:31,1m - 23.120s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.000s,PASSED
+"forceJsClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.001s,PASSED
+"robustClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.001s,PASSED
+findRowIndexByZoneName = { java.lang.String zoneName -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.000s,PASSED
+waitForLoadingGone = { int maxSec -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.000s,PASSED
+"innerModalTitle = dynObj.call(""//h4[normalize-space(.)='Separate IP address with comma']"")",Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.002s,PASSED
+"addMoreRowsBtn = dynObj.call(""//div[@id='add-zone']//*[contains(normalize-space(.), 'Add more rows')][self::a or self::button]"")",Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.001s,PASSED
+"innerModalSave = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.001s,PASSED
+"innerModalCancel = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Cancel']"")",Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.001s,PASSED
+"outerModalSave = dynObj.call(""//div[@id='ip-filtering']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.001s,PASSED
+_ts = System.currentTimeMillis(),Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.000s,PASSED
+_oct3 = _ts.intdiv(60000) % 100 + 10,Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.000s,PASSED
+"baseZoneName = ""TC9996_Base_"" + _ts",Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.000s,PASSED
+"validFromIp = ""10.96."" + _oct3 + "".0""",Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.000s,PASSED
+"validToIp = ""10.96."" + _oct3 + "".255""",Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.000s,PASSED
+"invalidFromIp = ""999.999.999.999""",Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.001s,PASSED
+"invalidToIp = ""999.999.999.999""",Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.000s,PASSED
+baseZoneCreated = false,Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:10:08,0.000s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:10:08,27-07-2026 09:11:14,1m - 5.380s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 09:11:14,27-07-2026 09:11:30,16.414s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:11:30,27-07-2026 09:11:31,1.150s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:11:31,27-07-2026 09:11:31,0.000s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9997_기존 IP 범위 유효한 값 편집,Chrome 149.0.7827.200,"C9997 - 기존 IP 범위 유효한 값 편집
+TestRail: C9997 - Edit the existing IP range with valid values
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > IP Filtering 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. 'Add more zones' 버튼을 클릭하세요
+5. IP Zone 옆의 Edit 버튼을 클릭하세요
+6. IP 범위를 유효한 값으로 편집하세요
+7. 'Save' 버튼을 클릭하세요
+8. 'Save' 버튼을 클릭하세요
+
+결과값: 기존 IP Zone 이 편집되어 IP Filtering 테이블에 표시됩니다.",,27-07-2026 09:11:31,27-07-2026 09:13:11,1m - 39.352s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.001s,PASSED
+"forceJsClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.000s,PASSED
+"robustClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.000s,PASSED
+waitForLoadingGone = { int maxSec -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.001s,PASSED
+"innerModalTitle = dynObj.call(""//h4[normalize-space(.)='Separate IP address with comma']"")",Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.002s,PASSED
+"addMoreRowsBtn = dynObj.call(""//div[@id='add-zone']//*[contains(normalize-space(.), 'Add more rows')][self::a or self::button]"")",Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.001s,PASSED
+"innerModalSave = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.001s,PASSED
+"innerModalCancel = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Cancel']"")",Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.001s,PASSED
+"outerModalSave = dynObj.call(""//div[@id='ip-filtering']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.001s,PASSED
+_ts9997 = System.currentTimeMillis(),Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.000s,PASSED
+_oct2 = _ts9997.intdiv(3600000) % 200 + 20,Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.001s,PASSED
+_oct3Init = _ts9997.intdiv(60000) % 100 + 10,Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.000s,PASSED
+_oct3New = _oct3Init + 100,Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.000s,PASSED
+"baseZoneName = ""TC9997_Base_"" + _ts9997",Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.000s,PASSED
+"initFromIp = ""10."" + _oct2 + ""."" + _oct3Init + "".0""",Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.000s,PASSED
+"initToIp = ""10."" + _oct2 + ""."" + _oct3Init + "".255""",Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.000s,PASSED
+"newFromIp = ""10."" + _oct2 + ""."" + _oct3New + "".0""",Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.000s,PASSED
+"newToIp = ""10."" + _oct2 + ""."" + _oct3New + "".255""",Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.000s,PASSED
+baseZoneCreated = false,Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.000s,PASSED
+editSucceeded = false,Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:11:32,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:11:32,27-07-2026 09:12:51,1m - 19.036s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 09:12:51,27-07-2026 09:13:10,18.919s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:13:10,27-07-2026 09:13:11,1.226s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C9998_현재 IP로 IP Zone 추가,Chrome 149.0.7827.200,"C9998 - 현재 IP 로 IP Zone 추가
+TestRail: C9998 - Add the IP Zone with a current IP
+
+사전 조건: 관리자 역할
+
+1. 새 탭에서 https://2ip.ua/ 을 여세요
+2. 현재 IP 주소를 복사하세요
+3. IP Filtering 탭으로 이동하세요
+4. 새 IP Zone 을 추가하세요 (x.x.x.0 - x.x.x.255, x.x.x 는 현재 IP 의 첫 3 옥텟)
+5. 'Save' 버튼을 클릭하세요
+6. User Profile 로 이동하세요
+7. 'User Preferences' 탭에서 편집 모드로 진입하세요
+8. 'Add more zones' 버튼을 클릭하세요
+9. 방금 생성한 IP Zone 을 추가하세요
+
+결과값: 새 IP Filter 가 IP Filtering 테이블에 추가되고, 해당 사용자에게 IP Filter 가 할당됩니다.
+
+⚠️ 하이브리드 테스트: 외부 서비스(https://2ip.ua/) 의존성으로 인해 현재 IP 조회는 자동화되지만, 실제 브라우저 탭 간 복사/붙여넣기는 수동 검증 필요.",,27-07-2026 09:13:11,27-07-2026 09:14:15,1m - 4.305s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.005s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.001s,PASSED
+"forceJsClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.001s,PASSED
+"robustClick = { com.kms.katalon.core.testobject.TestObject to, java.lang.String label -> ... }",Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.001s,PASSED
+waitForLoadingGone = { int maxSec -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.002s,PASSED
+"innerModalTitle = dynObj.call(""//h4[normalize-space(.)='Separate IP address with comma']"")",Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.001s,PASSED
+"addMoreRowsBtn = dynObj.call(""//div[@id='add-zone']//*[contains(normalize-space(.), 'Add more rows')][self::a or self::button]"")",Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.001s,PASSED
+"innerModalSave = dynObj.call(""//div[@id='add-zone']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.000s,PASSED
+"outerModalSave = dynObj.call(""//div[@id='ip-filtering']//div[contains(@class,'modal-footer')]//button[normalize-space(.)='Save']"")",Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.001s,PASSED
+currentIp = null,Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.000s,PASSED
+firstThreeOctets = null,Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.000s,PASSED
+fromIp = null,Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.003s,PASSED
+toIp = null,Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.255s,PASSED
+"zoneName = ""TC9998_CurrentIP_"" + System.currentTimeMillis()",Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.000s,PASSED
+zoneCreated = false,Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:11,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:13:11,27-07-2026 09:13:57,46.189s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 09:13:57,27-07-2026 09:14:14,16.265s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:14:14,27-07-2026 09:14:15,1.395s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:14:15,27-07-2026 09:14:15,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_IP Filtering/C10000_일치하는 IP로 로그인,Chrome 149.0.7827.200,"C10000 - 일치하는 IP 로 로그인
+TestRail: C10000 - Login with a matching IP address
+
+사전 조건: 도메인 사용자 역할, 할당된 IP Filter 가 사용자의 현재 IP 와 일치함
+
+1. https://id.netkiller.com/ 으로 이동하세요
+2. 유효한 자격 증명을 입력하세요
+3. 'Login as admin / Go to Profile' 을 선택하세요
+4. 'Sign in' 버튼을 클릭하세요
+
+결과값: 사용자가 KillerID 대시보드에 정상적으로 로그인됩니다.",,27-07-2026 09:14:15,27-07-2026 09:14:31,15.575s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:14:15,27-07-2026 09:14:15,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.200,,,27-07-2026 09:14:15,27-07-2026 09:14:15,0.000s,PASSED
+"loginEmail = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.200,,,27-07-2026 09:14:15,27-07-2026 09:14:15,0.001s,PASSED
+"loginPasswordEnc = ""***REDACTED***""",Chrome 149.0.7827.200,,,27-07-2026 09:14:15,27-07-2026 09:14:15,0.000s,PASSED
+adminModeChecked = false,Chrome 149.0.7827.200,,,27-07-2026 09:14:15,27-07-2026 09:14:15,0.000s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 09:14:15,27-07-2026 09:14:30,14.512s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 09:14:30,27-07-2026 09:14:30,0.094s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:14:30,27-07-2026 09:14:31,0.906s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 09:14:31,27-07-2026 09:14:31,0.001s,PASSED

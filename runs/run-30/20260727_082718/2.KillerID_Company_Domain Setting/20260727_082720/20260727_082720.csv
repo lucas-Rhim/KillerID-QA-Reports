@@ -1,0 +1,209 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+2.KillerID_Company_Domain Setting,Chrome 149.0.7827.200,,,27-07-2026 08:37:08,27-07-2026 08:43:06,5m - 57.894s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Domain Setting/C9953_도메인 설정 편집모드 진입,Chrome 149.0.7827.200,"C9953_도메인 설정 편집모드 진입
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 왼쪽 메뉴에서 'Company'를 클릭하세요
+3. 'Domain Setting' 탭을 클릭하세요
+4. 'Edit' 버튼을 클릭하세요
+5. Domain Name Format, Password Change Rule Setting, Days Limit, Session Duration 등 모든 필드가 편집 가능한 상태인지 확인하세요
+
+결과값
+Domain Setting 탭의 모든 필드를 편집할 수 있습니다.",,27-07-2026 08:37:08,27-07-2026 08:37:32,23.888s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 08:37:08,27-07-2026 08:37:30,21.995s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 08:37:30,27-07-2026 08:37:31,0.440s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:37:31,27-07-2026 08:37:32,1.233s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:37:32,27-07-2026 08:37:32,0.002s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Domain Setting/C9954_도메인 이름 형식 변경,Chrome 149.0.7827.200,"C9954_도메인 이름 형식 변경
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Domain Setting 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Domain Name Format에서 원하는 형식을 선택하세요 (예: 'First Last (example: John Smith)' 또는 'Last First (example: Smith John)')
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하고 변경된 형식이 유지되는지 확인하세요
+
+결과값
+도메인 사용자의 이름이 설정된 형식에 따라 표시됩니다 (예: John Smith / Smith John)",,27-07-2026 08:37:32,27-07-2026 08:38:07,34.874s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 08:37:32,27-07-2026 08:38:06,33.431s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 08:38:06,27-07-2026 08:38:06,0.433s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:38:06,27-07-2026 08:38:07,0.861s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:38:07,27-07-2026 08:38:07,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Domain Setting/C9955_비밀번호 변경 규칙 활성화,Chrome 149.0.7827.200,"C9955_비밀번호 변경 규칙 활성화 및 기간을 1일로 설정
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Domain Setting 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Password Change Rule Setting에서 'On'을 선택하세요
+5. Days Limit 필드에 '1'을 입력하세요
+6. 'Save' 버튼을 클릭하세요
+7. 페이지를 새로고침하고 설정이 유지되는지 확인하세요
+
+결과값
+Password Change Rule Setting이 활성화되고 기간이 1일로 설정됩니다. 사용자는 매 1일마다 비밀번호 변경을 요구받습니다.",,27-07-2026 08:38:07,27-07-2026 08:39:14,1m - 7.269s,PASSED
+"INVALID_DAYS_VALUE = ""1""",Chrome 149.0.7827.200,,,27-07-2026 08:38:07,27-07-2026 08:38:07,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 08:38:07,27-07-2026 08:39:13,1m - 5.931s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 08:39:13,27-07-2026 08:39:13,0.401s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:39:13,27-07-2026 08:39:14,0.854s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:39:14,27-07-2026 08:39:14,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Domain Setting/C9956_비밀번호 변경 규칙 검증,Chrome 149.0.7827.200,"C9956_비밀번호 변경 규칙 검증 (유효한 기간 저장)
+
+사전 조건
+역할: 도메인 사용자
+비밀번호 변경 규칙 설정이 켜져 있습니다.
+
+1. 편집 버튼을 클릭하여 편집 모드로 들어가세요.
+2. 비밀번호 변경 규칙 설정을 활성화하세요
+3. 비밀번호 변경 주기를 설정하세요.
+4. 30일에서 365일 사이의 유효한 비밀번호 업데이트 기간을 입력하세요.
+5. 저장 버튼을 클릭하세요
+
+결과값
+설정된 비밀번호 변경 주기가 올바르게 표시되며 저장 후에도 유지됩니다.",,27-07-2026 08:39:14,27-07-2026 08:39:48,34.029s,PASSED
+random = new java.util.Random(),Chrome 149.0.7827.200,,,27-07-2026 08:39:14,27-07-2026 08:39:14,0.004s,PASSED
+randomDays = random.nextInt(365 - 32 + 1) + 32,Chrome 149.0.7827.200,,,27-07-2026 08:39:14,27-07-2026 08:39:14,0.002s,PASSED
+VALID_DAYS_VALUE = String.valueOf(randomDays),Chrome 149.0.7827.200,,,27-07-2026 08:39:14,27-07-2026 08:39:14,0.001s,PASSED
+"EXPECTED_DISPLAY_TEXT = randomDays + "" Days""",Chrome 149.0.7827.200,,,27-07-2026 08:39:14,27-07-2026 08:39:14,0.002s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 08:39:14,27-07-2026 08:39:47,32.557s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 08:39:47,27-07-2026 08:39:47,0.376s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:39:47,27-07-2026 08:39:48,0.981s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:39:48,27-07-2026 08:39:48,0.002s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Domain Setting/C9957_비밀번호 변경 규칙 비활성화,Chrome 149.0.7827.200,"C9957_비밀번호 변경 규칙 비활성화
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Domain Setting 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Password Change Rule Setting에서 'Off'를 선택하세요
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하고 설정이 비활성화 상태로 유지되는지 확인하세요
+
+결과값
+Password Change Rule Setting이 비활성화되고 사용자에게 비밀번호 변경이 요구되지 않습니다.",,27-07-2026 08:39:48,27-07-2026 08:40:29,40.739s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 08:39:48,27-07-2026 08:40:28,39.566s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 08:40:28,27-07-2026 08:40:28,0.377s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:40:28,27-07-2026 08:40:29,0.694s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:40:29,27-07-2026 08:40:29,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Domain Setting/C9958_비밀번호 규칙 기간 0 설정,Chrome 149.0.7827.200,"C9958_비밀번호 변경 규칙 기간을 0으로 설정
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Domain Setting 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Password Change Rule Setting에서 'On'을 선택하세요
+5. Days Limit 필드에 '0'을 입력하세요
+6. 'Save' 버튼을 클릭하세요
+7. 에러 메시지가 표시되는지 확인하세요
+
+결과값
+Days Limit 필드가 빨간색으로 강조되고, 0 값은 저장되지 않습니다.",,27-07-2026 08:40:29,27-07-2026 08:40:57,28.473s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 08:40:29,27-07-2026 08:40:56,27.369s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 08:40:56,27-07-2026 08:40:57,0.377s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:40:57,27-07-2026 08:40:57,0.673s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:40:57,27-07-2026 08:40:57,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Domain Setting/C9959_비밀번호 규칙 잘못된 기간 설정,Chrome 149.0.7827.200,"C9959_비밀번호 변경 규칙 기간을 잘못된 값으로 설정
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Domain Setting 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Password Change Rule Setting에서 'On'을 선택하세요
+5. Days Limit 필드에 잘못된 값(예: '-5')을 입력하세요
+6. 'Save' 버튼을 클릭하세요
+7. 에러 메시지가 표시되는지 확인하세요
+
+결과값
+Days Limit 필드가 빨간색으로 강조되고, 잘못된 값은 저장되지 않습니다.",,27-07-2026 08:40:57,27-07-2026 08:41:26,28.129s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 08:40:57,27-07-2026 08:41:24,26.844s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 08:41:24,27-07-2026 08:41:25,0.371s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:41:25,27-07-2026 08:41:26,0.857s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:41:26,27-07-2026 08:41:26,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Domain Setting/C9960_세션 시간 1시간 설정,Chrome 149.0.7827.200,"C9960_세션 시간을 1시간으로 설정
+
+사전 조건
+역할: 관리자
+
+1. 편집 버튼을 클릭하여 편집 모드로 들어가세요.
+2. 비밀번호 변경 규칙 설정을 활성화하세요 (On)
+3. 30~365일 사이의 유효한 Days Limit 값을 입력하세요.
+4. Session Duration 필드에 '1'을 입력하세요.
+5. 'Save' 버튼을 클릭하세요.
+
+결과값
+Session Duration이 ""1 Hours""로 올바르게 표시되며 저장 후에도 유지됩니다.",,27-07-2026 08:41:26,27-07-2026 08:42:04,38.863s,PASSED
+random = new java.util.Random(),Chrome 149.0.7827.200,,,27-07-2026 08:41:26,27-07-2026 08:41:26,0.001s,PASSED
+randomDays = random.nextInt(365 - 32 + 1) + 32,Chrome 149.0.7827.200,,,27-07-2026 08:41:26,27-07-2026 08:41:26,0.001s,PASSED
+VALID_DAYS_VALUE = String.valueOf(randomDays),Chrome 149.0.7827.200,,,27-07-2026 08:41:26,27-07-2026 08:41:26,0.001s,PASSED
+"SESSION_DURATION_VALUE = ""1""",Chrome 149.0.7827.200,,,27-07-2026 08:41:26,27-07-2026 08:41:26,0.000s,PASSED
+"EXPECTED_SESSION_DISPLAY = ""1 Hours""",Chrome 149.0.7827.200,,,27-07-2026 08:41:26,27-07-2026 08:41:26,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 08:41:26,27-07-2026 08:42:03,37.621s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 08:42:03,27-07-2026 08:42:04,0.361s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:42:04,27-07-2026 08:42:04,0.769s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:42:04,27-07-2026 08:42:04,0.000s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Domain Setting/C9962_세션 시간 0 설정,Chrome 149.0.7827.200,"C9962_세션 시간을 0으로 설정
+
+사전 조건
+역할: 관리자
+
+1. 편집 버튼을 클릭하여 편집 모드로 들어가세요.
+2. Session Duration 필드에 '0'을 입력하세요.
+3. 'Save' 버튼을 클릭하세요.
+4. 에러 메시지가 3곳에 표시되는지 확인하세요.
+
+결과값
+Session Duration 필드가 빨간색으로 강조되고, 아래 3곳에 유효성 에러 메시지가 표시됩니다:
+  ① Session Duration 입력 필드 아래
+  ② 첫 번째 ""Don't Ask Again on This Device"" 섹션 아래
+  ③ 두 번째 ""Don't Ask Again on This Device"" 섹션 아래
+
+에러 메시지: ""* Please enter a valid session duration between 1 and 720 hours (30 days).""
+저장이 차단되어 편집 모드를 유지합니다.",,27-07-2026 08:42:04,27-07-2026 08:42:31,27.044s,PASSED
+"INVALID_SESSION_VALUE = ""0""",Chrome 149.0.7827.200,,,27-07-2026 08:42:04,27-07-2026 08:42:04,0.000s,PASSED
+"EXPECTED_ERROR_TEXT = ""* Please enter a valid session duration between 1 and 720 hours (30 days).""",Chrome 149.0.7827.200,,,27-07-2026 08:42:04,27-07-2026 08:42:04,0.001s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 08:42:04,27-07-2026 08:42:31,26.028s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 08:42:31,27-07-2026 08:42:31,0.352s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:42:31,27-07-2026 08:42:31,0.610s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:42:31,27-07-2026 08:42:31,0.001s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Domain Setting/C9963_세션 시간 잘못된 값 설정,Chrome 149.0.7827.200,"C9963_세션 시간을 잘못된 값으로 설정
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Domain Setting 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Session Duration 필드에 잘못된 값(예: '9999', 최대 720시간 초과)을 입력하세요
+5. 'Save' 버튼을 클릭하세요
+6. 에러 메시지가 표시되는지 확인하세요
+
+결과값
+Session Duration 필드가 빨간색으로 강조되고, 잘못된 값은 저장되지 않습니다. (유효 범위: 1~720시간)",,27-07-2026 08:42:31,27-07-2026 08:43:06,34.422s,PASSED
+try,Chrome 149.0.7827.200,,,27-07-2026 08:42:32,27-07-2026 08:43:05,33.230s,PASSED
+Finally,Chrome 149.0.7827.200,,,27-07-2026 08:43:05,27-07-2026 08:43:05,0.371s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:43:05,27-07-2026 08:43:06,0.730s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.200,,,27-07-2026 08:43:06,27-07-2026 08:43:06,0.001s,PASSED

@@ -1,0 +1,846 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+7.KillerID_Login Report,Chrome 149.0.7827.114,"Round 7 - Login Report 자동화 24건 (7a 기록생성+UI 4 + 7b Filter&Export 13 + 7c 검색/페이지 7). manual 2건(C10146 비매칭IP, C10147 2SV실패) 제외. 7a 가 7b 필터 데이터 시딩 겸용 → 케이스 순서 유지. C10145 는 demo1 잘못된 PW 1회만 시도(lockout 방지). Export=이메일 발송 alert 검증. By 2SV 서브필터는 sandbox 미제공(WEAK PASS).",,15-06-2026 10:48:07,15-06-2026 10:57:50,9m - 43.055s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10142_로그인 리포트 탭 UI 검증,Chrome 149.0.7827.114,"[C10142] Verifying the Login Report tab UI
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7a)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. Login Report 탭 클릭
+2. 기록 테이블 / 상태 필터 / 기간 필터 / 검색 필드 / Export 버튼 / 페이지네이션 UI 표시 검증
+
+✅ 결과값:
+- Login Report 화면의 핵심 UI 요소가 모두 렌더링됨
+
+🔧 자동화 노트:
+- 테이블 검증은 JS robust 패턴(테이블 헤더 텍스트 탐지)
+- 캡처 대기 객체: 상태/기간 필터, 검색 input, Export 버튼, per-page selector",,15-06-2026 10:48:07,15-06-2026 10:48:27,19.296s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:48:08,15-06-2026 10:48:08,0.004s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:48:08,15-06-2026 10:48:08,0.008s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:48:08,15-06-2026 10:48:26,17.772s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:48:26,15-06-2026 10:48:26,0.142s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:48:26,15-06-2026 10:48:26,0.015s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:48:26,15-06-2026 10:48:27,1.008s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10143_유효한 자격증명으로 로그인 기록 검증,Chrome 149.0.7827.114,"[C10143] Login with valid credentials
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7a)
+
+📋 사전 조건:
+- (선행) demo1 정상 로그인으로 Success 기록 생성
+
+🧪 단계 (inferred):
+1. demo1@demo.netkillersoft.com 정상 로그인 → 로그아웃/브라우저 종료
+2. admin 로그인 → Login Report 탭
+3. 최신 기록에 demo1 + Success 상태 검증
+
+✅ 결과값:
+- demo1 의 Success 로그인 기록이 리포트 최상단(최신)에 표시
+
+🔧 자동화 노트:
+- ⚠️ Rule#19 계정 분리: demo1 사용 (6c와 동일)
+- 2-PHASE: PHASE A 기록 생성(새 브라우저) → PHASE B admin 검증
+- 7b Success 필터 데이터 시딩 겸용",,15-06-2026 10:48:27,15-06-2026 10:49:01,33.966s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:48:27,15-06-2026 10:48:27,0.003s,PASSED
+"TARGET = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:48:27,15-06-2026 10:48:27,0.001s,PASSED
+"KW = ""demo3""",Chrome 149.0.7827.114,,,15-06-2026 10:48:27,15-06-2026 10:48:27,0.002s,PASSED
+"TARGET_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,15-06-2026 10:48:27,15-06-2026 10:48:27,0.002s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:48:27,15-06-2026 10:48:27,0.002s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:48:27,15-06-2026 10:48:27,0.005s,PASSED
+searchAndReadFirstRow = { java.lang.String keyword -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:48:27,15-06-2026 10:48:27,0.002s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:48:27,15-06-2026 10:49:00,32.865s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:49:00,15-06-2026 10:49:00,0.109s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:49:00,15-06-2026 10:49:00,0.005s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:49:00,15-06-2026 10:49:01,0.643s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10144_잘못된 이메일로 로그인 기록 검증,Chrome 149.0.7827.114,"[C10144] Login with invalid email
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7a)
+
+📋 사전 조건:
+- (선행) 존재하지 않는 이메일로 로그인 시도 → 실패 기록 생성
+
+🧪 단계 (inferred):
+1. nouser_qa@demo.netkillersoft.com (미존재) 로그인 시도 1회 → 실패 확인
+2. admin 로그인 → Login Report 탭
+3. Failed (By ID) 기록 생성 여부 검증
+
+✅ 결과값:
+- 로그인 실패 + 리포트에 Failed/By ID 기록 표시
+
+🔧 자동화 노트:
+- ⚠️ 미존재 계정은 기록이 안 남을 수 있음 → 0건 허용 분기(로그인 실패 자체는 FATAL 검증, 기록 유무는 리포트 명세 확인 후 확정)
+- 7b By ID 필터 데이터 시딩 겸용",,15-06-2026 10:49:01,15-06-2026 10:49:30,29.450s,PASSED
+"LOGIN = ""KillerID_user_profile_admin/Page_Killer ID/""",Chrome 149.0.7827.114,,,15-06-2026 10:49:01,15-06-2026 10:49:01,0.000s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:49:01,15-06-2026 10:49:01,0.001s,PASSED
+"BAD_EMAIL = ""nouser_qa@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:49:01,15-06-2026 10:49:01,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:49:01,15-06-2026 10:49:01,0.002s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:49:01,15-06-2026 10:49:01,0.001s,PASSED
+searchAndReadFirstRow = { java.lang.String keyword -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:49:01,15-06-2026 10:49:01,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:49:01,15-06-2026 10:49:29,28.525s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:49:29,15-06-2026 10:49:30,0.122s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:49:30,15-06-2026 10:49:30,0.005s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:49:30,15-06-2026 10:49:30,0.622s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10145_잘못된 비밀번호로 로그인 기록 검증,Chrome 149.0.7827.114,"[C10145] Login with invalid password
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7a)
+
+📋 사전 조건:
+- (선행) demo1 + 잘못된 비밀번호 로그인 시도 → 실패 기록 생성
+
+🧪 단계 (inferred):
+1. demo1 + 잘못된 비밀번호로 로그인 시도 1회 → 실패 확인
+2. admin 로그인 → Login Report 탭
+3. demo1 의 Failed (By Password) 기록 검증
+
+✅ 결과값:
+- 로그인 실패 + 리포트에 demo1 Failed/By Password 기록 표시
+
+🔧 자동화 노트:
+- 🚨 lockout 방지: 잘못된 비밀번호 시도는 반드시 1회만
+- 7b By Password 필터 데이터 시딩 겸용",,15-06-2026 10:49:30,15-06-2026 10:50:01,30.985s,PASSED
+"LOGIN = ""KillerID_user_profile_admin/Page_Killer ID/""",Chrome 149.0.7827.114,,,15-06-2026 10:49:30,15-06-2026 10:49:30,0.001s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:49:30,15-06-2026 10:49:30,0.001s,PASSED
+"TARGET = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:49:30,15-06-2026 10:49:30,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:49:30,15-06-2026 10:49:30,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:49:30,15-06-2026 10:49:30,0.001s,PASSED
+searchAndReadFirstRow = { java.lang.String keyword -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:49:30,15-06-2026 10:49:30,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:49:30,15-06-2026 10:50:00,30.017s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:50:00,15-06-2026 10:50:00,0.109s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:50:00,15-06-2026 10:50:01,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:01,0.661s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10148_All 로그인 기록 필터 및 Export,Chrome 149.0.7827.114,"[C10148] Filter and Export All login records
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7b)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 상태 필터 = All 선택
+2. 테이블에 전체 기록 표시 검증
+3. 'Export to Spreadsheet' 클릭 → 네이티브 alert 'Report is being generated. You will receive an email with the attachment.' 검증 후 accept
+
+✅ 결과값:
+- 테이블 전체 기록 필터링 + Export alert(이메일 발송 안내) 정상 표출
+
+🔧 자동화 노트:
+- ⚠️ Export 는 CSV 직다운로드가 아니라 서버 생성 후 이메일 발송 → verifyAlertPresent + getAlertText('Report is being generated' 포함) + acceptAlert 패턴 (C10057 alert 패턴 재사용). 이메일 수신 검증은 자동화 범위 외
+- 객체: KillerID_login_report/* (button_All/Success/Fail, a_All/a_By ID/a_By Password/a_By IP, button_<기간>, button_Export to Spreadsheet)
+- 7a 시딩 기록으로 데이터 보장",,15-06-2026 10:50:01,15-06-2026 10:50:26,24.751s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:01,0.001s,PASSED
+"EXPORT_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Export to Spreadsheet""",Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:01,0.001s,PASSED
+"STATUS_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:01,0.001s,PASSED
+"FAILTYPE_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:01,0.001s,PASSED
+ZERO_OK = false,Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:01,0.000s,PASSED
+SUB_MAY_ABSENT = false,Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:01,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:01,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:01,0.003s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:01,0.001s,PASSED
+clickByText = { java.lang.String txt -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:01,0.002s,PASSED
+clickFailSub = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:01,0.001s,PASSED
+readRows = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:01,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:50:01,15-06-2026 10:50:24,22.870s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:50:24,15-06-2026 10:50:25,1.120s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:50:25,15-06-2026 10:50:25,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:50:25,15-06-2026 10:50:26,0.499s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10149_Success 로그인 기록 필터 및 Export,Chrome 149.0.7827.114,"[C10149] Filter and Export Success login records
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7b)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 상태 필터 = Success 선택
+2. 테이블에 Success 기록만 표시 검증
+3. 'Export to Spreadsheet' 클릭 → 네이티브 alert 'Report is being generated. You will receive an email with the attachment.' 검증 후 accept
+
+✅ 결과값:
+- 테이블 Success 기록만 필터링 + Export alert(이메일 발송 안내) 정상 표출
+
+🔧 자동화 노트:
+- ⚠️ Export 는 CSV 직다운로드가 아니라 서버 생성 후 이메일 발송 → verifyAlertPresent + getAlertText('Report is being generated' 포함) + acceptAlert 패턴 (C10057 alert 패턴 재사용). 이메일 수신 검증은 자동화 범위 외
+- 객체: KillerID_login_report/* (button_All/Success/Fail, a_All/a_By ID/a_By Password/a_By IP, button_<기간>, button_Export to Spreadsheet)
+- 7a 시딩 기록으로 데이터 보장",,15-06-2026 10:50:26,15-06-2026 10:50:52,26.136s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:50:26,15-06-2026 10:50:26,0.004s,PASSED
+"EXPORT_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Export to Spreadsheet""",Chrome 149.0.7827.114,,,15-06-2026 10:50:26,15-06-2026 10:50:26,0.000s,PASSED
+"STATUS_EXPECT = ""success""",Chrome 149.0.7827.114,,,15-06-2026 10:50:26,15-06-2026 10:50:26,0.003s,PASSED
+"FAILTYPE_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:50:26,15-06-2026 10:50:26,0.000s,PASSED
+ZERO_OK = true,Chrome 149.0.7827.114,,,15-06-2026 10:50:26,15-06-2026 10:50:26,0.001s,PASSED
+SUB_MAY_ABSENT = false,Chrome 149.0.7827.114,,,15-06-2026 10:50:26,15-06-2026 10:50:26,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:26,15-06-2026 10:50:26,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:26,15-06-2026 10:50:26,0.003s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:26,15-06-2026 10:50:26,0.001s,PASSED
+clickByText = { java.lang.String txt -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:26,15-06-2026 10:50:26,0.003s,PASSED
+clickFailSub = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:26,15-06-2026 10:50:26,0.001s,PASSED
+readRows = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:26,15-06-2026 10:50:26,0.003s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:50:26,15-06-2026 10:50:49,23.179s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:50:49,15-06-2026 10:50:50,1.154s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:50:50,15-06-2026 10:50:50,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:50:50,15-06-2026 10:50:52,1.575s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10150_Failed 로그인 기록 필터 및 Export,Chrome 149.0.7827.114,"[C10150] Filter and Export Failed login records
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7b)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 상태 필터 = Failed 선택
+2. 테이블에 Failed 기록만 표시 검증
+3. 'Export to Spreadsheet' 클릭 → 네이티브 alert 'Report is being generated. You will receive an email with the attachment.' 검증 후 accept
+
+✅ 결과값:
+- 테이블 Failed 기록만 필터링 + Export alert(이메일 발송 안내) 정상 표출
+
+🔧 자동화 노트:
+- ⚠️ Export 는 CSV 직다운로드가 아니라 서버 생성 후 이메일 발송 → verifyAlertPresent + getAlertText('Report is being generated' 포함) + acceptAlert 패턴 (C10057 alert 패턴 재사용). 이메일 수신 검증은 자동화 범위 외
+- 객체: KillerID_login_report/* (button_All/Success/Fail, a_All/a_By ID/a_By Password/a_By IP, button_<기간>, button_Export to Spreadsheet)
+- 7a 시딩 기록으로 데이터 보장",,15-06-2026 10:50:52,15-06-2026 10:51:17,24.546s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:50:52,15-06-2026 10:50:52,0.002s,PASSED
+"EXPORT_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Export to Spreadsheet""",Chrome 149.0.7827.114,,,15-06-2026 10:50:52,15-06-2026 10:50:52,0.001s,PASSED
+"STATUS_EXPECT = ""failure""",Chrome 149.0.7827.114,,,15-06-2026 10:50:52,15-06-2026 10:50:52,0.001s,PASSED
+"FAILTYPE_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:50:52,15-06-2026 10:50:52,0.002s,PASSED
+ZERO_OK = true,Chrome 149.0.7827.114,,,15-06-2026 10:50:52,15-06-2026 10:50:52,0.001s,PASSED
+SUB_MAY_ABSENT = false,Chrome 149.0.7827.114,,,15-06-2026 10:50:52,15-06-2026 10:50:52,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:52,15-06-2026 10:50:52,0.003s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:52,15-06-2026 10:50:52,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:52,15-06-2026 10:50:52,0.001s,PASSED
+clickByText = { java.lang.String txt -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:52,15-06-2026 10:50:52,0.001s,PASSED
+clickFailSub = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:52,15-06-2026 10:50:52,0.001s,PASSED
+readRows = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:50:52,15-06-2026 10:50:52,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:50:52,15-06-2026 10:51:14,22.108s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:51:14,15-06-2026 10:51:15,1.145s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:51:15,15-06-2026 10:51:15,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:51:15,15-06-2026 10:51:17,1.101s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10151_Failed All 로그인 기록 필터 및 Export,Chrome 149.0.7827.114,"[C10151] Filter and Export Failed > All login records
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7b)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 상태 필터 = Failed 선택
+2. 서브필터 = All 선택
+3. 테이블 반영 검증
+4. 'Export to Spreadsheet' 클릭 → 네이티브 alert 'Report is being generated. You will receive an email with the attachment.' 검증 후 accept
+
+✅ 결과값:
+- Failed > All 기록 필터링 + Export alert(이메일 발송 안내) 정상 표출
+
+🔧 자동화 노트:
+- ⚠️ Export 는 CSV 직다운로드가 아니라 서버 생성 후 이메일 발송 → verifyAlertPresent + getAlertText('Report is being generated' 포함) + acceptAlert 패턴 (C10057 alert 패턴 재사용). 이메일 수신 검증은 자동화 범위 외
+- 객체: KillerID_login_report/* (button_All/Success/Fail, a_All/a_By ID/a_By Password/a_By IP, button_<기간>, button_Export to Spreadsheet)
+- 7a 시딩으로 데이터 보장",,15-06-2026 10:51:17,15-06-2026 10:51:42,25.710s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:51:17,15-06-2026 10:51:17,0.001s,PASSED
+"EXPORT_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Export to Spreadsheet""",Chrome 149.0.7827.114,,,15-06-2026 10:51:17,15-06-2026 10:51:17,0.001s,PASSED
+"STATUS_EXPECT = ""failure""",Chrome 149.0.7827.114,,,15-06-2026 10:51:17,15-06-2026 10:51:17,0.001s,PASSED
+"FAILTYPE_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:51:17,15-06-2026 10:51:17,0.000s,PASSED
+ZERO_OK = true,Chrome 149.0.7827.114,,,15-06-2026 10:51:17,15-06-2026 10:51:17,0.001s,PASSED
+SUB_MAY_ABSENT = false,Chrome 149.0.7827.114,,,15-06-2026 10:51:17,15-06-2026 10:51:17,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:51:17,15-06-2026 10:51:17,0.002s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:51:17,15-06-2026 10:51:17,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:51:17,15-06-2026 10:51:17,0.001s,PASSED
+clickByText = { java.lang.String txt -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:51:17,15-06-2026 10:51:17,0.001s,PASSED
+clickFailSub = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:51:17,15-06-2026 10:51:17,0.003s,PASSED
+readRows = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:51:17,15-06-2026 10:51:17,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:51:17,15-06-2026 10:51:40,23.135s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:51:40,15-06-2026 10:51:41,1.121s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:51:41,15-06-2026 10:51:41,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:51:41,15-06-2026 10:51:42,1.287s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10152_Failed By ID 로그인 기록 필터 및 Export,Chrome 149.0.7827.114,"[C10152] Filter and Export Failed > By ID login records
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7b)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 상태 필터 = Failed 선택
+2. 서브필터 = By ID 선택
+3. 테이블 반영 검증
+4. 'Export to Spreadsheet' 클릭 → 네이티브 alert 'Report is being generated. You will receive an email with the attachment.' 검증 후 accept
+
+✅ 결과값:
+- Failed > By ID 기록 필터링 + Export alert(이메일 발송 안내) 정상 표출
+
+🔧 자동화 노트:
+- ⚠️ Export 는 CSV 직다운로드가 아니라 서버 생성 후 이메일 발송 → verifyAlertPresent + getAlertText('Report is being generated' 포함) + acceptAlert 패턴 (C10057 alert 패턴 재사용). 이메일 수신 검증은 자동화 범위 외
+- 객체: KillerID_login_report/* (button_All/Success/Fail, a_All/a_By ID/a_By Password/a_By IP, button_<기간>, button_Export to Spreadsheet)
+- C10144 시딩 기록 활용",,15-06-2026 10:51:42,15-06-2026 10:52:07,25.111s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:51:42,15-06-2026 10:51:42,0.001s,PASSED
+"EXPORT_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Export to Spreadsheet""",Chrome 149.0.7827.114,,,15-06-2026 10:51:42,15-06-2026 10:51:42,0.001s,PASSED
+"STATUS_EXPECT = ""failure""",Chrome 149.0.7827.114,,,15-06-2026 10:51:42,15-06-2026 10:51:42,0.000s,PASSED
+"FAILTYPE_EXPECT = ""ID""",Chrome 149.0.7827.114,,,15-06-2026 10:51:42,15-06-2026 10:51:42,0.000s,PASSED
+ZERO_OK = true,Chrome 149.0.7827.114,,,15-06-2026 10:51:42,15-06-2026 10:51:42,0.001s,PASSED
+SUB_MAY_ABSENT = false,Chrome 149.0.7827.114,,,15-06-2026 10:51:42,15-06-2026 10:51:42,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:51:42,15-06-2026 10:51:42,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:51:42,15-06-2026 10:51:42,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:51:42,15-06-2026 10:51:42,0.001s,PASSED
+clickByText = { java.lang.String txt -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:51:42,15-06-2026 10:51:42,0.001s,PASSED
+clickFailSub = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:51:42,15-06-2026 10:51:42,0.001s,PASSED
+readRows = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:51:42,15-06-2026 10:51:42,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:51:42,15-06-2026 10:52:05,22.953s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:52:05,15-06-2026 10:52:07,1.131s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:52:07,15-06-2026 10:52:07,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:52:07,15-06-2026 10:52:07,0.896s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10153_Failed By Password 로그인 기록 필터 및 Export,Chrome 149.0.7827.114,"[C10153] Filter and Export Failed > By Password login records
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7b)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 상태 필터 = Failed 선택
+2. 서브필터 = By Password 선택
+3. 테이블 반영 검증
+4. 'Export to Spreadsheet' 클릭 → 네이티브 alert 'Report is being generated. You will receive an email with the attachment.' 검증 후 accept
+
+✅ 결과값:
+- Failed > By Password 기록 필터링 + Export alert(이메일 발송 안내) 정상 표출
+
+🔧 자동화 노트:
+- ⚠️ Export 는 CSV 직다운로드가 아니라 서버 생성 후 이메일 발송 → verifyAlertPresent + getAlertText('Report is being generated' 포함) + acceptAlert 패턴 (C10057 alert 패턴 재사용). 이메일 수신 검증은 자동화 범위 외
+- 객체: KillerID_login_report/* (button_All/Success/Fail, a_All/a_By ID/a_By Password/a_By IP, button_<기간>, button_Export to Spreadsheet)
+- C10145 시딩 기록 활용",,15-06-2026 10:52:07,15-06-2026 10:52:33,25.906s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:52:08,15-06-2026 10:52:08,0.001s,PASSED
+"EXPORT_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Export to Spreadsheet""",Chrome 149.0.7827.114,,,15-06-2026 10:52:08,15-06-2026 10:52:08,0.000s,PASSED
+"STATUS_EXPECT = ""failure""",Chrome 149.0.7827.114,,,15-06-2026 10:52:08,15-06-2026 10:52:08,0.000s,PASSED
+"FAILTYPE_EXPECT = ""PASSWD""",Chrome 149.0.7827.114,,,15-06-2026 10:52:08,15-06-2026 10:52:08,0.000s,PASSED
+ZERO_OK = true,Chrome 149.0.7827.114,,,15-06-2026 10:52:08,15-06-2026 10:52:08,0.001s,PASSED
+SUB_MAY_ABSENT = false,Chrome 149.0.7827.114,,,15-06-2026 10:52:08,15-06-2026 10:52:08,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:08,15-06-2026 10:52:08,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:08,15-06-2026 10:52:08,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:08,15-06-2026 10:52:08,0.001s,PASSED
+clickByText = { java.lang.String txt -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:08,15-06-2026 10:52:08,0.000s,PASSED
+clickFailSub = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:08,15-06-2026 10:52:08,0.000s,PASSED
+readRows = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:08,15-06-2026 10:52:08,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:52:08,15-06-2026 10:52:31,23.719s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:52:31,15-06-2026 10:52:32,1.129s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:52:32,15-06-2026 10:52:32,0.004s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:52:32,15-06-2026 10:52:33,0.939s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10154_Failed By IP 로그인 기록 필터 및 Export,Chrome 149.0.7827.114,"[C10154] Filter and Export Failed > By IP login records
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7b)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 상태 필터 = Failed 선택
+2. 서브필터 = By IP 선택
+3. 테이블 반영 검증
+4. 'Export to Spreadsheet' 클릭 → 네이티브 alert 'Report is being generated. You will receive an email with the attachment.' 검증 후 accept
+
+✅ 결과값:
+- Failed > By IP 기록 필터링 + Export alert(이메일 발송 안내) 정상 표출
+
+🔧 자동화 노트:
+- ⚠️ Export 는 CSV 직다운로드가 아니라 서버 생성 후 이메일 발송 → verifyAlertPresent + getAlertText('Report is being generated' 포함) + acceptAlert 패턴 (C10057 alert 패턴 재사용). 이메일 수신 검증은 자동화 범위 외
+- 객체: KillerID_login_report/* (button_All/Success/Fail, a_All/a_By ID/a_By Password/a_By IP, button_<기간>, button_Export to Spreadsheet)
+- ⚠️ sandbox 에서 By IP 실패 기록 생성 불가 → 0건 허용(필터 적용 + Export 동작만 검증)",,15-06-2026 10:52:33,15-06-2026 10:52:59,25.796s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:52:33,15-06-2026 10:52:33,0.000s,PASSED
+"EXPORT_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Export to Spreadsheet""",Chrome 149.0.7827.114,,,15-06-2026 10:52:33,15-06-2026 10:52:33,0.000s,PASSED
+"STATUS_EXPECT = ""failure""",Chrome 149.0.7827.114,,,15-06-2026 10:52:33,15-06-2026 10:52:33,0.001s,PASSED
+"FAILTYPE_EXPECT = ""IP""",Chrome 149.0.7827.114,,,15-06-2026 10:52:33,15-06-2026 10:52:33,0.000s,PASSED
+ZERO_OK = true,Chrome 149.0.7827.114,,,15-06-2026 10:52:33,15-06-2026 10:52:33,0.000s,PASSED
+SUB_MAY_ABSENT = false,Chrome 149.0.7827.114,,,15-06-2026 10:52:33,15-06-2026 10:52:33,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:33,15-06-2026 10:52:33,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:33,15-06-2026 10:52:33,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:33,15-06-2026 10:52:33,0.001s,PASSED
+clickByText = { java.lang.String txt -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:33,15-06-2026 10:52:33,0.001s,PASSED
+clickFailSub = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:33,15-06-2026 10:52:33,0.001s,PASSED
+readRows = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:33,15-06-2026 10:52:33,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:52:33,15-06-2026 10:52:57,23.218s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:52:57,15-06-2026 10:52:58,1.125s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:52:58,15-06-2026 10:52:58,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:52:58,15-06-2026 10:52:59,1.320s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10155_Failed By 2SV 로그인 기록 필터 및 Export,Chrome 149.0.7827.114,"[C10155] Filter and Export Failed > By 2SV login records
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7b)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 상태 필터 = Failed 선택
+2. 서브필터 = By 2SV 선택
+3. 테이블 반영 검증
+4. 'Export to Spreadsheet' 클릭 → 네이티브 alert 'Report is being generated. You will receive an email with the attachment.' 검증 후 accept
+
+✅ 결과값:
+- Failed > By 2SV 기록 필터링 + Export alert(이메일 발송 안내) 정상 표출
+
+🔧 자동화 노트:
+- ⚠️ Export 는 CSV 직다운로드가 아니라 서버 생성 후 이메일 발송 → verifyAlertPresent + getAlertText('Report is being generated' 포함) + acceptAlert 패턴 (C10057 alert 패턴 재사용). 이메일 수신 검증은 자동화 범위 외
+- 객체: KillerID_login_report/* (button_All/Success/Fail, a_All/a_By ID/a_By Password/a_By IP, button_<기간>, button_Export to Spreadsheet)
+- ⚠️ sandbox 에서 2SV 실패 기록 생성 불가 → 0건 허용(필터 적용 + Export 동작만 검증)
+- 🚨 Object Spy 캡처 시 Fail dropdown 에 'By 2SV' 항목 미확인(a_All/By ID/By Password/By IP 만 존재) → 스크립트에서 런타임 탐지: 항목 없으면 WEAK PASS(sandbox 미제공) 처리",,15-06-2026 10:52:59,15-06-2026 10:53:25,26.119s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:52:59,15-06-2026 10:52:59,0.001s,PASSED
+"EXPORT_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Export to Spreadsheet""",Chrome 149.0.7827.114,,,15-06-2026 10:52:59,15-06-2026 10:52:59,0.000s,PASSED
+"STATUS_EXPECT = ""failure""",Chrome 149.0.7827.114,,,15-06-2026 10:52:59,15-06-2026 10:52:59,0.001s,PASSED
+"FAILTYPE_EXPECT = ""2SV""",Chrome 149.0.7827.114,,,15-06-2026 10:52:59,15-06-2026 10:52:59,0.000s,PASSED
+ZERO_OK = true,Chrome 149.0.7827.114,,,15-06-2026 10:52:59,15-06-2026 10:52:59,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:59,15-06-2026 10:52:59,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:59,15-06-2026 10:52:59,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:59,15-06-2026 10:52:59,0.001s,PASSED
+clickByText = { java.lang.String txt -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:59,15-06-2026 10:52:59,0.000s,PASSED
+clickFailSub = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:59,15-06-2026 10:52:59,0.001s,PASSED
+readRows = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:52:59,15-06-2026 10:52:59,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:52:59,15-06-2026 10:53:23,24.200s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:53:23,15-06-2026 10:53:25,1.135s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.670s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10156_This Month 로그인 기록 필터 및 Export,Chrome 149.0.7827.114,"[C10156] Filter and Export This Month login records
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7b)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 기간 필터 = This Month 선택
+2. 테이블 반영 검증
+3. 'Export to Spreadsheet' 클릭 → 네이티브 alert 'Report is being generated. You will receive an email with the attachment.' 검증 후 accept
+
+✅ 결과값:
+- This Month 기간 기록 필터링 + Export alert(이메일 발송 안내) 정상 표출
+
+🔧 자동화 노트:
+- ⚠️ Export 는 CSV 직다운로드가 아니라 서버 생성 후 이메일 발송 → verifyAlertPresent + getAlertText('Report is being generated' 포함) + acceptAlert 패턴 (C10057 alert 패턴 재사용). 이메일 수신 검증은 자동화 범위 외
+- 객체: KillerID_login_report/* (button_All/Success/Fail, a_All/a_By ID/a_By Password/a_By IP, button_<기간>, button_Export to Spreadsheet)
+- 당일 시딩 기록 있어 데이터 보장",,15-06-2026 10:53:25,15-06-2026 10:53:50,24.765s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.001s,PASSED
+"EXPORT_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Export to Spreadsheet""",Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.000s,PASSED
+"STATUS_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.001s,PASSED
+"FAILTYPE_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.000s,PASSED
+ZERO_OK = false,Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.000s,PASSED
+SUB_MAY_ABSENT = false,Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.002s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.000s,PASSED
+clickByText = { java.lang.String txt -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.000s,PASSED
+clickFailSub = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.000s,PASSED
+readRows = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:25,0.002s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:53:25,15-06-2026 10:53:48,22.311s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:53:48,15-06-2026 10:53:49,1.133s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:53:49,15-06-2026 10:53:49,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:53:49,15-06-2026 10:53:50,1.194s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10157_This Week 로그인 기록 필터 및 Export,Chrome 149.0.7827.114,"[C10157] Filter and Export This Week login records
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7b)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 기간 필터 = This Week 선택
+2. 테이블 반영 검증
+3. 'Export to Spreadsheet' 클릭 → 네이티브 alert 'Report is being generated. You will receive an email with the attachment.' 검증 후 accept
+
+✅ 결과값:
+- This Week 기간 기록 필터링 + Export alert(이메일 발송 안내) 정상 표출
+
+🔧 자동화 노트:
+- ⚠️ Export 는 CSV 직다운로드가 아니라 서버 생성 후 이메일 발송 → verifyAlertPresent + getAlertText('Report is being generated' 포함) + acceptAlert 패턴 (C10057 alert 패턴 재사용). 이메일 수신 검증은 자동화 범위 외
+- 객체: KillerID_login_report/* (button_All/Success/Fail, a_All/a_By ID/a_By Password/a_By IP, button_<기간>, button_Export to Spreadsheet)
+- 당일 시딩 기록 있어 데이터 보장",,15-06-2026 10:53:50,15-06-2026 10:54:14,24.193s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:53:50,15-06-2026 10:53:50,0.001s,PASSED
+"EXPORT_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Export to Spreadsheet""",Chrome 149.0.7827.114,,,15-06-2026 10:53:50,15-06-2026 10:53:50,0.000s,PASSED
+"STATUS_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:53:50,15-06-2026 10:53:50,0.000s,PASSED
+"FAILTYPE_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:53:50,15-06-2026 10:53:50,0.001s,PASSED
+ZERO_OK = false,Chrome 149.0.7827.114,,,15-06-2026 10:53:50,15-06-2026 10:53:50,0.000s,PASSED
+SUB_MAY_ABSENT = false,Chrome 149.0.7827.114,,,15-06-2026 10:53:50,15-06-2026 10:53:50,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:53:50,15-06-2026 10:53:50,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:53:50,15-06-2026 10:53:50,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:53:50,15-06-2026 10:53:50,0.001s,PASSED
+clickByText = { java.lang.String txt -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:53:50,15-06-2026 10:53:50,0.001s,PASSED
+clickFailSub = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:53:50,15-06-2026 10:53:50,0.001s,PASSED
+readRows = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:53:50,15-06-2026 10:53:50,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:53:50,15-06-2026 10:54:12,22.062s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:54:12,15-06-2026 10:54:13,1.127s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:54:13,15-06-2026 10:54:13,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:54:13,15-06-2026 10:54:14,0.878s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10158_Today 로그인 기록 필터 및 Export,Chrome 149.0.7827.114,"[C10158] Filter and Export Today login records
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7b)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 기간 필터 = Today 선택
+2. 테이블 반영 검증
+3. 'Export to Spreadsheet' 클릭 → 네이티브 alert 'Report is being generated. You will receive an email with the attachment.' 검증 후 accept
+
+✅ 결과값:
+- Today 기간 기록 필터링 + Export alert(이메일 발송 안내) 정상 표출
+
+🔧 자동화 노트:
+- ⚠️ Export 는 CSV 직다운로드가 아니라 서버 생성 후 이메일 발송 → verifyAlertPresent + getAlertText('Report is being generated' 포함) + acceptAlert 패턴 (C10057 alert 패턴 재사용). 이메일 수신 검증은 자동화 범위 외
+- 객체: KillerID_login_report/* (button_All/Success/Fail, a_All/a_By ID/a_By Password/a_By IP, button_<기간>, button_Export to Spreadsheet)
+- 당일 시딩 기록 있어 데이터 보장",,15-06-2026 10:54:14,15-06-2026 10:54:38,23.532s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:54:14,15-06-2026 10:54:14,0.000s,PASSED
+"EXPORT_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Export to Spreadsheet""",Chrome 149.0.7827.114,,,15-06-2026 10:54:14,15-06-2026 10:54:14,0.001s,PASSED
+"STATUS_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:54:14,15-06-2026 10:54:14,0.000s,PASSED
+"FAILTYPE_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:54:14,15-06-2026 10:54:14,0.000s,PASSED
+ZERO_OK = false,Chrome 149.0.7827.114,,,15-06-2026 10:54:14,15-06-2026 10:54:14,0.001s,PASSED
+SUB_MAY_ABSENT = false,Chrome 149.0.7827.114,,,15-06-2026 10:54:14,15-06-2026 10:54:14,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:54:14,15-06-2026 10:54:14,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:54:14,15-06-2026 10:54:14,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:54:14,15-06-2026 10:54:14,0.001s,PASSED
+clickByText = { java.lang.String txt -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:54:14,15-06-2026 10:54:14,0.001s,PASSED
+clickFailSub = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:54:14,15-06-2026 10:54:14,0.000s,PASSED
+readRows = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:54:14,15-06-2026 10:54:14,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:54:14,15-06-2026 10:54:36,21.327s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:54:36,15-06-2026 10:54:37,1.120s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:54:37,15-06-2026 10:54:37,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:54:37,15-06-2026 10:54:38,0.973s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10159_Last Week 로그인 기록 필터 및 Export,Chrome 149.0.7827.114,"[C10159] Filter and Export Last Week login records
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7b)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 기간 필터 = Last Week 선택
+2. 테이블 반영 검증
+3. 'Export to Spreadsheet' 클릭 → 네이티브 alert 'Report is being generated. You will receive an email with the attachment.' 검증 후 accept
+
+✅ 결과값:
+- Last Week 기간 기록 필터링 + Export alert(이메일 발송 안내) 정상 표출
+
+🔧 자동화 노트:
+- ⚠️ Export 는 CSV 직다운로드가 아니라 서버 생성 후 이메일 발송 → verifyAlertPresent + getAlertText('Report is being generated' 포함) + acceptAlert 패턴 (C10057 alert 패턴 재사용). 이메일 수신 검증은 자동화 범위 외
+- 객체: KillerID_login_report/* (button_All/Success/Fail, a_All/a_By ID/a_By Password/a_By IP, button_<기간>, button_Export to Spreadsheet)
+- ⚠️ 기록 0건 가능 → 0건 허용(필터 적용 + Export 동작만 검증)",,15-06-2026 10:54:38,15-06-2026 10:55:03,24.805s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:54:38,15-06-2026 10:54:38,0.000s,PASSED
+"EXPORT_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Export to Spreadsheet""",Chrome 149.0.7827.114,,,15-06-2026 10:54:38,15-06-2026 10:54:38,0.001s,PASSED
+"STATUS_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:54:38,15-06-2026 10:54:38,0.001s,PASSED
+"FAILTYPE_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:54:38,15-06-2026 10:54:38,0.001s,PASSED
+ZERO_OK = true,Chrome 149.0.7827.114,,,15-06-2026 10:54:38,15-06-2026 10:54:38,0.000s,PASSED
+SUB_MAY_ABSENT = false,Chrome 149.0.7827.114,,,15-06-2026 10:54:38,15-06-2026 10:54:38,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:54:38,15-06-2026 10:54:38,0.001s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:54:38,15-06-2026 10:54:38,0.000s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:54:38,15-06-2026 10:54:38,0.000s,PASSED
+clickByText = { java.lang.String txt -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:54:38,15-06-2026 10:54:38,0.001s,PASSED
+clickFailSub = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:54:38,15-06-2026 10:54:38,0.001s,PASSED
+readRows = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:54:38,15-06-2026 10:54:38,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:54:38,15-06-2026 10:55:00,22.582s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:55:00,15-06-2026 10:55:02,1.129s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:55:02,15-06-2026 10:55:02,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:55:02,15-06-2026 10:55:03,0.949s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10160_Last Month 로그인 기록 필터 및 Export,Chrome 149.0.7827.114,"[C10160] Filter and Export Last Month login records
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7b)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 기간 필터 = Last Month 선택
+2. 테이블 반영 검증
+3. 'Export to Spreadsheet' 클릭 → 네이티브 alert 'Report is being generated. You will receive an email with the attachment.' 검증 후 accept
+
+✅ 결과값:
+- Last Month 기간 기록 필터링 + Export alert(이메일 발송 안내) 정상 표출
+
+🔧 자동화 노트:
+- ⚠️ Export 는 CSV 직다운로드가 아니라 서버 생성 후 이메일 발송 → verifyAlertPresent + getAlertText('Report is being generated' 포함) + acceptAlert 패턴 (C10057 alert 패턴 재사용). 이메일 수신 검증은 자동화 범위 외
+- 객체: KillerID_login_report/* (button_All/Success/Fail, a_All/a_By ID/a_By Password/a_By IP, button_<기간>, button_Export to Spreadsheet)
+- ⚠️ 기록 0건 가능 → 0건 허용(필터 적용 + Export 동작만 검증)",,15-06-2026 10:55:03,15-06-2026 10:55:28,25.441s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:55:03,15-06-2026 10:55:03,0.001s,PASSED
+"EXPORT_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Export to Spreadsheet""",Chrome 149.0.7827.114,,,15-06-2026 10:55:03,15-06-2026 10:55:03,0.000s,PASSED
+"STATUS_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:55:03,15-06-2026 10:55:03,0.001s,PASSED
+"FAILTYPE_EXPECT = """"",Chrome 149.0.7827.114,,,15-06-2026 10:55:03,15-06-2026 10:55:03,0.000s,PASSED
+ZERO_OK = true,Chrome 149.0.7827.114,,,15-06-2026 10:55:03,15-06-2026 10:55:03,0.000s,PASSED
+SUB_MAY_ABSENT = false,Chrome 149.0.7827.114,,,15-06-2026 10:55:03,15-06-2026 10:55:03,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:03,15-06-2026 10:55:03,0.002s,PASSED
+clearAnyAlert = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:03,15-06-2026 10:55:03,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:03,15-06-2026 10:55:03,0.001s,PASSED
+clickByText = { java.lang.String txt -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:03,15-06-2026 10:55:03,0.000s,PASSED
+clickFailSub = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:03,15-06-2026 10:55:03,0.001s,PASSED
+readRows = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:03,15-06-2026 10:55:03,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:55:03,15-06-2026 10:55:26,22.996s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:55:26,15-06-2026 10:55:27,1.133s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:55:27,15-06-2026 10:55:27,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:55:27,15-06-2026 10:55:28,1.185s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10161_User ID로 로그인 기록 검색,Chrome 149.0.7827.114,"[C10161] Search the login records by the User ID
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7c)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. User ID 검색 필드에 demo1 입력 → 검색
+2. 결과 행 전부 demo1 기록인지 검증
+
+✅ 결과값:
+- demo1 기록만 필터링 표시
+
+🔧 자동화 노트:
+- 캡처 대기 객체: User ID 검색 input + 검색 버튼(있다면)
+- 검증은 JS로 전 행 account 컬럼 스캔",,15-06-2026 10:55:28,15-06-2026 10:55:47,18.765s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:55:28,15-06-2026 10:55:28,0.001s,PASSED
+"SEARCH_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Search""",Chrome 149.0.7827.114,,,15-06-2026 10:55:28,15-06-2026 10:55:28,0.000s,PASSED
+"RESET_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Reset""",Chrome 149.0.7827.114,,,15-06-2026 10:55:28,15-06-2026 10:55:28,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:28,15-06-2026 10:55:28,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:28,15-06-2026 10:55:28,0.001s,PASSED
+"setSearch = { java.lang.String kind, java.lang.String value -> ... }",Chrome 149.0.7827.114,,,15-06-2026 10:55:28,15-06-2026 10:55:28,0.001s,PASSED
+clickSearch = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:28,15-06-2026 10:55:28,0.001s,PASSED
+readTable = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:28,15-06-2026 10:55:28,0.001s,PASSED
+setPerPage = { java.lang.String n -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:28,15-06-2026 10:55:28,0.001s,PASSED
+goNextPage = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:28,15-06-2026 10:55:28,0.001s,PASSED
+parseCount = { java.lang.String rows -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:28,15-06-2026 10:55:28,0.000s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:55:28,15-06-2026 10:55:46,17.710s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:55:46,15-06-2026 10:55:46,0.104s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:55:46,15-06-2026 10:55:46,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:55:46,15-06-2026 10:55:47,0.854s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10162_IP로 로그인 기록 검색,Chrome 149.0.7827.114,"[C10162] Search the login records by IP
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7c)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 첫 행의 IP 값을 읽음 (데이터 의존성 제거)
+2. IP 검색 필드에 해당 IP 입력 → 검색
+3. 결과 행 전부 해당 IP 인지 검증
+
+✅ 결과값:
+- 해당 IP 기록만 필터링 표시
+
+🔧 자동화 노트:
+- 첫 행 IP 재사용 패턴 → 고정 IP 하드코딩 금지
+- 캡처 대기 객체: IP 검색 input",,15-06-2026 10:55:47,15-06-2026 10:56:05,18.361s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:55:47,15-06-2026 10:55:47,0.001s,PASSED
+"SEARCH_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Search""",Chrome 149.0.7827.114,,,15-06-2026 10:55:47,15-06-2026 10:55:47,0.000s,PASSED
+"RESET_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Reset""",Chrome 149.0.7827.114,,,15-06-2026 10:55:47,15-06-2026 10:55:47,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:47,15-06-2026 10:55:47,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:47,15-06-2026 10:55:47,0.001s,PASSED
+"setSearch = { java.lang.String kind, java.lang.String value -> ... }",Chrome 149.0.7827.114,,,15-06-2026 10:55:47,15-06-2026 10:55:47,0.001s,PASSED
+clickSearch = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:47,15-06-2026 10:55:47,0.001s,PASSED
+readTable = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:47,15-06-2026 10:55:47,0.000s,PASSED
+setPerPage = { java.lang.String n -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:47,15-06-2026 10:55:47,0.001s,PASSED
+goNextPage = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:47,15-06-2026 10:55:47,0.001s,PASSED
+parseCount = { java.lang.String rows -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:55:47,15-06-2026 10:55:47,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:55:47,15-06-2026 10:56:04,16.966s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:56:04,15-06-2026 10:56:04,0.101s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:56:04,15-06-2026 10:56:04,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:56:04,15-06-2026 10:56:05,1.191s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10163_User ID와 IP로 로그인 기록 검색,Chrome 149.0.7827.114,"[C10163] Search the login records by the user ID and IP
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7c)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 첫 행의 account + IP 를 읽음
+2. User ID + IP 동시 입력 → 검색
+3. 결과 행 전부 두 조건 모두 일치 검증
+
+✅ 결과값:
+- 두 조건 AND 필터링 표시
+
+🔧 자동화 노트:
+- C10161 + C10162 조합 패턴",,15-06-2026 10:56:05,15-06-2026 10:56:29,23.566s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:56:05,15-06-2026 10:56:05,0.000s,PASSED
+"SEARCH_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Search""",Chrome 149.0.7827.114,,,15-06-2026 10:56:05,15-06-2026 10:56:05,0.000s,PASSED
+"RESET_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Reset""",Chrome 149.0.7827.114,,,15-06-2026 10:56:05,15-06-2026 10:56:05,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:05,15-06-2026 10:56:05,0.000s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:05,15-06-2026 10:56:05,0.001s,PASSED
+"setSearch = { java.lang.String kind, java.lang.String value -> ... }",Chrome 149.0.7827.114,,,15-06-2026 10:56:05,15-06-2026 10:56:05,0.001s,PASSED
+clickSearch = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:05,15-06-2026 10:56:05,0.001s,PASSED
+readTable = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:05,15-06-2026 10:56:05,0.001s,PASSED
+setPerPage = { java.lang.String n -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:05,15-06-2026 10:56:05,0.001s,PASSED
+goNextPage = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:05,15-06-2026 10:56:05,0.000s,PASSED
+parseCount = { java.lang.String rows -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:05,15-06-2026 10:56:05,0.000s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:56:05,15-06-2026 10:56:27,22.025s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:56:27,15-06-2026 10:56:27,0.108s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:56:27,15-06-2026 10:56:27,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:56:27,15-06-2026 10:56:29,1.262s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10164_검색 및 필터 초기화,Chrome 149.0.7827.114,"[C10164] Reset the search and filters
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7c)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 임의 필터 + 검색어 적용 (행 수 기록)
+2. Reset 클릭
+3. 필터/검색 초기값 + 전체 목록 복귀 검증
+
+✅ 결과값:
+- 모든 필터·검색이 초기화되고 전체 기록 표시
+
+🔧 자동화 노트:
+- 캡처 대기 객체: Reset 버튼
+- 적용 전/후 row count 비교로 복귀 검증",,15-06-2026 10:56:29,15-06-2026 10:56:52,23.046s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:56:29,15-06-2026 10:56:29,0.000s,PASSED
+"SEARCH_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Search""",Chrome 149.0.7827.114,,,15-06-2026 10:56:29,15-06-2026 10:56:29,0.000s,PASSED
+"RESET_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Reset""",Chrome 149.0.7827.114,,,15-06-2026 10:56:29,15-06-2026 10:56:29,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:29,15-06-2026 10:56:29,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:29,15-06-2026 10:56:29,0.001s,PASSED
+"setSearch = { java.lang.String kind, java.lang.String value -> ... }",Chrome 149.0.7827.114,,,15-06-2026 10:56:29,15-06-2026 10:56:29,0.001s,PASSED
+clickSearch = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:29,15-06-2026 10:56:29,0.001s,PASSED
+readTable = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:29,15-06-2026 10:56:29,0.001s,PASSED
+setPerPage = { java.lang.String n -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:29,15-06-2026 10:56:29,0.001s,PASSED
+goNextPage = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:29,15-06-2026 10:56:29,0.001s,PASSED
+parseCount = { java.lang.String rows -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:29,15-06-2026 10:56:29,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:56:29,15-06-2026 10:56:51,21.703s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:56:51,15-06-2026 10:56:51,0.099s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:56:51,15-06-2026 10:56:51,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:56:51,15-06-2026 10:56:52,1.120s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10165_로그인 기록 50개 표시,Chrome 149.0.7827.114,"[C10165] Display 50 login records per page
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7c)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. per-page selector 에서 50 선택
+2. 테이블 행 수 검증
+
+✅ 결과값:
+- 페이지당 최대 50건 표시 (row count == min(50, 전체))
+
+🔧 자동화 노트:
+- C10051 패턴 재사용
+- per-page 옵션 = 20/50/100 (캡처 확인됨). selector 는 JS 로 select/option 탐지",,15-06-2026 10:56:52,15-06-2026 10:57:10,18.295s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:56:52,15-06-2026 10:56:52,0.000s,PASSED
+"SEARCH_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Search""",Chrome 149.0.7827.114,,,15-06-2026 10:56:52,15-06-2026 10:56:52,0.000s,PASSED
+"RESET_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Reset""",Chrome 149.0.7827.114,,,15-06-2026 10:56:52,15-06-2026 10:56:52,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:52,15-06-2026 10:56:52,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:52,15-06-2026 10:56:52,0.001s,PASSED
+"setSearch = { java.lang.String kind, java.lang.String value -> ... }",Chrome 149.0.7827.114,,,15-06-2026 10:56:52,15-06-2026 10:56:52,0.001s,PASSED
+clickSearch = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:52,15-06-2026 10:56:52,0.001s,PASSED
+readTable = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:52,15-06-2026 10:56:52,0.001s,PASSED
+setPerPage = { java.lang.String n -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:52,15-06-2026 10:56:52,0.001s,PASSED
+goNextPage = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:52,15-06-2026 10:56:52,0.001s,PASSED
+parseCount = { java.lang.String rows -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:56:52,15-06-2026 10:56:52,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:56:52,15-06-2026 10:57:09,17.234s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:57:09,15-06-2026 10:57:09,0.105s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:57:09,15-06-2026 10:57:09,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:57:09,15-06-2026 10:57:10,0.845s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10166_로그인 기록 100개 표시,Chrome 149.0.7827.114,"[C10166] Display 100 login records per page
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7c)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. per-page selector 에서 100 선택
+2. 테이블 행 수 검증
+
+✅ 결과값:
+- 페이지당 최대 100건 표시 (row count == min(100, 전체))
+
+🔧 자동화 노트:
+- C10052 패턴 재사용
+- per-page 옵션 = 20/50/100 (캡처 확인됨)",,15-06-2026 10:57:10,15-06-2026 10:57:29,18.743s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:57:10,15-06-2026 10:57:10,0.001s,PASSED
+"SEARCH_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Search""",Chrome 149.0.7827.114,,,15-06-2026 10:57:10,15-06-2026 10:57:10,0.000s,PASSED
+"RESET_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Reset""",Chrome 149.0.7827.114,,,15-06-2026 10:57:10,15-06-2026 10:57:10,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:10,15-06-2026 10:57:10,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:10,15-06-2026 10:57:10,0.000s,PASSED
+"setSearch = { java.lang.String kind, java.lang.String value -> ... }",Chrome 149.0.7827.114,,,15-06-2026 10:57:10,15-06-2026 10:57:10,0.000s,PASSED
+clickSearch = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:10,15-06-2026 10:57:10,0.001s,PASSED
+readTable = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:10,15-06-2026 10:57:10,0.000s,PASSED
+setPerPage = { java.lang.String n -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:10,15-06-2026 10:57:10,0.000s,PASSED
+goNextPage = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:10,15-06-2026 10:57:10,0.001s,PASSED
+parseCount = { java.lang.String rows -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:10,15-06-2026 10:57:10,0.000s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:57:10,15-06-2026 10:57:27,17.242s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:57:27,15-06-2026 10:57:27,0.103s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:57:27,15-06-2026 10:57:27,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:57:27,15-06-2026 10:57:29,1.310s,PASSED
+,,,,,,,
+Test Cases/KillerID_Login Report/C10167_로그인 기록 페이지네이션 검증,Chrome 149.0.7827.114,"[C10167] Verify the login records pagination
+Role: Admin
+Section: KillerID/Login Report (Round 7 Sprint 7c)
+
+📋 사전 조건:
+- admin 로그인 (AdminActions.loginAsAdmin 재사용)
+- 상단 'Login Report' 탭 진입 (기존 객체 KillerID_admin_menu/a_Login Report 재사용)
+
+🧪 단계 (inferred):
+1. 1페이지 첫 행 기록 저장
+2. 다음(2) 페이지 이동
+3. 행 내용 변경 + 페이지 인디케이터 검증
+
+✅ 결과값:
+- 페이지 이동 시 다른 기록 세트 표시
+
+🔧 자동화 노트:
+- C10054 패턴 재사용
+- ⚠️ 전체 기록 수가 per-page 이하면 페이지 1개 → SKIP 분기(WEAK PASS) 필요",,15-06-2026 10:57:29,15-06-2026 10:57:50,21.561s,PASSED
+"LR_TAB = ""KillerID_admin_menu/Page_demo.netkillersoft.com/a_Login Report""",Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.000s,PASSED
+"SEARCH_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Search""",Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.001s,PASSED
+"RESET_BTN = ""KillerID_login_report/Page_demo.netkillersoft.com/button_Reset""",Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.001s,PASSED
+openLoginReport = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.002s,PASSED
+"setSearch = { java.lang.String kind, java.lang.String value -> ... }",Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.001s,PASSED
+clickSearch = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.001s,PASSED
+readTable = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.003s,PASSED
+setPerPage = { java.lang.String n -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.000s,PASSED
+getActivePage = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.000s,PASSED
+dumpPagination = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.001s,PASSED
+goToPage = { java.lang.String n -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.001s,PASSED
+clickNextArrow = { -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.001s,PASSED
+parseCount = { java.lang.String rows -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:29,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:57:29,15-06-2026 10:57:50,20.663s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:57:50,15-06-2026 10:57:50,0.104s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:57:50,15-06-2026 10:57:50,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:57:50,15-06-2026 10:57:50,0.662s,PASSED

@@ -1,0 +1,429 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+3.KillerID_Company_theme,Chrome 149.0.7827.114,KillerID_Company_theme 전체 case,,16-06-2026 06:59:57,16-06-2026 07:17:08,17m - 10.964s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9964_테마 편집모드 진입,Chrome 149.0.7827.114,"C9964_테마 편집모드 진입
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 왼쪽 메뉴에서 'Company'를 클릭하세요
+3. 'Theme' 탭을 클릭하세요
+4. 'Edit' 버튼을 클릭하세요
+5. Login Page Layout, Login Page Text, Login Text Color, Theme Background Color 등 모든 필드가 편집 가능한 상태인지 확인하세요
+
+결과값
+Theme 탭의 모든 필드를 편집할 수 있습니다.",,16-06-2026 06:59:57,16-06-2026 07:00:47,49.553s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 06:59:58,16-06-2026 07:00:42,43.969s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:00:42,16-06-2026 07:00:42,0.483s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:00:42,16-06-2026 07:00:42,0.017s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:00:42,16-06-2026 07:00:47,4.711s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9965_New Login Page 설정,Chrome 149.0.7827.114,"C9965_New Login Page 설정
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Page Layout에서 'New Login Page' 라디오 버튼을 선택하세요
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하고 설정이 유지되는지 확인하세요
+
+결과값
+Login Page Layout이 'New Login Page'로 설정됩니다.",,16-06-2026 07:00:47,16-06-2026 07:01:28,40.756s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:00:47,16-06-2026 07:01:25,38.203s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:01:25,16-06-2026 07:01:26,0.485s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:01:26,16-06-2026 07:01:26,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:01:26,16-06-2026 07:01:28,1.872s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9966_Classic Login Page 설정,Chrome 149.0.7827.114,"C9966_Classic Login Page 설정
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Page Layout에서 'Classic (Old Login Page)' 라디오 버튼을 선택하세요
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하고 설정이 유지되는지 확인하세요
+
+결과값
+Login Page Layout이 'Classic (Old Login Page)'로 설정됩니다.",,16-06-2026 07:01:28,16-06-2026 07:02:23,55.686s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:01:28,16-06-2026 07:02:14,46.421s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:02:14,16-06-2026 07:02:20,5.900s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:02:20,16-06-2026 07:02:20,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:02:20,16-06-2026 07:02:23,3.243s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9967_로그인 페이지 텍스트 커스터마이즈,Chrome 149.0.7827.114,"C9967_로그인 페이지 텍스트 커스터마이즈
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Page Text에서 'Customize Text' 라디오를 선택하세요
+5. 텍스트 필드에 커스텀 텍스트를 입력하세요 (예: 'Automation Test Page')
+6. 'Save' 버튼을 클릭하세요
+7. 페이지를 새로고침하고 변경된 텍스트가 유지되는지 확인하세요
+
+결과값
+커스텀 텍스트가 도메인 로그인 페이지에 표시됩니다.",,16-06-2026 07:02:23,16-06-2026 07:03:05,41.579s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:02:23,16-06-2026 07:03:02,38.288s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:03:02,16-06-2026 07:03:02,0.456s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:03:02,16-06-2026 07:03:02,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:03:02,16-06-2026 07:03:05,2.738s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9968_로그인 페이지 기본 텍스트 설정,Chrome 149.0.7827.114,"C9968_로그인 페이지 기본 텍스트 설정
+
+사전 조건
+역할: 관리자
+Login Page Text가 커스터마이즈된 상태여야 합니다
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Page Text에서 'Use Default' 라디오를 선택하세요
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하고 기본 텍스트가 적용되는지 확인하세요
+
+결과값
+기본 텍스트 'Welcome to {domain name}'이 도메인 로그인 페이지에 표시됩니다.",,16-06-2026 07:03:05,16-06-2026 07:03:45,39.569s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:03:05,16-06-2026 07:03:41,36.447s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:03:41,16-06-2026 07:03:42,0.445s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:03:42,16-06-2026 07:03:42,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:03:42,16-06-2026 07:03:45,2.586s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9969_로그인 텍스트 색상 변경,Chrome 149.0.7827.114,"C9969_로그인 텍스트 색상 변경
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Text Color 필드의 Hex Value를 변경하세요 (예: '#ff0000')
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하고 색상이 유지되는지 확인하세요
+
+결과값
+로그인 텍스트 색상이 설정된 색상으로 변경되고 도메인 로그인 페이지에 표시됩니다.",,16-06-2026 07:03:45,16-06-2026 07:04:36,51.134s,PASSED
+"TARGET_HEX = ""ff0000""",Chrome 149.0.7827.114,,,16-06-2026 07:03:45,16-06-2026 07:03:45,0.001s,PASSED
+"TARGET_COLOR = ""#"" + TARGET_HEX",Chrome 149.0.7827.114,,,16-06-2026 07:03:45,16-06-2026 07:03:45,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:03:45,16-06-2026 07:04:23,38.256s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:04:23,16-06-2026 07:04:33,10.477s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:04:33,16-06-2026 07:04:33,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:04:33,16-06-2026 07:04:36,2.279s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9970_로그인 텍스트 기본 색상 설정,Chrome 149.0.7827.114,"C9970_로그인 텍스트 기본 색상 설정
+
+사전 조건
+역할: 관리자
+Login Text Color가 커스텀 색상으로 변경된 상태여야 합니다
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Text Color 옆의 'Default' 버튼을 클릭하세요
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하고 기본 색상(#ffffff)이 적용되는지 확인하세요
+
+결과값
+Login Text Color가 기본값 (#ffffff)으로 변경되고 도메인 로그인 페이지에 표시됩니다.",,16-06-2026 07:04:36,16-06-2026 07:05:13,37.218s,PASSED
+"EXPECTED_DEFAULT = ""ffffff""",Chrome 149.0.7827.114,,,16-06-2026 07:04:36,16-06-2026 07:04:36,0.003s,PASSED
+"EXPECTED_DEFAULT_COLOR = ""#"" + EXPECTED_DEFAULT",Chrome 149.0.7827.114,,,16-06-2026 07:04:36,16-06-2026 07:04:36,0.000s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:04:36,16-06-2026 07:05:10,34.122s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:05:10,16-06-2026 07:05:10,0.449s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:05:10,16-06-2026 07:05:10,0.004s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:05:10,16-06-2026 07:05:13,2.541s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9971_테마 배경색 변경,Chrome 149.0.7827.114,"C9971_테마 배경색 변경
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Theme Background Color 필드의 Hex Value를 변경하세요 (예: '#12120e')
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하고 색상이 유지되는지 확인하세요
+
+결과값
+테마 배경색이 설정된 색상으로 변경되고 도메인 로그인 페이지에 표시됩니다.",,16-06-2026 07:05:13,16-06-2026 07:06:18,1m - 4.631s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:05:13,16-06-2026 07:06:09,55.677s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:06:09,16-06-2026 07:06:15,5.966s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:06:15,16-06-2026 07:06:15,0.004s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:06:15,16-06-2026 07:06:18,2.893s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9972_테마 배경 기본 색상 설정,Chrome 149.0.7827.114,"C9972_테마 배경 기본 색상 설정
+
+사전 조건
+역할: 관리자
+Theme Background Color가 커스텀 색상으로 변경된 상태여야 합니다
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Theme Background Color 옆의 'Default' 버튼을 클릭하세요
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하고 기본 배경색(#f1f1f1)이 적용되는지 확인하세요
+
+결과값
+Theme Background Color가 기본값 (#f1f1f1)으로 변경되고 도메인 로그인 페이지에 표시됩니다.",,16-06-2026 07:06:18,16-06-2026 07:07:08,50.890s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:06:18,16-06-2026 07:07:04,46.825s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:07:04,16-06-2026 07:07:05,0.414s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:07:05,16-06-2026 07:07:05,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:07:05,16-06-2026 07:07:08,3.540s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9973_테마 배경 이미지 업로드,Chrome 149.0.7827.114,"C9973_테마 배경 이미지 업로드
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Theme Background Image 섹션에서 'Upload' 버튼을 클릭하세요
+5. 이미지 파일을 선택하여 업로드하세요
+6. 'Save' 버튼을 클릭하세요
+7. 업로드된 이미지가 표시되는지 확인하세요
+
+결과값
+테마 배경 이미지가 업로드되고 도메인 로그인 페이지에 표시됩니다.",,16-06-2026 07:07:08,16-06-2026 07:07:58,49.969s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:07:08,16-06-2026 07:07:55,46.748s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:07:55,16-06-2026 07:07:56,0.481s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:07:56,16-06-2026 07:07:56,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:07:56,16-06-2026 07:07:58,2.653s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9974_테마 배경 기본 이미지 설정,Chrome 149.0.7827.114,"C9974_테마 배경 기본 이미지 설정
+
+사전 조건
+역할: 관리자
+테마 배경 이미지가 업로드된 상태여야 합니다
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Theme Background Image 섹션에서 'Delete' 버튼을 클릭하세요
+5. 'Save' 버튼을 클릭하세요
+6. 기본 배경 이미지가 표시되는지 확인하세요
+
+결과값
+기본 테마 배경 이미지가 설정되고 도메인 로그인 페이지에 표시됩니다.",,16-06-2026 07:07:58,16-06-2026 07:08:44,45.613s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:07:58,16-06-2026 07:08:41,42.614s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:08:41,16-06-2026 07:08:42,0.445s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:08:42,16-06-2026 07:08:42,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:08:42,16-06-2026 07:08:44,2.471s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9975_Fit to Screen 배경 프리셋 설정,Chrome 149.0.7827.114,"C9975_Fit to Screen 배경 프리셋 설정
+
+사전 조건
+역할: 관리자
+테마 배경 이미지가 업로드된 상태여야 합니다
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Background Preset 드롭다운에서 'Fit to Screen'을 선택하세요
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하고 설정이 유지되는지 확인하세요
+
+결과값
+테마 배경 이미지가 전체 화면에 맞춰서 표시됩니다.",,16-06-2026 07:08:44,16-06-2026 07:09:24,40.277s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:08:44,16-06-2026 07:09:21,37.423s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:09:21,16-06-2026 07:09:22,0.508s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:09:22,16-06-2026 07:09:22,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:09:22,16-06-2026 07:09:24,2.281s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9976_Repeat 배경 프리셋 설정,Chrome 149.0.7827.114,"C9976_Repeat 배경 프리셋 설정
+
+사전 조건
+역할: 관리자
+테마 배경 이미지가 업로드된 상태여야 합니다 (저해상도 이미지 권장)
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Background Preset 드롭다운에서 'Repeat'를 선택하세요
+5. 'Save' 버튼을 클릭하세요
+6. 페이지를 새로고침하고 설정이 유지되는지 확인하세요
+
+결과값
+테마 배경 이미지가 반복되어 페이지를 채웁니다.",,16-06-2026 07:09:24,16-06-2026 07:10:04,40.155s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:09:24,16-06-2026 07:10:01,36.979s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:10:01,16-06-2026 07:10:02,0.449s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:10:02,16-06-2026 07:10:02,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:10:02,16-06-2026 07:10:04,2.649s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9977_테마 미리보기 검증,Chrome 149.0.7827.114,"C9977_테마 미리보기 검증
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Page Text를 변경하세요
+5. Theme Preview 영역에 변경 사항이 실시간으로 반영되는지 확인하세요
+6. Login Text Color를 변경하세요
+7. Theme Preview 영역에 색상이 실시간으로 반영되는지 확인하세요
+
+결과값
+Theme 탭의 변경 사항이 Theme Preview에 실시간으로 표시됩니다.",,16-06-2026 07:10:04,16-06-2026 07:10:38,33.359s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:10:05,16-06-2026 07:10:34,29.339s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:10:34,16-06-2026 07:10:36,1.861s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:10:36,16-06-2026 07:10:36,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:10:36,16-06-2026 07:10:38,2.054s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9978_Classic 로그인 텍스트 커스터마이즈,Chrome 149.0.7827.114,"C9978_Classic 로그인 페이지 텍스트 커스터마이즈
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Page Layout에서 'Classic (Old Login Page)'를 선택하세요
+5. Login Page Text에서 'Customize Text' 라디오를 선택하세요
+6. 텍스트 필드에 커스텀 텍스트를 입력하세요 (예: 'Classic Test Page')
+7. 'Save' 버튼을 클릭하세요
+8. 페이지를 새로고침하고 변경된 텍스트가 유지되는지 확인하세요
+
+결과값
+커스텀 텍스트가 Classic 로그인 페이지에 표시됩니다.",,16-06-2026 07:10:38,16-06-2026 07:11:30,52.492s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:10:38,16-06-2026 07:11:22,43.684s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:11:22,16-06-2026 07:11:28,5.959s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:11:28,16-06-2026 07:11:28,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:11:28,16-06-2026 07:11:30,2.760s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9979_Classic 기본 텍스트 설정,Chrome 149.0.7827.114,"C9979_Classic 로그인 페이지 기본 텍스트 설정
+
+사전 조건
+역할: 관리자
+Classic 모드에서 Login Page Text가 커스터마이즈된 상태여야 합니다
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Page Layout에서 'Classic (Old Login Page)'를 선택하세요
+5. Login Page Text에서 'Use Default' 라디오를 선택하세요
+6. 'Save' 버튼을 클릭하세요
+7. 페이지를 새로고침하고 기본 텍스트가 적용되는지 확인하세요
+
+결과값
+기본 텍스트 'Welcome to {domain name}'이 Classic 로그인 페이지에 표시됩니다.",,16-06-2026 07:11:30,16-06-2026 07:12:44,1m - 14.145s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:11:30,16-06-2026 07:12:36,1m - 5.530s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:12:36,16-06-2026 07:12:42,6.153s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:12:42,16-06-2026 07:12:42,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:12:42,16-06-2026 07:12:44,2.387s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9980_Classic 텍스트 색상 변경,Chrome 149.0.7827.114,"C9980_Classic 로그인 텍스트 색상 변경
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Page Layout에서 'Classic (Old Login Page)'를 선택하세요
+5. Login Text Color 필드의 Hex Value를 변경하세요 (예: '#00ff00')
+6. 'Save' 버튼을 클릭하세요
+7. 페이지를 새로고침하고 색상이 유지되는지 확인하세요
+
+결과값
+로그인 텍스트 색상이 변경되고 Classic 로그인 페이지에 표시됩니다.",,16-06-2026 07:12:44,16-06-2026 07:13:30,45.985s,PASSED
+"randomHex = """"",Chrome 149.0.7827.114,,,16-06-2026 07:12:45,16-06-2026 07:12:45,0.000s,PASSED
+"randomColor = """"",Chrome 149.0.7827.114,,,16-06-2026 07:12:45,16-06-2026 07:12:45,0.000s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:12:45,16-06-2026 07:13:28,43.035s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:13:28,16-06-2026 07:13:28,0.401s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:13:28,16-06-2026 07:13:28,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:13:28,16-06-2026 07:13:30,2.381s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9981_Classic 텍스트 기본 색상,Chrome 149.0.7827.114,"C9981_Classic 로그인 텍스트 기본 색상 설정
+
+사전 조건
+역할: 관리자
+Classic 모드에서 Login Text Color가 커스텀 색상으로 변경된 상태여야 합니다
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Page Layout에서 'Classic (Old Login Page)'를 선택하세요
+5. Login Text Color 옆의 'Default' 버튼을 클릭하세요
+6. 'Save' 버튼을 클릭하세요
+7. 페이지를 새로고침하고 기본 색상(#ffffff)이 적용되는지 확인하세요
+
+결과값
+Login Text Color가 기본값 (#ffffff)으로 변경되고 Classic 로그인 페이지에 표시됩니다.",,16-06-2026 07:13:30,16-06-2026 07:14:19,48.799s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:13:31,16-06-2026 07:14:12,41.133s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:14:12,16-06-2026 07:14:17,5.631s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:14:17,16-06-2026 07:14:17,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:14:17,16-06-2026 07:14:19,1.940s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9982_Classic 배경색 변경,Chrome 149.0.7827.114,"C9982_Classic 테마 배경색 변경
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Page Layout에서 'Classic (Old Login Page)'를 선택하세요
+5. Theme Background Color 필드의 Hex Value를 변경하세요 (예: '#993366')
+6. 'Save' 버튼을 클릭하세요
+7. 페이지를 새로고침하고 색상이 유지되는지 확인하세요
+
+결과값
+테마 배경색이 변경되고 Classic 로그인 페이지에 표시됩니다.",,16-06-2026 07:14:19,16-06-2026 07:15:32,1m - 12.821s,PASSED
+"randomHex = """"",Chrome 149.0.7827.114,,,16-06-2026 07:14:19,16-06-2026 07:14:19,0.001s,PASSED
+"randomColor = """"",Chrome 149.0.7827.114,,,16-06-2026 07:14:19,16-06-2026 07:14:19,0.000s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:14:19,16-06-2026 07:15:04,45.132s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:15:04,16-06-2026 07:15:30,25.098s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:15:30,16-06-2026 07:15:30,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:15:30,16-06-2026 07:15:32,2.506s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9983_Classic 배경 기본 색상,Chrome 149.0.7827.114,"C9983_Classic 테마 배경 기본 색상 설정
+
+사전 조건
+역할: 관리자
+Classic 모드에서 Theme Background Color가 커스텀 색상으로 변경된 상태여야 합니다
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Page Layout에서 'Classic (Old Login Page)'를 선택하세요
+5. Theme Background Color 옆의 'Default' 버튼을 클릭하세요
+6. 'Save' 버튼을 클릭하세요
+7. 페이지를 새로고침하고 기본 배경색(#00aff0)이 적용되는지 확인하세요
+
+결과값
+Theme Background Color가 기본값 (#f1f1f1)으로 변경되고 Classic 로그인 페이지에 표시됩니다.",,16-06-2026 07:15:32,16-06-2026 07:16:37,1m - 4.540s,PASSED
+"EXPECTED_DEFAULT = ""00aff0""",Chrome 149.0.7827.114,,,16-06-2026 07:15:32,16-06-2026 07:15:32,0.001s,PASSED
+"EXPECTED_DEFAULT_COLOR = ""#"" + EXPECTED_DEFAULT",Chrome 149.0.7827.114,,,16-06-2026 07:15:32,16-06-2026 07:15:32,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:15:32,16-06-2026 07:16:11,38.894s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:16:11,16-06-2026 07:16:35,23.834s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:16:35,16-06-2026 07:16:35,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:16:35,16-06-2026 07:16:37,1.668s,PASSED
+,,,,,,,
+Test Cases/KillerID_Company_Theme/C9984_Classic 테마 미리보기 검증,Chrome 149.0.7827.114,"C9984_Classic 테마 미리보기 검증
+
+사전 조건
+역할: 관리자
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. Company > Theme 탭으로 이동하세요
+3. 'Edit' 버튼을 클릭하세요
+4. Login Page Layout에서 'Classic (Old Login Page)'를 선택하세요
+5. Login Page Text를 변경하세요
+6. Theme Preview 영역에 변경 사항이 실시간으로 반영되는지 확인하세요
+
+결과값
+Classic 모드의 변경 사항이 Theme Preview에 실시간으로 표시됩니다.",,16-06-2026 07:16:37,16-06-2026 07:17:08,31.515s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 07:16:37,16-06-2026 07:17:06,28.992s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 07:17:06,16-06-2026 07:17:06,0.391s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:17:06,16-06-2026 07:17:06,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 07:17:06,16-06-2026 07:17:08,2.076s,PASSED

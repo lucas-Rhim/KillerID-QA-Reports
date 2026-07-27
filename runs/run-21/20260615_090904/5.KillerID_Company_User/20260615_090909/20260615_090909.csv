@@ -1,0 +1,286 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+5.KillerID_Company_User,Chrome 149.0.7827.114,,,15-06-2026 09:56:30,15-06-2026 10:02:54,6m - 23.964s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10037_사용자 테이블 검증,Chrome 149.0.7827.114,"C10037 - 사용자 테이블 검증
+TestRail: C10037 - Verify the User table
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 사용자 테이블이 표시되는지 확인하세요
+
+결과값: 도메인 사용자들이 포함된 테이블이 표시됩니다.",,15-06-2026 09:56:30,15-06-2026 09:56:51,20.241s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 09:56:31,15-06-2026 09:56:49,18.275s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 09:56:49,15-06-2026 09:56:49,0.141s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:56:49,15-06-2026 09:56:49,0.010s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:56:49,15-06-2026 09:56:51,1.506s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10038_2SV ribbon 검증,Chrome 149.0.7827.114,"C10038 - 2SV ribbon 검증
+TestRail: C10038 - Verify the 2SV ribbon
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 페이지 상단에 2SV 미설정 사용자 수 / 비율을 표시하는 ribbon 이 노출되는지 확인하세요
+4. ribbon 의 'Click here to view the list' 링크를 클릭하세요
+
+결과값: 2SV 가 설정되지 않은 사용자 목록이 필터되어 표시됩니다.",,15-06-2026 09:56:51,15-06-2026 09:57:10,19.612s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 09:56:51,15-06-2026 09:57:10,18.642s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 09:57:10,15-06-2026 09:57:10,0.113s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:57:10,15-06-2026 09:57:10,0.007s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:57:10,15-06-2026 09:57:10,0.656s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10039_2SV 미설정 사용자 목록 검증,Chrome 149.0.7827.114,"C10039 - 2SV 미설정 사용자 목록 검증
+TestRail: C10039 - Verify the list of users without configured 2SV
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 2SV ribbon 의 'Click here to view the list' 링크를 클릭하세요
+4. 필터된 사용자 목록을 확인하세요
+
+결과값: 2SV 가 설정되지 않은 사용자만 테이블에 표시됩니다.",,15-06-2026 09:57:10,15-06-2026 09:57:32,21.340s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 09:57:10,15-06-2026 09:57:31,20.553s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 09:57:31,15-06-2026 09:57:31,0.105s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:57:31,15-06-2026 09:57:31,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:57:31,15-06-2026 09:57:32,0.586s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10040_키워드로 사용자 검색,Chrome 149.0.7827.114,"C10040 - 키워드로 사용자 검색
+TestRail: C10040 - Search the user by the keyword
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 우상단 검색창에 사용자 키워드 (이름 또는 이메일 일부) 를 입력하세요
+4. Search 버튼을 클릭하거나 Enter 키를 누르세요
+
+결과값: 검색어와 일치하는 사용자만 테이블에 표시됩니다.",,15-06-2026 09:57:32,15-06-2026 09:57:53,21.066s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 09:57:32,15-06-2026 09:57:52,19.892s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 09:57:52,15-06-2026 09:57:52,0.105s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:57:52,15-06-2026 09:57:52,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:57:52,15-06-2026 09:57:53,0.959s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10041_이름순 정렬,Chrome 149.0.7827.114,"C10041 - 이름순 정렬
+TestRail: C10041 - Sort the users by name
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 테이블의 'Name' 컬럼 헤더를 클릭하세요 (오름차순)
+4. 다시 클릭하여 내림차순으로 전환하세요
+
+결과값: 사용자가 이름 기준 오름차순/내림차순으로 알파벳 정렬됩니다.",,15-06-2026 09:57:53,15-06-2026 09:58:16,23.280s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 09:57:53,15-06-2026 09:58:15,21.998s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 09:58:15,15-06-2026 09:58:15,0.104s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:58:15,15-06-2026 09:58:15,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:58:15,15-06-2026 09:58:16,1.028s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10042_이메일순 정렬,Chrome 149.0.7827.114,"C10042 - 이메일순 정렬
+TestRail: C10042 - Sort the users by email
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 테이블의 'Email' 컬럼 헤더를 클릭하세요 (오름차순)
+4. 다시 클릭하여 내림차순으로 전환하세요
+
+결과값: 사용자가 이메일 기준 오름차순/내림차순으로 정렬됩니다.",,15-06-2026 09:58:16,15-06-2026 09:58:37,21.405s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 09:58:16,15-06-2026 09:58:37,20.378s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 09:58:37,15-06-2026 09:58:37,0.114s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:58:37,15-06-2026 09:58:37,0.004s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:58:37,15-06-2026 09:58:37,0.826s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10043_생성일자순 정렬,Chrome 149.0.7827.114,"C10043 - 생성일자순 정렬
+TestRail: C10043 - Sort the users by creation date
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 테이블의 'Created' 컬럼 헤더를 클릭하세요 (오름차순)
+4. 다시 클릭하여 내림차순으로 전환하세요
+
+결과값: 사용자가 생성일자 기준 오름차순/내림차순으로 정렬됩니다.",,15-06-2026 09:58:37,15-06-2026 09:58:59,21.935s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 09:58:38,15-06-2026 09:58:58,20.508s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 09:58:58,15-06-2026 09:58:58,0.099s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:58:58,15-06-2026 09:58:58,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:58:58,15-06-2026 09:58:59,1.231s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10044_전화번호순 정렬,Chrome 149.0.7827.114,"C10044 - 전화번호순 정렬
+TestRail: C10044 - Sort the users by the phone number
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 테이블의 'Phone' 컬럼 헤더를 클릭하세요 (오름차순)
+4. 다시 클릭하여 내림차순으로 전환하세요
+
+결과값: 사용자가 전화번호 기준 오름차순/내림차순으로 정렬됩니다.",,15-06-2026 09:58:59,15-06-2026 09:59:21,21.918s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 09:58:59,15-06-2026 09:59:20,20.870s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 09:59:20,15-06-2026 09:59:20,0.102s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:59:20,15-06-2026 09:59:20,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:59:20,15-06-2026 09:59:21,0.855s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10045_Start URL순 정렬,Chrome 149.0.7827.114,"C10045 - Start URL순 정렬
+TestRail: C10045 - Sort the users by Start URL
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 테이블의 'Start URL' 컬럼 헤더를 클릭하세요 (오름차순)
+4. 다시 클릭하여 내림차순으로 전환하세요
+
+결과값: 사용자가 Start URL 기준 오름차순/내림차순으로 정렬됩니다.",,15-06-2026 09:59:21,15-06-2026 09:59:44,22.875s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 09:59:21,15-06-2026 09:59:42,21.051s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 09:59:42,15-06-2026 09:59:43,0.124s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:59:43,15-06-2026 09:59:43,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 09:59:43,15-06-2026 09:59:44,1.613s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10046_마지막 업데이트일순 정렬,Chrome 149.0.7827.114,"C10046 - 마지막 업데이트일순 정렬
+TestRail: C10046 - Sort the users by the last update date
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 테이블의 'Last Updated' 컬럼 헤더를 클릭하세요 (오름차순)
+4. 다시 클릭하여 내림차순으로 전환하세요
+
+결과값: 사용자가 마지막 업데이트일 기준 오름차순/내림차순으로 정렬됩니다.",,15-06-2026 09:59:44,15-06-2026 10:00:06,21.704s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 09:59:44,15-06-2026 10:00:05,20.257s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:00:05,15-06-2026 10:00:05,0.103s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:00:05,15-06-2026 10:00:05,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:00:05,15-06-2026 10:00:06,1.274s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10047_비밀번호 변경일순 정렬,Chrome 149.0.7827.114,"C10047 - 비밀번호 변경일순 정렬
+TestRail: C10047 - Sort the users by the password change date
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 테이블의 'PW changed on' 컬럼 헤더를 클릭하세요 (오름차순)
+4. 다시 클릭하여 내림차순으로 전환하세요
+
+결과값: 사용자가 비밀번호 변경일 기준 오름차순/내림차순으로 정렬됩니다.",,15-06-2026 10:00:06,15-06-2026 10:00:28,21.923s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:00:06,15-06-2026 10:00:27,20.847s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:00:27,15-06-2026 10:00:27,0.134s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:00:27,15-06-2026 10:00:27,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:00:27,15-06-2026 10:00:28,0.876s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10048_비밀번호 변경자순 정렬,Chrome 149.0.7827.114,"C10048 - 비밀번호 변경자순 정렬
+TestRail: C10048 - Sort the users by the password change actor
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 테이블의 'PW changed by' 컬럼 헤더를 클릭하세요 (오름차순)
+4. 다시 클릭하여 내림차순으로 전환하세요
+
+결과값: 사용자가 비밀번호 변경자 기준 오름차순/내림차순으로 정렬됩니다.",,15-06-2026 10:00:28,15-06-2026 10:00:50,21.890s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:00:28,15-06-2026 10:00:49,21.186s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:00:49,15-06-2026 10:00:49,0.107s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:00:49,15-06-2026 10:00:49,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:00:49,15-06-2026 10:00:50,0.508s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10049_2SV 상태순 정렬,Chrome 149.0.7827.114,"C10049 - 2SV 상태순 정렬
+TestRail: C10049 - Sort the users by the 2SV status
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 테이블의 '2SV(on/off)' 컬럼 헤더를 클릭하세요 (오름차순)
+4. 다시 클릭하여 내림차순으로 전환하세요
+
+결과값: 사용자가 2SV on/off 상태 기준으로 정렬됩니다.",,15-06-2026 10:00:50,15-06-2026 10:01:11,21.536s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:00:50,15-06-2026 10:01:10,20.559s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:01:10,15-06-2026 10:01:10,0.100s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:01:10,15-06-2026 10:01:10,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:01:10,15-06-2026 10:01:11,0.794s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10050_활성 2SV 방법 검증,Chrome 149.0.7827.114,"C10050 - 활성 2SV 방법 검증
+TestRail: C10050 - Verify the active 2SV methods
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 'Enabled 2SV' 컬럼의 아이콘들을 검사하세요
+4. 알려진 사용자의 예상 2SV 방법 (예: 19960054 강무성 - Authenticator) 이 일치하는지 확인하세요
+
+결과값: 'Enabled 2SV' 컬럼은 사용자별로 활성화된 2SV 방법을 정확히 표시합니다 (Authenticator / FIDO USB / FIDO NFC / Text Message 아이콘).",,15-06-2026 10:01:11,15-06-2026 10:01:32,20.698s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:01:11,15-06-2026 10:01:31,19.407s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:01:31,15-06-2026 10:01:31,0.101s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:01:31,15-06-2026 10:01:31,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:01:31,15-06-2026 10:01:32,1.111s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10051_사용자 50명 표시,Chrome 149.0.7827.114,"C10051 - 사용자 50명 표시
+TestRail: C10051 - Show 50 first user records
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 페이지 하단의 records-per-page 드롭다운에서 '50' 을 선택하세요
+
+결과값: 첫 페이지에 최대 50명의 사용자가 표시됩니다.",,15-06-2026 10:01:32,15-06-2026 10:01:52,20.335s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:01:32,15-06-2026 10:01:51,19.245s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:01:51,15-06-2026 10:01:51,0.111s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:01:51,15-06-2026 10:01:51,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:01:51,15-06-2026 10:01:52,0.867s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10052_사용자 200명 표시,Chrome 149.0.7827.114,"C10052 - 사용자 200명 표시
+TestRail: C10052 - Show 200 first user records
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 페이지 하단의 records-per-page 드롭다운에서 '200' 을 선택하세요
+
+결과값: 첫 페이지에 최대 200명의 사용자가 표시됩니다.",,15-06-2026 10:01:52,15-06-2026 10:02:14,21.450s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:01:52,15-06-2026 10:02:13,20.719s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:02:13,15-06-2026 10:02:13,0.108s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:02:13,15-06-2026 10:02:13,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:02:13,15-06-2026 10:02:14,0.542s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10053_사용자 400명 표시,Chrome 149.0.7827.114,"C10053 - 사용자 400명 표시
+TestRail: C10053 - Show 400 first user records
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요
+3. 페이지 하단의 records-per-page 드롭다운에서 '400' 을 선택하세요
+
+결과값: 첫 페이지에 최대 400명의 사용자가 표시됩니다.",,15-06-2026 10:02:14,15-06-2026 10:02:36,22.240s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:02:14,15-06-2026 10:02:35,21.198s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:02:35,15-06-2026 10:02:35,0.099s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:02:35,15-06-2026 10:02:35,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:02:35,15-06-2026 10:02:36,0.862s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10054_사용자 목록 페이지네이션 검증,Chrome 149.0.7827.114,"C10054 - 사용자 목록 페이지네이션 검증
+TestRail: C10054 - Verify the user records pagination
+
+사전 조건: 관리자 역할
+
+1. KillerID 대시보드에 관리자로 로그인하세요
+2. 'User' 탭으로 이동하세요 (전체 사용자 수가 첫 페이지를 넘는 상태)
+3. 하단의 페이지 번호를 클릭하여 다음 페이지로 이동하세요
+4. 페이지 번호 / 표시 사용자 변경을 확인하세요
+
+결과값: 페이지 번호 클릭 시 해당 페이지의 사용자 목록으로 전환됩니다.",,15-06-2026 10:02:36,15-06-2026 10:02:54,18.297s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:02:36,15-06-2026 10:02:54,17.618s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:02:54,15-06-2026 10:02:54,0.099s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:02:54,15-06-2026 10:02:54,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:02:54,15-06-2026 10:02:54,0.507s,PASSED

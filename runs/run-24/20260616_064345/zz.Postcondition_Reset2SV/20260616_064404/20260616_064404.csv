@@ -1,0 +1,25 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+zz.Postcondition_Reset2SV,Chrome 149.0.7827.114,[Postcondition] Collection(0519) 맨 끝 실행 — 전 테스트 계정(admin/demo1/demo3/demo4/demo5) 2SV OFF + 회사 Force-2SV OFF 로 baseline 복원. 회사 Force-2SV ON 케이스(C10071 등)의 Cross-RUN 오염 방어. NON-FATAL. 시작 Precondition 의 짝.,,16-06-2026 09:05:29,16-06-2026 09:06:47,1m - 17.698s,PASSED
+,,,,,,,
+Test Cases/_Postcondition/Reset_2SV_AllAccounts,Chrome 149.0.7827.114,"[Postcondition] Collection(0519) 맨 끝 — 전 테스트 계정 2SV OFF baseline 복원.
+
+목적 (Rule #6/#19 Cross-RUN 오염 방어):
+- C10071 등 회사 Force-2SV ON 케이스로 전 계정이 2SV ON 강제될 수 있음. teardown 불완전 시 다음 run 의 로그인/2SV 케이스가 OTP 화면 등으로 cascade fail.
+- run 끝에서 ① 회사 Force-2SV OFF (먼저!) → ② admin/demo1/demo3/demo4/demo5 각 계정 2SV OFF.
+
+⚠️ 순서 결정적: 회사 2SV ON 이면 개별 2SV OFF 차단(spec) → 회사 OFF 를 반드시 먼저.
+설계: NON-FATAL (실패해도 throw X, comment 추적). C10071 검증 로직 재사용.
+시작 Precondition(0.Precondition_DomainUsers) 의 짝.",,16-06-2026 09:05:30,16-06-2026 09:06:47,1m - 17.550s,PASSED
+"COMPANY_EDIT_URL = ""https://dev1-dot-killerid-sso-sandbox.an.r.appspot.com/#!/company/edit?selectTab=0""",Chrome 149.0.7827.114,,,16-06-2026 09:05:30,16-06-2026 09:05:30,0.004s,PASSED
+"USERS_URL = ""https://dev1-dot-killerid-sso-sandbox.an.r.appspot.com/#!/users""",Chrome 149.0.7827.114,,,16-06-2026 09:05:30,16-06-2026 09:05:30,0.008s,PASSED
+"ACCOUNTS = [""admin@demo.netkillersoft.com"", ""demo1@demo.netkillersoft.com"", ""demo3@demo.netkillersoft.com"", ""demo4@demo.netkillersoft.com"", ""demo5@demo.netkillersoft.com""]",Chrome 149.0.7827.114,,,16-06-2026 09:05:30,16-06-2026 09:05:30,0.004s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 09:05:30,16-06-2026 09:05:30,0.007s,PASSED
+dynObj = { java.lang.String xp -> ... },Chrome 149.0.7827.114,,,16-06-2026 09:05:30,16-06-2026 09:05:30,0.004s,PASSED
+getForce2SvState = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 09:05:30,16-06-2026 09:05:30,0.005s,PASSED
+clickForce2SvOff = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 09:05:30,16-06-2026 09:05:30,0.004s,PASSED
+cleanupUser2sv = { java.lang.String userEmail -> ... },Chrome 149.0.7827.114,,,16-06-2026 09:05:30,16-06-2026 09:05:30,0.006s,PASSED
+"comment(""[POSTCOND] ════════ Collection 종료 — 전 계정 2SV OFF baseline 복원 ════════"")",Chrome 149.0.7827.114,,,16-06-2026 09:05:30,16-06-2026 09:05:30,0.122s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 09:05:30,16-06-2026 09:06:47,1m - 16.660s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 09:06:47,16-06-2026 09:06:47,0.150s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 09:06:47,16-06-2026 09:06:47,0.006s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 09:06:47,16-06-2026 09:06:47,0.057s,PASSED

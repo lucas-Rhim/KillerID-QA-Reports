@@ -1,0 +1,144 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+5f.KillerID_Company_User_ProfileSubTabs,Chrome 149.0.7827.114,Sprint 5b - KillerID_User Profile sub-tab entry verify + Contact 편집 4 cases (C10085~C10088). demo3 의 Contact / User Preferences / Security tab 의 Edit 모드 진입 + 편집 가능/불가 verify. C10086 (Contact 편집) 만 state-changing — baseline value capture/restore 패턴 (text input 의 4-Phase teardown). C10088 Security 는 Save 절대 금지 (Cancel cleanup).,,16-06-2026 08:10:07,16-06-2026 08:14:29,4m - 22.341s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10085_Contact 탭 Edit 모드 진입,Chrome 149.0.7827.114,"[C10085] Enter the Edit mode on the Contact tab
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 로 로그인 + PW 검증 완료 된 세션 (C10073 결과)
+- KillerID Profile 페이지 진입 상태
+
+🧪 단계:
+1. 'Contact' 탭 클릭
+2. Edit 모드 진입 ('Edit' 버튼 클릭 + PW popup 통과)
+
+✅ 결과값:
+- Primary Email (Username) 편집 불가 (""User cannot edit Primary Email (Username)"")
+- 편집 가능 필드: Office Phone / Mobile Phone / Fax
+
+🔧 자동화 노트:
+- precondition setup: loginAsDomainUserViaProfile + Contact tab 클릭 + Edit click + PW 검증
+- Contact tab 진입 spy 신규 필요 (Sprint 5a 의 General tab 과 다른 sub-tab)
+- Edit 버튼 spy = KillerID_user_profile_user/Page_demo.netkillersoft.com/a_Edit (Sprint 5a 재사용 가능 추정 — Spy capture 로 검증)
+- Verify: Office Phone / Mobile Phone / Fax input 들 enabled, Primary Email (Username) disabled 또는 readonly
+- 분류: verify only — state 변경 없음 (Save 안 함), teardown 불필요",,16-06-2026 08:10:07,16-06-2026 08:11:03,55.656s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 08:10:08,16-06-2026 08:10:08,0.003s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 08:10:08,16-06-2026 08:10:08,0.002s,PASSED
+"DEMO3_ENCRYPTED_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 08:10:08,16-06-2026 08:10:08,0.003s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:10:08,16-06-2026 08:11:02,53.961s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:11:02,16-06-2026 08:11:02,0.125s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:11:02,16-06-2026 08:11:02,0.016s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:11:02,16-06-2026 08:11:03,1.129s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10086_Contact 탭 편집,Chrome 149.0.7827.114,"[C10086] Edit the Contact tab
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 로 로그인 + PW 검증 완료 된 세션 (C10073 결과)
+- KillerID Profile 페이지 진입 상태
+
+🧪 단계:
+1. 'Contact' 탭 클릭
+2. Edit 모드 진입 ('Edit' 버튼 클릭 + PW popup 통과)
+3. Office Phone 입력
+4. Mobile Phone 입력
+5. Fax 입력
+6. Save
+
+✅ 결과값:
+- Office Phone / Mobile Phone / Fax 값 저장 됨 (""User's Office Phone, Mobile Phone and Fax are saved"")
+- View mode 의 Contact tab 에 입력 한 3개 값 표시
+
+🔧 자동화 노트:
+- ⚠️ state-changing — 4-Phase teardown 필수 (baseline 값 capture → restore)
+- precondition setup: loginAsDomainUserViaProfile + Contact tab 클릭 + Edit click + PW 검증
+- Phase 0 (사전 조건): Edit mode 진입 후 현재 Office Phone / Mobile / Fax value 를 WebUI.getAttribute(spy, 'value') 로 capture (또는 empty 면 empty 기록)
+- Phase 2 (Main): 테스트 값 입력 (예: '02-1234-5678' / '010-1234-5678' / '02-9999-9999') → Save → verify
+- Phase 3 (Teardown): stateChangedByTest=true 면 무조건 — Edit 재진입 + capture 한 baseline 으로 복원 (baseline 이 empty 였 으면 clearText 후 Save)
+- Verify 패턴: Spy 의 selected value 직접 매칭 (Sprint 5a 의 C10082 강화 verify 패턴) + body text fallback
+- 신규 spy: Office Phone input, Mobile Phone input, Fax input
+- ⚠️ Phone 형식 검증: TestRail 에 명시 없 음 — Spy capture 시 placeholder 확인 + 실제 입력 시험 (KillerID input validation 동작)",,16-06-2026 08:11:03,16-06-2026 08:12:46,1m - 43.303s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 08:11:04,16-06-2026 08:11:04,0.002s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 08:11:04,16-06-2026 08:11:04,0.002s,PASSED
+"DEMO3_ENCRYPTED_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 08:11:04,16-06-2026 08:11:04,0.001s,PASSED
+"TEST_OFFICE = ""02-1234-5678""",Chrome 149.0.7827.114,,,16-06-2026 08:11:04,16-06-2026 08:11:04,0.001s,PASSED
+"TEST_MOBILE = ""010-1234-5678""",Chrome 149.0.7827.114,,,16-06-2026 08:11:04,16-06-2026 08:11:04,0.001s,PASSED
+"TEST_FAX = ""02-9999-9999""",Chrome 149.0.7827.114,,,16-06-2026 08:11:04,16-06-2026 08:11:04,0.001s,PASSED
+"baselineOffice = """"",Chrome 149.0.7827.114,,,16-06-2026 08:11:04,16-06-2026 08:11:04,0.001s,PASSED
+"baselineMobile = """"",Chrome 149.0.7827.114,,,16-06-2026 08:11:04,16-06-2026 08:11:04,0.001s,PASSED
+"baselineFax = """"",Chrome 149.0.7827.114,,,16-06-2026 08:11:04,16-06-2026 08:11:04,0.001s,PASSED
+baselineCaptured = false,Chrome 149.0.7827.114,,,16-06-2026 08:11:04,16-06-2026 08:11:04,0.001s,PASSED
+stateChangedByTest = false,Chrome 149.0.7827.114,,,16-06-2026 08:11:04,16-06-2026 08:11:04,0.001s,PASSED
+mainTestError = null,Chrome 149.0.7827.114,,,16-06-2026 08:11:04,16-06-2026 08:11:04,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:11:04,16-06-2026 08:12:45,1m - 41.598s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:12:45,16-06-2026 08:12:45,0.099s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:12:45,16-06-2026 08:12:45,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:12:45,16-06-2026 08:12:46,0.986s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10087_User Preferences 탭 Edit 모드 진입,Chrome 149.0.7827.114,"[C10087] Enter the Edit mode on the User Preferences tab
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 로 로그인 + PW 검증 완료 된 세션 (C10073 결과)
+- KillerID Profile 페이지 진입 상태
+
+🧪 단계:
+1. 'User Preferences' 탭 클릭
+2. Edit 모드 진입 ('Edit' 버튼 클릭 + PW popup 통과)
+
+✅ 결과값:
+- User Preferences 탭 의 **모든 필드 편집 불가** (""User cannot edit any field on the User Preferences tab"")
+
+🔧 자동화 노트:
+- precondition setup: loginAsDomainUserViaProfile + User Preferences tab 클릭 + Edit click + PW 검증
+- User Preferences tab 진입 spy 신규 필요
+- Verify 패턴: User Preferences tab 의 모든 input / select 가 disabled / readonly 인지 JS 로 검증
+  - `document.querySelectorAll('input:not([disabled]):not([readonly])')` 의 활성 필드 가 0개 인지 확인
+  - 또는 모든 form input 의 `disabled` / `readonly` attribute 검사
+- 분류: verify only — state 변경 없음 (Save 안 함, Cancel 클릭 또는 closeBrowser), teardown 불필요
+- ⚠️ Edit mode 진입 자체 가 case 의 목적 — 진입 가능 + 모든 필드 read-only 확인
+- 만약 Edit mode 진입 자체 가 차단 되면 expected 와 일치 안 함 → 별도 분석",,16-06-2026 08:12:46,16-06-2026 08:13:37,50.437s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 08:12:46,16-06-2026 08:12:46,0.001s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 08:12:46,16-06-2026 08:12:46,0.002s,PASSED
+"DEMO3_ENCRYPTED_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 08:12:46,16-06-2026 08:12:46,0.000s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:12:46,16-06-2026 08:13:36,49.339s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:13:36,16-06-2026 08:13:36,0.103s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:13:36,16-06-2026 08:13:36,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:13:36,16-06-2026 08:13:37,0.842s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10088_Security 탭 Edit 모드 진입,Chrome 149.0.7827.114,"[C10088] Enter the Edit mode on the Security tab
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 로 로그인 + PW 검증 완료 된 세션 (C10073 결과)
+- KillerID Profile 페이지 진입 상태
+
+🧪 단계:
+1. 'Security' 탭 클릭
+2. Edit 모드 진입 ('Edit' 버튼 클릭 + PW popup 통과)
+
+✅ 결과값:
+- Security 탭 의 **모든 필드 편집 가능** (""All fields can be edited on the Security tab"")
+
+🔧 자동화 노트:
+- precondition setup: loginAsDomainUserViaProfile + Security tab 클릭 + Edit click + PW 검증
+- Security tab 진입 spy 신규 필요
+- Verify 패턴: Security tab 의 모든 form input 이 editable 인지 JS 로 검증
+  - `document.querySelectorAll('input[disabled], input[readonly]')` 의 비활성 필드 가 0개 인지 확인
+  - 또는 모든 visible input / select 의 enabled 상태 검사
+- ⚠️ ABSOLUTE NO SAVE: Save 버튼 절대 클릭 금지 (PW / 2SV 등 민감 필드 — state pollution / 보안 위험)
+- 종료: closeBrowser 또는 Cancel 클릭 (변경 사항 폐기)
+- 분류: verify only (SAFE) — state 변경 없음, teardown 불필요
+- ⚠️ Security tab 의 필드 예상: Recovery Email, PW Change, 2SV 설정 등 — 자동화 시 입력 절대 금지
+- 향후 case (C10089~C10109) 들 이 Security tab 의 각 필드 변경 — C10088 은 단순 entry verify 만",,16-06-2026 08:13:37,16-06-2026 08:14:29,52.764s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 08:13:37,16-06-2026 08:13:37,0.001s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 08:13:37,16-06-2026 08:13:37,0.000s,PASSED
+"DEMO3_ENCRYPTED_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 08:13:37,16-06-2026 08:13:37,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:13:37,16-06-2026 08:14:28,51.536s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:14:28,16-06-2026 08:14:28,0.095s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:14:28,16-06-2026 08:14:28,0.005s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:14:28,16-06-2026 08:14:29,0.974s,PASSED

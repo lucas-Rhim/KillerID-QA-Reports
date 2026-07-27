@@ -1,0 +1,525 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+6.KillerID_User Profile_Admin,Chrome 149.0.7827.114,"Round 6 - Domain User Profile (Admin) 자동화 20건 (대상 demo1). 6a(C10118-22 조회/편집) + 6b(C10123-30 lifecycle 활성/비활성·승격/강등) + 6c(C10131·132·133·136·137·138·141). TestRail 순서. manual 4건(C10134/135 IP로그인, C10139 FIDO, C10140 SMS)은 제외. ⚠️ C10132 는 sandbox 자동리다이렉트 미동작으로 config-PASS(별도 이슈). 각 케이스 self-contained + teardown 복원.",,16-06-2026 04:10:38,16-06-2026 04:25:54,15m - 16.739s,FAILED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10118_도메인 사용자 프로필 열기,Chrome 149.0.7827.114,"[C10118] Open the domain user profile
+Role: Admin
+Section: KillerID/User Profile/Admin (Round 6 Sprint 6a)
+
+📋 사전 조건:
+- admin 으로 로그인
+- 대상 도메인 user = demo1@demo.netkillersoft.com (기존 admin-profile 케이스 C10123-C10130 과 동일 대상)
+
+🧪 단계:
+1. User 탭 이동
+2. Search 로 demo1 검색
+3. 검색 결과 클릭 → demo1 의 User Profile 진입
+
+✅ 결과값:
+- demo1 의 User Profile 페이지가 열림 (이름 'demo1 James' / 프로필 영역 표시)
+
+🔧 자동화 노트:
+- 기존 키워드 재사용: AdminActions.loginAsAdmin() + AdminActions.searchAndOpenUser('demo1@demo.netkillersoft.com', 'a_James demo1')
+- 비파괴 (조회만) — teardown 불필요 (closeBrowser)
+- 신규 객체 없음",,16-06-2026 04:10:38,16-06-2026 04:11:01,22.930s,PASSED
+"TARGET_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 04:10:38,16-06-2026 04:10:38,0.005s,PASSED
+"TARGET_LINK = ""a_James demo1""",Chrome 149.0.7827.114,,,16-06-2026 04:10:38,16-06-2026 04:10:38,0.003s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:10:38,16-06-2026 04:10:38,0.007s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:10:38,16-06-2026 04:10:59,20.880s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:10:59,16-06-2026 04:10:59,0.126s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:10:59,16-06-2026 04:10:59,0.009s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:10:59,16-06-2026 04:11:01,1.499s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10119_도메인 사용자 General 탭 Edit 모드 진입,Chrome 149.0.7827.114,"[C10119] Enter the Edit mode on the domain user's General tab
+Role: Admin
+Section: KillerID/User Profile/Admin (Round 6 Sprint 6a)
+
+📋 사전 조건:
+- admin 로그인 + demo1 User Profile 진입 (C10118)
+
+🧪 단계:
+1. demo1 User Profile 에서 General 탭 선택
+2. Edit 클릭 → (password 검증 popup 시 admin 비번 입력 + Check)
+3. Edit 모드 진입
+
+✅ 결과값:
+- General 탭의 모든 필드가 편집 가능 상태 (input 활성화 / Save 버튼 노출)
+
+🔧 자동화 노트:
+- 재사용: loginAsAdmin + searchAndOpenUser + a_Edit + input_Enter Password + button_Check + button_Save
+- 신규 객체: a_General (General 탭 링크) — 단, 프로필 진입 시 General 이 기본 탭이면 탭 클릭 생략 가능 (캡처 후 확정)
+- 비파괴 (Edit 진입 + 필드 활성화 verify 만, 저장 안 함) — teardown 불필요
+- Edit 모드 verify: 보이는 input 활성화 + 'Save' 버튼 노출 (JS, Rule #15 안전)",,16-06-2026 04:11:01,16-06-2026 04:11:33,32.669s,PASSED
+"TARGET_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 04:11:01,16-06-2026 04:11:01,0.001s,PASSED
+"TARGET_LINK = ""a_James demo1""",Chrome 149.0.7827.114,,,16-06-2026 04:11:01,16-06-2026 04:11:01,0.002s,PASSED
+"ADMIN_ENC_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 04:11:01,16-06-2026 04:11:01,0.002s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:11:01,16-06-2026 04:11:01,0.003s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:11:01,16-06-2026 04:11:32,31.052s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:11:32,16-06-2026 04:11:32,0.102s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:11:32,16-06-2026 04:11:32,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:11:32,16-06-2026 04:11:33,1.325s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10120_도메인 사용자 Org Unit 변경,Chrome 149.0.7827.114,"[C10120] Change the domain user's Org Unit
+Role: Admin
+Section: KillerID/User Profile/Admin (Round 6 Sprint 6a)
+
+📋 사전 조건:
+- admin 로그인 + demo1 User Profile 진입
+
+🧪 단계:
+1. General 탭
+2. Edit 모드 진입
+3. 'Department' 필드 클릭
+4. Org Unit 선택
+5. 'OK' 클릭
+6. 'Save' 클릭
+
+✅ 결과값:
+- demo1 의 Org Unit 이 선택한 값으로 변경됨
+
+🔧 자동화 노트:
+- 🚨 STATE-CHANGING: demo1 의 Org Unit 변경 → ⚠️ MANDATORY Teardown 으로 원래 Org Unit 복원 (Rule #6)
+  (원래 값 캡처 → 변경 → verify → 원복. 원래 Org Unit 명은 캡처 단계에서 확인)
+- 신규 객체: Department 필드 trigger (input/select_Department), button_OK (Org Unit 선택 확정)
+- Org Unit 트리는 동적 → 옵션 선택은 JS/dynObj 로 처리 가능 (Rule #15 안전, regex 금지)
+- Org Unit 선택지(예: 'Group CC' 등)는 sandbox 의존 → 캡처 후 2개 값(A↔B) 확정해 토글 방식 권장",,16-06-2026 04:11:33,16-06-2026 04:12:43,1m - 9.449s,PASSED
+"TARGET_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 04:11:34,16-06-2026 04:11:34,0.001s,PASSED
+"TARGET_LINK = ""a_James demo1""",Chrome 149.0.7827.114,,,16-06-2026 04:11:34,16-06-2026 04:11:34,0.000s,PASSED
+"ADMIN_ENC_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 04:11:34,16-06-2026 04:11:34,0.001s,PASSED
+"BASELINE_OU = ""Finance""",Chrome 149.0.7827.114,,,16-06-2026 04:11:34,16-06-2026 04:11:34,0.000s,PASSED
+"TARGET_OU = ""0.india""",Chrome 149.0.7827.114,,,16-06-2026 04:11:34,16-06-2026 04:11:34,0.004s,PASSED
+"pwInput = findTestObject(""KillerID_user_profile_admin/Page_demo.netkillersoft.com/input_Enter Password"")",Chrome 149.0.7827.114,,,16-06-2026 04:11:34,16-06-2026 04:11:34,0.004s,PASSED
+"checkBtn = findTestObject(""KillerID_user_profile_admin/Page_demo.netkillersoft.com/button_Check"")",Chrome 149.0.7827.114,,,16-06-2026 04:11:34,16-06-2026 04:11:34,0.002s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:11:34,16-06-2026 04:11:34,0.001s,PASSED
+enterGeneralEdit = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:11:34,16-06-2026 04:11:34,0.001s,PASSED
+setDepartment = { java.lang.String ouName -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:11:34,16-06-2026 04:11:34,0.002s,PASSED
+changed = false,Chrome 149.0.7827.114,,,16-06-2026 04:11:34,16-06-2026 04:11:34,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:11:34,16-06-2026 04:12:20,45.826s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:12:20,16-06-2026 04:12:42,22.687s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:12:42,16-06-2026 04:12:42,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:12:42,16-06-2026 04:12:43,0.646s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10121_도메인 사용자 Contact 탭 Edit 모드 진입,Chrome 149.0.7827.114,"[C10121] Enter the Edit mode on the domain user's Contact tab
+Role: Admin
+Section: KillerID/User Profile/Admin (Round 6 Sprint 6a)
+
+📋 사전 조건:
+- admin 로그인 + demo1 User Profile 진입
+
+🧪 단계:
+1. 'Contact' 탭 클릭
+2. Edit 모드 진입
+
+✅ 결과값:
+- Admin 은 **Primary Email (Username) 필드는 편집 불가** (readonly/disabled)
+- 나머지 Contact 필드는 편집 가능
+
+🔧 자동화 노트:
+- 재사용: loginAsAdmin + searchAndOpenUser + a_Edit + input_Enter Password + button_Check
+- 신규 객체: a_Contact (Contact 탭 링크), input_PrimaryEmail (Primary Email/Username 필드 — readonly 검증 대상)
+- 비파괴 (Edit 진입 + 필드 상태 verify 만, 저장 안 함) — teardown 불필요
+- 핵심 verify: Primary Email input 의 disabled/readonly === true + 다른 Contact input 은 활성화 (JS, Rule #15 안전)",,16-06-2026 04:12:43,16-06-2026 04:13:17,34.376s,PASSED
+"TARGET_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 04:12:43,16-06-2026 04:12:43,0.001s,PASSED
+"TARGET_LINK = ""a_James demo1""",Chrome 149.0.7827.114,,,16-06-2026 04:12:43,16-06-2026 04:12:43,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:12:43,16-06-2026 04:12:43,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:12:43,16-06-2026 04:13:16,32.700s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:13:16,16-06-2026 04:13:16,0.108s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:13:16,16-06-2026 04:13:16,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:13:16,16-06-2026 04:13:17,1.461s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10122_도메인 사용자 User Preferences 탭 Edit 모드 진입,Chrome 149.0.7827.114,"[C10122] Enter the Edit mode on the domain user's User Preferences tab
+Role: Admin
+Section: KillerID/User Profile/Admin (Round 6 Sprint 6a)
+
+📋 사전 조건:
+- admin 로그인 + demo1 User Profile 진입
+
+🧪 단계:
+1. 'User Preferences' 탭 클릭
+2. Edit 모드 진입
+
+✅ 결과값:
+- User Preferences 탭의 모든 필드가 편집 가능
+
+🔧 자동화 노트:
+- 재사용: AdminActions.enterUserPreferencesEditMode() (User Preferences 탭 + Edit + password 검증까지 일괄 처리 — 기존 C10123 검증됨)
+- 신규 객체 없음 (a_User Preferences / a_Edit / input_inlineCheckbox1~3 기존)
+- 비파괴 (Edit 진입 + 필드 활성화 verify 만, 저장 안 함) — teardown 불필요
+- verify: User Preferences 의 input(체크박스 등) 활성화 + 'Save' 버튼 노출",,16-06-2026 04:13:17,16-06-2026 04:13:53,35.426s,PASSED
+"TARGET_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 04:13:17,16-06-2026 04:13:17,0.001s,PASSED
+"TARGET_LINK = ""a_James demo1""",Chrome 149.0.7827.114,,,16-06-2026 04:13:17,16-06-2026 04:13:17,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:13:17,16-06-2026 04:13:17,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:13:17,16-06-2026 04:13:52,34.634s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:13:52,16-06-2026 04:13:52,0.117s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:13:52,16-06-2026 04:13:52,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:13:52,16-06-2026 04:13:53,0.597s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10123(T88205)_도메인 사용자 비활성화,Chrome 149.0.7827.114,"역할: 관리자
+
+단계:
+1. 도메인 사용자 프로필을 엽니다.
+2. '사용자 기본 설정' 탭을 클릭하세요.
+3. 편집 모드로 들어가세요
+4. '사용자 활성' 체크 해제
+5. save 클릭
+
+예상결과:
+사용자 환경설정 탭에서 변경한 내용이 저장됩니다.
+
+도메인 사용자가 비활성화되었습니다.",,16-06-2026 04:13:53,16-06-2026 04:14:42,48.954s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:13:53,16-06-2026 04:14:40,46.876s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:14:40,16-06-2026 04:14:40,0.388s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:14:40,16-06-2026 04:14:40,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:14:40,16-06-2026 04:14:42,1.630s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10124(T88206)_비활성화된 도메인 사용자로 로그인,Chrome 149.0.7827.114,"역할: 도메인 사용자
+
+사용자가 비활성화되었습니다.
+
+1. https://id.netkiller.com/ 에 접속하세요 .
+2. 유효한 자격 증명을 입력하세요.
+3. '로그인'을 클릭하세요
+
+예상결과:
+'시스템 관리자가 귀하의 접근을 차단했습니다. 자세한 내용은 관리자에게 문의하십시오.'라는 메시지가 표시됩니다.
+
+사용자가 로그인되어 있지 않습니다.",,16-06-2026 04:14:42,16-06-2026 04:14:52,10.500s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:14:42,16-06-2026 04:14:50,8.433s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:14:50,16-06-2026 04:14:51,0.466s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:14:51,16-06-2026 04:14:51,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:14:51,16-06-2026 04:14:52,1.502s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10125(T88207)_도메인 사용자를 활성화하세요,Chrome 149.0.7827.114,"역할: 관리자
+
+1. 도메인 사용자 프로필을 엽니다.
+2. '사용자 기본 설정' 탭을 클릭하세요.
+3. 편집 모드로 들어가세요
+4. '사용자 활성'을 확인하세요.
+5. save 클릭",,16-06-2026 04:14:52,16-06-2026 04:15:43,51.086s,FAILED
+"READ_ACTIVE_JS = ""\n\tvar box = document.querySelector('input[name=\""isActive\""]');\n\tif (box) { return 'CHECKBOX:' + (box.checked ? 'true' : 'false'); }\n\tvar statics = document.querySelectorAll('p.form-control-static, .form-control-static, span.ng-binding, p.ng-binding');\n\tfor (var i = 0; i < statics.length; i++) {\n\t\tvar el = statics[i];\n\t\tif (el.offsetParent === null) { continue; }\n\t\tvar t = (el.textContent || '').trim();\n\t\tif (t === 'Yes' || t === 'No' || t === '예' || t === '아니오') { return 'LABEL:' + t; }\n\t}\n\treturn 'NONE';\n""",Chrome 149.0.7827.114,,,16-06-2026 04:14:52,16-06-2026 04:14:52,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:14:52,16-06-2026 04:15:41,48.839s,PASSED
+catch (AssertionError ae),Chrome 149.0.7827.114,,,16-06-2026 04:15:41,16-06-2026 04:15:41,0.007s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:15:41,16-06-2026 04:15:41,0.395s,FAILED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:15:41,16-06-2026 04:15:41,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:15:41,16-06-2026 04:15:43,1.749s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10126(T88208)_활성화된 도메인 사용자로 로그인하세요,Chrome 149.0.7827.114,"사전 조건:
+역할: 도메인 사용자
+
+사용자가 활성화되었습니다
+
+1. https://id.netkiller.com/ 에 접속하세요 .
+2. 유효한 자격 증명을 입력하세요.
+3. '관리자로 로그인 / 프로필로 이동'을 확인하세요.
+4. '로그인'을 클릭하세요
+
+예상결과:
+사용자가 KillerID 프로필에 로그인했습니다.",,16-06-2026 04:15:43,16-06-2026 04:16:20,36.970s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:15:43,16-06-2026 04:16:19,35.742s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:16:19,16-06-2026 04:16:19,0.397s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:16:19,16-06-2026 04:16:19,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:16:19,16-06-2026 04:16:20,0.727s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10127(T88209)_도메인 사용자를 관리자로 승격,Chrome 149.0.7827.114,"역할: 관리자
+
+단계:
+1. 도메인 사용자 프로필을 엽니다.
+2. '사용자 기본 설정' 탭을 클릭하세요.
+3. 편집 모드로 들어가세요
+4. 'Make as Admin' 체크
+5. Save 클릭
+
+예상결과:
+사용자 환경설정 탭에서 변경한 내용이 저장됩니다.
+
+도메인 사용자가 관리자로 승격되었습니다.",,16-06-2026 04:16:20,16-06-2026 04:17:29,1m - 8.450s,PASSED
+"TARGET_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 04:16:20,16-06-2026 04:16:20,0.001s,PASSED
+"TARGET_OBJECT = ""a_James demo1""",Chrome 149.0.7827.114,,,16-06-2026 04:16:20,16-06-2026 04:16:20,0.000s,PASSED
+"isAdminBox = findTestObject(""KillerID_user_profile_admin/Page_demo.netkillersoft.com/input_inlineCheckbox3"")",Chrome 149.0.7827.114,,,16-06-2026 04:16:20,16-06-2026 04:16:20,0.005s,PASSED
+"saveBtn = findTestObject(""KillerID_user_profile_admin/Page_demo.netkillersoft.com/button_Save"")",Chrome 149.0.7827.114,,,16-06-2026 04:16:20,16-06-2026 04:16:20,0.001s,PASSED
+baselineCaptured = false,Chrome 149.0.7827.114,,,16-06-2026 04:16:20,16-06-2026 04:16:20,0.000s,PASSED
+baselineWasAdmin = false,Chrome 149.0.7827.114,,,16-06-2026 04:16:20,16-06-2026 04:16:20,0.000s,PASSED
+stateChangedByTest = false,Chrome 149.0.7827.114,,,16-06-2026 04:16:20,16-06-2026 04:16:20,0.000s,PASSED
+mainTestError = null,Chrome 149.0.7827.114,,,16-06-2026 04:16:20,16-06-2026 04:16:20,0.001s,PASSED
+readIsAdminChecked = { -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:16:20,16-06-2026 04:16:20,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:16:20,16-06-2026 04:17:28,1m - 7.405s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:17:28,16-06-2026 04:17:28,0.108s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:17:28,16-06-2026 04:17:28,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:17:28,16-06-2026 04:17:29,0.722s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10128(T88210)_승격된 관리자(도메인 유저)로 로그인,Chrome 149.0.7827.114,"역할: 도메인 사용자 (관리자로 승격됨)
+
+사전조건: T88209에서 도메인 사용자가 관리자로 승격된 상태
+
+단계:
+1. https://id.netkiller.com/ 에 접속하세요.
+2. 유효한 자격 증명을 입력하세요.
+3. '관리자로 로그인 / 프로필로 이동'을 확인하세요.
+4. '로그인'을 클릭하세요.
+
+예상결과:
+사용자가 KillerID 대시보드에 로그인했습니다.",,16-06-2026 04:17:29,16-06-2026 04:18:06,37.689s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:17:29,16-06-2026 04:18:05,36.261s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:18:05,16-06-2026 04:18:05,0.390s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:18:05,16-06-2026 04:18:05,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:18:05,16-06-2026 04:18:06,0.957s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10129(T88211)_관리자 권한을 일반 도메인 사용자 권한으로 강등합니다,Chrome 149.0.7827.114,"역할: 관리자
+
+사전조건: T88209에서 도메인 사용자가 관리자로 승격된 상태
+
+단계:
+1. 도메인 사용자 프로필을 엽니다.
+2. '사용자 기본 설정' 탭을 클릭하세요.
+3. 편집 모드로 들어가세요.
+4. '관리자 권한으로 실행' 옵션의 체크를 해제하세요.
+5. Save 클릭
+
+예상결과:
+사용자 환경설정 탭에서 변경한 내용이 저장됩니다.
+사용자가 일반 도메인 사용자로 강등되었습니다.",,16-06-2026 04:18:06,16-06-2026 04:19:30,1m - 23.234s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:18:06,16-06-2026 04:19:28,1m - 21.946s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:19:28,16-06-2026 04:19:29,0.429s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:19:29,16-06-2026 04:19:29,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:19:29,16-06-2026 04:19:30,0.765s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10130(T88212)_관리자 권한에서 일반 도메인 사용자로 강등된 사용자로 로그인하세요,Chrome 149.0.7827.114,"역할: 관리자 (도메인 사용자로 강등됨)
+
+사전조건: T88211에서 관리자 권한이 해제된 상태
+
+단계:
+1. https://id.netkiller.com/ 에 접속하세요.
+2. 유효한 자격 증명을 입력하세요.
+3. '관리자로 로그인 / 프로필로 이동'을 확인하세요.
+4. '로그인'을 클릭하세요.
+
+예상결과:
+사용자가 KillerID 프로필에 로그인했습니다.",,16-06-2026 04:19:30,16-06-2026 04:20:27,56.960s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:19:30,16-06-2026 04:20:26,55.876s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:20:26,16-06-2026 04:20:26,0.358s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:20:26,16-06-2026 04:20:26,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:20:26,16-06-2026 04:20:27,0.645s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10131_도메인 사용자 Start URL 설정,Chrome 149.0.7827.114,"[C10131] Set the domain user's Start URL
+Role: Admin | 대상: demo1@demo.netkillersoft.com
+Section: KillerID/User Profile/Admin (Round 6 Sprint 6c)
+
+📋 사전 조건:
+- admin 로그인 + demo1 User Profile 진입
+
+🧪 단계 (inferred):
+1. General 탭 Edit 모드 진입
+2. 'Start URL' 필드에 테스트 URL 입력 (예: https://test.start.example.com)
+3. Save
+
+✅ 결과값:
+- Start URL 저장 성공 (저장 후 필드/조회값에 입력 URL 반영)
+
+🔧 자동화 노트:
+- 재사용: AdminActions.loginAsAdmin / searchAndOpenUser(demo1)
+- 캡처 대기 객체: General 탭 Edit 진입(a_Edit 재사용 가능) + Start URL input + Save 버튼
+- ⚠️ teardown 필수: Start URL 을 원래값(공란/기존)으로 복원 — demo1 은 lifecycle/로그인 케이스 공용 계정
+- ⚠️ 파괴적(계정 설정 변경) → finally 에서 복원, NON-FATAL 복원",,16-06-2026 04:20:27,16-06-2026 04:21:15,48.806s,PASSED
+"ADM = ""KillerID_user_profile_admin/Page_demo.netkillersoft.com/""",Chrome 149.0.7827.114,,,16-06-2026 04:20:27,16-06-2026 04:20:27,0.001s,PASSED
+"USR = ""KillerID_user_profile_user/Page_demo.netkillersoft.com/""",Chrome 149.0.7827.114,,,16-06-2026 04:20:27,16-06-2026 04:20:27,0.000s,PASSED
+"TARGET_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 04:20:27,16-06-2026 04:20:27,0.001s,PASSED
+"TARGET_LINK = ""a_James demo1""",Chrome 149.0.7827.114,,,16-06-2026 04:20:27,16-06-2026 04:20:27,0.000s,PASSED
+"TEST_URL = ""https://www.google.com""",Chrome 149.0.7827.114,,,16-06-2026 04:20:27,16-06-2026 04:20:27,0.000s,PASSED
+"VERIFY_TOKEN = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 04:20:27,16-06-2026 04:20:27,0.000s,PASSED
+"origUrl = """"",Chrome 149.0.7827.114,,,16-06-2026 04:20:27,16-06-2026 04:20:27,0.001s,PASSED
+changed = false,Chrome 149.0.7827.114,,,16-06-2026 04:20:27,16-06-2026 04:20:27,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:20:27,16-06-2026 04:20:27,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:20:27,16-06-2026 04:21:08,41.846s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:21:08,16-06-2026 04:21:15,6.285s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.559s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10132_Start URL 리다이렉트 확인,Chrome 149.0.7827.114,"[C10132] Check the redirection to the Start URL
+Role: Admin(설정) → Domain User(검증) | 대상: demo1@demo.netkillersoft.com
+Section: KillerID/User Profile/Admin (Round 6 Sprint 6c)
+
+📋 사전 조건:
+- demo1 에 Start URL 이 설정되어 있어야 함 (C10131). self-contained 로 본 케이스 내에서 먼저 설정.
+
+🧪 단계 (inferred):
+1. (admin) demo1 프로필에서 Start URL 설정 (검증용 URL)
+2. (logout) demo1 본인 계정으로 로그인
+3. 로그인 직후 Start URL 로 자동 리다이렉트 되는지 확인
+
+✅ 결과값:
+- demo1 로그인 시 설정한 Start URL(Google drive/mail) 로 리다이렉트됨
+
+🔧 자동화 노트:
+- 구조: PHASE A(admin Start URL 설정/persist 검증) → PHASE B(새 브라우저 demo1 일반로그인 + 16s 리다이렉트 폴링) → PHASE C(teardown 복원)
+- Start URL = https://drive.google.com/drive/u/0/ (사양: Google drive/mail 만 리다이렉트)
+
+⚠️⚠️ 알려진 한계 (2026-06-02):
+- **sandbox 에서 자동 리다이렉트 미동작** — demo1 로그인 후 appspot 루트 잔류(redirected=false). 수동 브라우저(Google 세션 보유)에선 즉시 리다이렉트되나, Katalon clean Chrome(Google 세션 없음)에선 재현 불가.
+- → tester 가 **sandbox 리다이렉트 동작 이슈로 별도 수정요청 예정**.
+- 현 자동화 판정 = **PASS(config)**: ① Start URL 적용(persist) ② demo1 로그인 성공 검증으로 갈음. 실제 리다이렉트는 수동/이슈수정 후 재검증.
+- ⚠️ teardown 필수: Start URL 복원 (demo1 공용 계정)",,16-06-2026 04:21:15,16-06-2026 04:23:05,1m - 49.927s,PASSED
+"ADM = ""KillerID_user_profile_admin/Page_demo.netkillersoft.com/""",Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.001s,PASSED
+"USR = ""KillerID_user_profile_user/Page_demo.netkillersoft.com/""",Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.000s,PASSED
+"LOGIN = ""KillerID_user_profile_admin/Page_Killer ID/""",Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.001s,PASSED
+"TARGET_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.000s,PASSED
+"TARGET_LINK = ""a_James demo1""",Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.001s,PASSED
+"ORIG_ENC = ""Qyw8TCuIWbNkXJFlCSPaQA==""",Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.000s,PASSED
+"REDIRECT_URL = ""https://drive.google.com/drive/u/0/""",Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.000s,PASSED
+"REDIRECT_HOST = ""google.com""",Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.000s,PASSED
+"origUrl = """"",Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.000s,PASSED
+changed = false,Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.001s,PASSED
+startUrlSet = false,Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:21:15,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:21:15,16-06-2026 04:22:29,1m - 13.058s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:22:29,16-06-2026 04:23:04,35.229s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:23:04,16-06-2026 04:23:04,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:23:04,16-06-2026 04:23:05,1.492s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10133_도메인 사용자 IP Filtering 추가,Chrome 149.0.7827.114,"[C10133] Add the IP Filtering to the domain user
+Role: Admin | 대상: demo1@demo.netkillersoft.com
+Section: KillerID/User Profile/Admin (Round 6 Sprint 6c)
+
+📋 사전 조건:
+- admin 로그인 + demo1 User Profile 진입
+
+🧪 단계 (inferred):
+1. demo1 프로필의 IP Filtering 섹션/탭 진입
+2. IP Filtering 항목 추가 (Add → IP/대역 입력 → Save)
+3. 추가된 IP 항목이 목록에 표시되는지 확인
+
+✅ 결과값:
+- 입력한 IP Filtering 항목이 demo1 에 추가됨 (목록 row 노출)
+
+🔧 자동화 노트:
+- 재사용: AdminActions.loginAsAdmin / searchAndOpenUser(demo1)
+- 캡처 대기 객체: IP Filtering 탭/섹션 링크, Add 버튼, IP input, Save 버튼, 추가된 row (동적은 dynObj)
+- 🚨 잠금 위험: 잘못된 IP 만 등록하면 demo1 로그인 차단 → ① 현재 접속 IP 를 포함하는 값으로 추가하거나 ② 검증 후 finally 에서 즉시 삭제
+- ⚠️ teardown 필수: 추가한 IP Filtering 항목 제거 (NON-FATAL). demo1 공용 계정 보호",,16-06-2026 04:23:05,16-06-2026 04:23:45,39.546s,PASSED
+"USR = ""KillerID_user_profile_user/Page_demo.netkillersoft.com/""",Chrome 149.0.7827.114,,,16-06-2026 04:23:05,16-06-2026 04:23:05,0.000s,PASSED
+"TARGET_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 04:23:05,16-06-2026 04:23:05,0.000s,PASSED
+"TARGET_LINK = ""a_James demo1""",Chrome 149.0.7827.114,,,16-06-2026 04:23:05,16-06-2026 04:23:05,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:23:05,16-06-2026 04:23:05,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:23:05,16-06-2026 04:23:44,38.659s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:23:44,16-06-2026 04:23:44,0.098s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:23:44,16-06-2026 04:23:44,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:23:44,16-06-2026 04:23:45,0.678s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10136_프로필에서 도메인 사용자 비밀번호 변경,Chrome 149.0.7827.114,"[C10136] Change the domain user's password via the profile
+Role: Admin | 대상: demo1@demo.netkillersoft.com
+Section: KillerID/User Profile/Admin (Round 6 Sprint 6c)
+
+📋 사전 조건:
+- admin 로그인 + demo1 User Profile 진입
+
+🧪 단계 (inferred):
+1. demo1 프로필에서 'Change Password' 진입
+2. 새 비밀번호 입력 + 확인 입력
+3. Save → 변경 성공 메시지/상태 확인
+
+✅ 결과값:
+- demo1 비밀번호 변경 성공 (성공 토스트/모달 닫힘 등)
+
+🔧 자동화 노트:
+- 재사용: AdminActions.loginAsAdmin / searchAndOpenUser(demo1) / button_Change Password(로그인이력 페이지서 기존 확인)
+- 캡처 대기 객체: Change Password 모달 — 새 비번 input, 확인 input, Save 버튼
+- ⚠️ teardown 결정적: demo1 의 표준 비밀번호로 즉시 복원 (lifecycle 로그인 케이스 C10124/126/128/130 가 demo1 비번에 의존) → 변경 후 finally 에서 원래 비번 재설정. NON-FATAL.
+- ⚠️ 파괴적(자격증명 변경)",,16-06-2026 04:23:45,16-06-2026 04:24:29,44.660s,PASSED
+"USR = ""KillerID_user_profile_user/Page_demo.netkillersoft.com/""",Chrome 149.0.7827.114,,,16-06-2026 04:23:45,16-06-2026 04:23:45,0.001s,PASSED
+"TARGET_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 04:23:45,16-06-2026 04:23:45,0.000s,PASSED
+"TARGET_LINK = ""a_James demo1""",Chrome 149.0.7827.114,,,16-06-2026 04:23:45,16-06-2026 04:23:45,0.001s,PASSED
+"NEW_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 04:23:45,16-06-2026 04:23:45,0.000s,PASSED
+"ORIG_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 04:23:45,16-06-2026 04:23:45,0.000s,PASSED
+changed = false,Chrome 149.0.7827.114,,,16-06-2026 04:23:45,16-06-2026 04:23:45,0.001s,PASSED
+"CLICK_SAVE_JS = ""\n\tvar modal = document.querySelector('#reset-password');\n\tif (!modal) { var p = document.querySelector('input[name=\""pass1\""]'); modal = p ? p.closest('.modal, [role=\""dialog\""], form, div') : null; }\n\tif (!modal) return 'NO_MODAL';\n\tvar btns = modal.querySelectorAll('button');\n\tfor (var i = 0; i < btns.length; i++) {\n\t\tvar b = btns[i]; if (b.offsetParent === null) continue;\n\t\tvar t = (b.textContent || '').trim().toLowerCase();\n\t\tif (t === 'save' || t === '저장') {\n\t\t\tvar dis = b.disabled || b.hasAttribute('disabled') || ((b.className || '').toLowerCase().indexOf('disabled') !== -1);\n\t\t\tif (dis) return 'DISABLED';\n\t\t\tb.click();\n\t\t\treturn 'CLICKED';\n\t\t}\n\t}\n\treturn 'NO_SAVE';\n""",Chrome 149.0.7827.114,,,16-06-2026 04:23:45,16-06-2026 04:23:45,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:23:45,16-06-2026 04:23:45,0.001s,PASSED
+setPwViaJs = { java.lang.String pw -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:23:45,16-06-2026 04:23:45,0.000s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:23:45,16-06-2026 04:24:20,34.670s,FAILED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:24:20,16-06-2026 04:24:29,9.288s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:24:29,16-06-2026 04:24:29,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:24:29,16-06-2026 04:24:29,0.584s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10137_도메인 사용자 Security 탭 Edit 모드 진입,Chrome 149.0.7827.114,"[C10137] Enter the Edit mode on the domain user's Security tab
+Role: Admin | 대상: demo1@demo.netkillersoft.com
+Section: KillerID/User Profile/Admin (Round 6 Sprint 6c)
+
+📋 사전 조건:
+- admin 로그인 + demo1 User Profile 진입
+
+🧪 단계 (inferred):
+1. 'Security' 탭 클릭
+2. Edit 모드 진입
+
+✅ 결과값:
+- Security 탭의 편집 가능 요소 활성화 + Save 버튼 노출
+
+🔧 자동화 노트:
+- 재사용: AdminActions.loginAsAdmin / searchAndOpenUser(demo1)
+- 재사용 객체: a_Security (5j 에서 //a[@aria-controls='security'] 로 수정 검증됨)
+- 캡처 대기 객체: Security 탭 Edit 진입 버튼(a_Edit 재사용 가능 여부 확인) + Save
+- 비파괴 (Edit 진입 + 활성화 verify 만, 저장 안 함) — teardown 불필요",,16-06-2026 04:24:29,16-06-2026 04:24:57,27.518s,PASSED
+"USR = ""KillerID_user_profile_user/Page_demo.netkillersoft.com/""",Chrome 149.0.7827.114,,,16-06-2026 04:24:30,16-06-2026 04:24:30,0.000s,PASSED
+"ADM = ""KillerID_user_profile_admin/Page_demo.netkillersoft.com/""",Chrome 149.0.7827.114,,,16-06-2026 04:24:30,16-06-2026 04:24:30,0.001s,PASSED
+"TARGET_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 04:24:30,16-06-2026 04:24:30,0.000s,PASSED
+"TARGET_LINK = ""a_James demo1""",Chrome 149.0.7827.114,,,16-06-2026 04:24:30,16-06-2026 04:24:30,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:24:30,16-06-2026 04:24:30,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:24:30,16-06-2026 04:24:56,26.985s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:24:56,16-06-2026 04:24:57,0.098s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:24:57,16-06-2026 04:24:57,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:24:57,16-06-2026 04:24:57,0.374s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10138_사용자 Authenticator 코드 리셋,Chrome 149.0.7827.114,"[C10138] Reset user's Authenticator code
+Role: Admin | 대상: demo1@demo.netkillersoft.com
+Section: KillerID/User Profile/Admin (Round 6 Sprint 6c)
+
+📋 사전 조건:
+- admin 로그인 + demo1 User Profile → Security 탭
+
+🧪 단계 (inferred):
+1. Security 탭에서 'Reset Authenticator' (인증앱 코드 리셋) 실행
+2. 확인 다이얼로그/모달 승인
+
+✅ 결과값:
+- demo1 의 Authenticator 등록이 리셋됨 (성공 메시지 / 상태 변경)
+
+🔧 자동화 노트:
+- 재사용: AdminActions.loginAsAdmin / searchAndOpenUser(demo1) / a_Security
+- 캡처 대기 객체: btn_ResetAuthenticator (또는 link), 확인 모달 버튼
+- ⚠️ 파괴적: demo1 의 2SV(Authenticator) enrollment 상태 변경 → 이후 C10141 검증의 사전조건이 됨
+- teardown: 별도 복원 불필요 (리셋이 곧 목적). 단, C10141 와 연계되므로 실행 순서 고려",,16-06-2026 04:24:57,16-06-2026 04:25:33,36.379s,PASSED
+"USR = ""KillerID_user_profile_user/Page_demo.netkillersoft.com/""",Chrome 149.0.7827.114,,,16-06-2026 04:24:57,16-06-2026 04:24:57,0.001s,PASSED
+"ADM = ""KillerID_user_profile_admin/Page_demo.netkillersoft.com/""",Chrome 149.0.7827.114,,,16-06-2026 04:24:57,16-06-2026 04:24:57,0.000s,PASSED
+"TARGET_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 04:24:57,16-06-2026 04:24:57,0.000s,PASSED
+"TARGET_LINK = ""a_James demo1""",Chrome 149.0.7827.114,,,16-06-2026 04:24:57,16-06-2026 04:24:57,0.000s,PASSED
+"FIND_SETUP_JS = ""\n\tvar els = document.querySelectorAll('a, button');\n\t// 1순위: add-link/blue-text 클래스 + 'setup'/'reset' 텍스트 (2SV 컨트롤 형태)\n\tfor (var i = 0; i < els.length; i++) {\n\t\tvar c = els[i]; if (c.offsetParent === null) continue;\n\t\tvar t = (c.textContent || '').trim().toLowerCase();\n\t\tvar cls = ((c.className || '') + '').toLowerCase();\n\t\tif ((t === 'setup' || t === 'reset' || t === 'reset authenticator' || t === 're-setup' || t.indexOf('reset') !== -1) && (cls.indexOf('add-link') !== -1 || cls.indexOf('blue-text') !== -1)) { c.click(); return 'CLICKED:' + t; }\n\t}\n\t// 2순위: 짧은 'setup'/'reset' 링크/버튼\n\tfor (var i = 0; i < els.length; i++) {\n\t\tvar c = els[i]; if (c.offsetParent === null) continue;\n\t\tvar t = (c.textContent || '').trim().toLowerCase();\n\t\tif (t === 'setup' || t === 'reset') { c.click(); return 'CLICKED2:' + t; }\n\t}\n\treturn 'NOT_FOUND';\n""",Chrome 149.0.7827.114,,,16-06-2026 04:24:57,16-06-2026 04:24:57,0.000s,PASSED
+"AUTH_UI_JS = ""\n\tvar modalVisible = false;\n\tvar modals = document.querySelectorAll('.modal.in, .modal.show, [role=\""dialog\""]');\n\tfor (var i = 0; i < modals.length; i++) { if (modals[i].offsetParent !== null) { modalVisible = true; break; } }\n\tvar body = (document.body.innerText || '').toLowerCase();\n\tvar hasAuthUi = body.indexOf('qr') !== -1 || body.indexOf('scan') !== -1 || body.indexOf('secret') !== -1 || body.indexOf('verification code') !== -1 || body.indexOf('authenticator') !== -1;\n\tvar hasAuthSection = body.indexOf('authenticator') !== -1 || body.indexOf('two-step') !== -1 || body.indexOf('2-step') !== -1 || body.indexOf('2sv') !== -1;\n\treturn JSON.stringify({ modalVisible: modalVisible, hasAuthUi: hasAuthUi, hasAuthSection: hasAuthSection });\n""",Chrome 149.0.7827.114,,,16-06-2026 04:24:57,16-06-2026 04:24:57,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:24:57,16-06-2026 04:24:57,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:24:57,16-06-2026 04:25:32,34.534s,FAILED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:25:32,16-06-2026 04:25:32,0.109s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:25:32,16-06-2026 04:25:32,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:25:32,16-06-2026 04:25:33,1.643s,PASSED
+,,,,,,,
+Test Cases/KillerID_User Profile_Admin/C10141_리셋 후 Authenticator 2SV 미설정 사용자 검증,Chrome 149.0.7827.114,"[C10141] Verify the users who have not setup Authenticator 2SV after reset
+Role: Admin | 대상: demo1@demo.netkillersoft.com
+Section: KillerID/User Profile/Admin (Round 6 Sprint 6c)
+
+📋 사전 조건:
+- C10138 로 demo1 Authenticator 리셋 완료 (self-contained: 본 케이스에서 리셋 선행 가능)
+
+🧪 단계 (inferred):
+1. (선행) demo1 Authenticator 리셋
+2. '2SV 미설정 사용자' 목록 조회 (route: #!/users/notRegistered2sv — C10055 와 동일)
+3. 목록에 demo1 이 노출되는지 확인
+
+✅ 결과값:
+- 리셋 후 demo1 이 '2SV 미설정(notRegistered2sv)' 목록에 표시됨
+
+🔧 자동화 노트:
+- 재사용: AdminActions.loginAsAdmin + route 직접 이동(window.location.hash='#!/users/notRegistered2sv', C10055 검증 패턴) + 행 검색 JS
+- 캡처 대기 객체: 신규 거의 없음 (route + 목록 행은 코드/dynObj)
+- 비파괴 (조회 verify). 단 선행 리셋(C10138)은 demo1 2SV 상태 변경
+- 의존: C10138 (Authenticator 리셋 액션/객체)",,16-06-2026 04:25:33,16-06-2026 04:25:54,21.009s,PASSED
+"TARGET_EMAIL = ""demo1@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 04:25:34,16-06-2026 04:25:34,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,16-06-2026 04:25:34,16-06-2026 04:25:34,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 04:25:34,16-06-2026 04:25:53,19.556s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 04:25:53,16-06-2026 04:25:53,0.095s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:25:53,16-06-2026 04:25:53,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 04:25:53,16-06-2026 04:25:54,1.196s,PASSED

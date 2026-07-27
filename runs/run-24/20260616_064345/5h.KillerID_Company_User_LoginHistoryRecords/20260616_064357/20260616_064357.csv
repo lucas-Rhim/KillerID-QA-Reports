@@ -1,0 +1,137 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+5h.KillerID_Company_User_LoginHistoryRecords,Chrome 149.0.7827.114,Sprint 5d - KillerID_User Profile 의 Login History records 검증 3 cases (C10092~C10094). ⏳ PENDING — KillerID Bug netkillercom/KillerID-QA#362 (calendar marking 과 backend records sync 깨짐) 의 영향 으로 자동화 실행 시 FAIL (records empty 로 strict verify assert 차단). Bug fix 후 즉시 활용 가능. 검증 패턴: strict verify logic (false PASS 차단) — hasNegativeMessage check + strict Event keyword + record header 검증. RGB blue dominant 매칭 (calendar 의 진짜 colored day 만).,,16-06-2026 08:17:48,16-06-2026 08:19:23,1m - 34.395s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10092_로그인 이력 레코드 검증,Chrome 149.0.7827.114,"[C10092] Verify the Login History records
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 로 로그인 + Profile 페이지 진입
+- Login History popup 열기 가능 (C10091 PASS 조건)
+
+🧪 단계:
+1. 'Login History' 버튼 클릭
+2. 달력 의 blue colored day (로그인 이력 있는 날) 클릭
+
+✅ 결과값:
+- 해당 날짜 의 로그인 이력 records 가 다음 column 으로 표시:
+  - Event (Login Success / Failure)
+  - IP Address
+  - Time
+
+🔧 자동화 노트:
+- 🟢 SAFE — verify only, state 변경 없음
+- 사전 조건: loginAsDomainUserViaProfile (demo3)
+- Spy 재사용: button_Login History, div_Login History (popup), div_May 2026 (calendar), div_18/div_19 (date cells)
+- Verify 방법:
+  * Spy primary: Login History popup 의 record area 표시 확인
+  * JS fallback: document.body.innerText 안 의 Event/IP/Time keyword 검색
+    - Event 의 표현: 'Login Success', 'Login Failure', 'Success', 'Failure', '성공', '실패'
+    - IP Address: 정규 표현 식 사용 금지 (Rule #15 — Groovy escape) — indexOf 또는 split 사용
+      [정수 단순 패턴: '.' 4 부분 으로 split + 각 부분 parseInt 가능 여부]
+    - Time: 'AM' 또는 'PM' 또는 ':' 포함 여부
+- Cleanup: JS 으로 popup 닫기 (display: none) 또는 closeBrowser
+- 신규 spy 가능 (선택): div_LoginHistoryRecordList — 단 JS-based scan 으로 우회 가능",,16-06-2026 08:17:49,16-06-2026 08:18:18,29.497s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 08:17:49,16-06-2026 08:17:49,0.004s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 08:17:49,16-06-2026 08:17:49,0.004s,PASSED
+"PREV_JS = ""\n\tvar all = document.querySelectorAll('a, button, span, th, i, div');\n\tfor (var i = 0; i < all.length; i++) {\n\t\tvar c = all[i]; if (c.offsetParent === null) continue;\n\t\tvar ng = (((c.getAttribute('ng-click') || '') + ' ' + (c.getAttribute('onclick') || ''))).toLowerCase();\n\t\tif (ng.indexOf('prev') !== -1 || ng.indexOf('previous') !== -1 || ng.indexOf('back') !== -1 || ng.indexOf('lastmonth') !== -1) { c.click(); return 'NG_PREV'; }\n\t}\n\tvar arrows = ['<', '‹', '❮', '◄', '«', '⟨', '←', '〈'];\n\tfor (var i = 0; i < all.length; i++) {\n\t\tvar c = all[i]; if (c.offsetParent === null) continue;\n\t\tif (c.children.length !== 0) continue;\n\t\tvar t = (c.textContent || '').trim();\n\t\tfor (var a = 0; a < arrows.length; a++) { if (t === arrows[a]) { c.click(); return 'GLYPH_PREV'; } }\n\t}\n\tfor (var i = 0; i < all.length; i++) {\n\t\tvar c = all[i]; if (c.offsetParent === null) continue;\n\t\tvar cls = ((c.className || '') + '').toLowerCase();\n\t\tif (cls.indexOf('prev') !== -1 || cls.indexOf('back') !== -1) { c.click(); return 'CLASS_PREV'; }\n\t\tvar ic = c.querySelector ? c.querySelector('i, svg') : null;\n\t\tvar icls = ic ? ((((ic.getAttribute && ic.getAttribute('class')) || (ic.className || '')) + '')).toLowerCase() : '';\n\t\tif (icls.indexOf('chevron-left') !== -1 || icls.indexOf('angle-left') !== -1 || icls.indexOf('arrow-left') !== -1 || icls.indexOf('caret-left') !== -1) { c.click(); return 'ICON_PREV'; }\n\t}\n\tvar months = ['january','february','march','april','may','june','july','august','september','october','november','december'];\n\tvar title = null;\n\tfor (var i = 0; i < all.length; i++) {\n\t\tvar c = all[i]; if (c.offsetParent === null) continue;\n\t\tvar t = (c.textContent || '').trim().toLowerCase();\n\t\tif (t.length < 25 && t.indexOf('20') !== -1) {\n\t\t\tfor (var m = 0; m < 12; m++) { if (t.indexOf(months[m]) !== -1) { title = c; break; } }\n\t\t}\n\t\tif (title) break;\n\t}\n\tif (title) {\n\t\tvar sib = title.previousElementSibling;\n\t\tif (sib && sib.offsetParent !== null) { sib.click(); return 'SIBLING_PREV'; }\n\t\tif (title.parentElement) {\n\t\t\tvar k = title.parentElement.children;\n\t\t\tif (k.length && k[0] !== title && k[0].offsetParent !== null) { k[0].click(); return 'FIRSTCHILD_PREV'; }\n\t\t}\n\t}\n\treturn 'NO_PREV';\n""",Chrome 149.0.7827.114,,,16-06-2026 08:17:49,16-06-2026 08:17:49,0.009s,PASSED
+"BLUE_COUNT_JS = ""\n\tvar cells = document.querySelectorAll('div.picker-day');\n\tvar n = 0;\n\tfor (var i = 0; i < cells.length; i++) {\n\t\tvar d = cells[i]; if (d.offsetParent === null) continue;\n\t\tvar t = (d.textContent || '').trim();\n\t\tif (!(t.length >= 1 && t.length <= 2 && !isNaN(parseInt(t)) && parseInt(t).toString() === t)) continue;\n\t\tvar bg = window.getComputedStyle(d).backgroundColor || '';\n\t\tvar s = bg.indexOf('('), e = bg.indexOf(')'); if (s === -1 || e === -1) continue;\n\t\tvar p = bg.substring(s + 1, e).split(','); if (p.length < 3) continue;\n\t\tvar r = parseInt(p[0].trim()), g = parseInt(p[1].trim()), b = parseInt(p[2].trim());\n\t\tif (!isNaN(r) && !isNaN(g) && !isNaN(b) && b > r + 20 && b > g + 20) { n++; }\n\t}\n\treturn n;\n""",Chrome 149.0.7827.114,,,16-06-2026 08:17:49,16-06-2026 08:17:49,0.004s,PASSED
+"CLICK_BLUE_JS = ""\n\tvar cells = document.querySelectorAll('div.picker-day');\n\tvar blues = [];\n\tfor (var i = 0; i < cells.length; i++) {\n\t\tvar d = cells[i]; if (d.offsetParent === null) continue;\n\t\tvar t = (d.textContent || '').trim();\n\t\tif (!(t.length >= 1 && t.length <= 2 && !isNaN(parseInt(t)) && parseInt(t).toString() === t)) continue;\n\t\tvar bg = window.getComputedStyle(d).backgroundColor || '';\n\t\tvar s = bg.indexOf('('), e = bg.indexOf(')'); if (s === -1 || e === -1) continue;\n\t\tvar p = bg.substring(s + 1, e).split(','); if (p.length < 3) continue;\n\t\tvar r = parseInt(p[0].trim()), g = parseInt(p[1].trim()), b = parseInt(p[2].trim());\n\t\tif (!isNaN(r) && !isNaN(g) && !isNaN(b) && b > r + 20 && b > g + 20) { blues.push(d); }\n\t}\n\tvar idx = __IDX__;\n\tif (idx < blues.length) { blues[idx].click(); return JSON.stringify({clicked: true, day: (blues[idx].textContent || '').trim(), total: blues.length}); }\n\treturn JSON.stringify({clicked: false, total: blues.length});\n""",Chrome 149.0.7827.114,,,16-06-2026 08:17:49,16-06-2026 08:17:49,0.006s,PASSED
+"READ_PANEL_JS = ""\n\tvar allText = document.body.innerText || '';\n\tvar lower = allText.toLowerCase();\n\tvar hidx = lower.indexOf('login record as of');\n\tvar scope = (hidx !== -1) ? lower.substring(hidx, hidx + 1500) : '';\n\tvar hasHeader = hidx !== -1;\n\tvar hasNegative = scope.indexOf('no login history') !== -1 || scope.indexOf('no records') !== -1 || allText.indexOf('이력이 없') !== -1;\n\tvar hasSuccess = scope.indexOf('success') !== -1 || scope.indexOf('성공') !== -1;\n\tvar hasFailure = scope.indexOf('failure') !== -1 || scope.indexOf('failed') !== -1 || scope.indexOf('실패') !== -1;\n\tvar hasRows = hasHeader && !hasNegative && (hasSuccess || hasFailure);\n\treturn JSON.stringify({hasHeader: hasHeader, hasNegative: hasNegative, hasSuccess: hasSuccess, hasFailure: hasFailure, hasRows: hasRows});\n""",Chrome 149.0.7827.114,,,16-06-2026 08:17:49,16-06-2026 08:17:49,0.018s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:17:49,16-06-2026 08:18:16,27.221s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:18:16,16-06-2026 08:18:17,0.129s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:18:17,16-06-2026 08:18:17,0.012s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:18:17,16-06-2026 08:18:18,1.560s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10093_성공 로그인 후 이력 레코드 검증,Chrome 149.0.7827.114,"[C10093] Make a successful login and verify the Login History record
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 의 valid password = netkiller567!
+- Sandbox 환경
+
+🧪 단계:
+1. KillerID login page 진입
+2. valid credentials (demo3 + netkiller567!) 입력
+3. '관리자 모드 또는 내 프로필로 로그인' 체크박스 활성화
+4. Sign In 클릭 (Profile mode login 성공)
+5. 'Login History' 버튼 클릭
+6. 달력 의 current day (오늘 날짜) 클릭
+
+✅ 결과값:
+- 해당 날짜 의 로그인 이력 records 에서 가장 최근 record 가:
+  - Event = 'Login Successful' 또는 'Success' (성공)
+  - Time = 방금 시도 의 timestamp (현재 시간 근접)
+  - IP Address 표시
+- 즉 방금 의 성공 로그인 시도 가 정확 히 기록 됨
+
+🔧 자동화 노트:
+- ⚠️ state-tracking — server log 에 새 login event 생성 (read-only verify 이므로 teardown 단순)
+- 사전 조건: loginAsDomainUserViaProfile (demo3) — 이 case 자체 가 login 의 일부
+- Spy 재사용: button_Login History, div_Login History (popup), 달력 의 today date cell (dynamic — JS 으로 today 찾기)
+- Verify 방법:
+  * 1) Profile login 자체 의 PASS (login URL 변경 확인)
+  * 2) Login History popup 의 records 에서 'Success' / 'Successful' keyword 표시 확인
+  * 3) IP / Time 의 column 표시 (C10092 의 verify 와 동일)
+- Today 날짜 찾기:
+  * JS 으로 new Date().getDate() 값 사용 — 단 KillerID 의 달력 UI 의 today highlight class 도 가능
+  * Spy 가 fragile — JS 으로 visible 한 'today' 또는 highlighted day cell 직접 click
+- Cleanup: closeBrowser (state 변경 = login event 만 — 자연 적 으로 server log 에 누적 됨, teardown 불필요)",,16-06-2026 08:18:18,16-06-2026 08:18:44,25.780s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 08:18:18,16-06-2026 08:18:18,0.002s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 08:18:18,16-06-2026 08:18:18,0.001s,PASSED
+"PREV_JS = ""\n\tvar all = document.querySelectorAll('a, button, span, th, i, div');\n\tfor (var i = 0; i < all.length; i++) {\n\t\tvar c = all[i]; if (c.offsetParent === null) continue;\n\t\tvar ng = (((c.getAttribute('ng-click') || '') + ' ' + (c.getAttribute('onclick') || ''))).toLowerCase();\n\t\tif (ng.indexOf('prev') !== -1 || ng.indexOf('previous') !== -1 || ng.indexOf('back') !== -1 || ng.indexOf('lastmonth') !== -1) { c.click(); return 'NG_PREV'; }\n\t}\n\tvar arrows = ['<', '‹', '❮', '◄', '«', '⟨', '←', '〈'];\n\tfor (var i = 0; i < all.length; i++) {\n\t\tvar c = all[i]; if (c.offsetParent === null) continue;\n\t\tif (c.children.length !== 0) continue;\n\t\tvar t = (c.textContent || '').trim();\n\t\tfor (var a = 0; a < arrows.length; a++) { if (t === arrows[a]) { c.click(); return 'GLYPH_PREV'; } }\n\t}\n\tfor (var i = 0; i < all.length; i++) {\n\t\tvar c = all[i]; if (c.offsetParent === null) continue;\n\t\tvar cls = ((c.className || '') + '').toLowerCase();\n\t\tif (cls.indexOf('prev') !== -1 || cls.indexOf('back') !== -1) { c.click(); return 'CLASS_PREV'; }\n\t\tvar ic = c.querySelector ? c.querySelector('i, svg') : null;\n\t\tvar icls = ic ? ((((ic.getAttribute && ic.getAttribute('class')) || (ic.className || '')) + '')).toLowerCase() : '';\n\t\tif (icls.indexOf('chevron-left') !== -1 || icls.indexOf('angle-left') !== -1 || icls.indexOf('arrow-left') !== -1 || icls.indexOf('caret-left') !== -1) { c.click(); return 'ICON_PREV'; }\n\t}\n\tvar months = ['january','february','march','april','may','june','july','august','september','october','november','december'];\n\tvar title = null;\n\tfor (var i = 0; i < all.length; i++) {\n\t\tvar c = all[i]; if (c.offsetParent === null) continue;\n\t\tvar t = (c.textContent || '').trim().toLowerCase();\n\t\tif (t.length < 25 && t.indexOf('20') !== -1) {\n\t\t\tfor (var m = 0; m < 12; m++) { if (t.indexOf(months[m]) !== -1) { title = c; break; } }\n\t\t}\n\t\tif (title) break;\n\t}\n\tif (title) {\n\t\tvar sib = title.previousElementSibling;\n\t\tif (sib && sib.offsetParent !== null) { sib.click(); return 'SIBLING_PREV'; }\n\t\tif (title.parentElement) {\n\t\t\tvar k = title.parentElement.children;\n\t\t\tif (k.length && k[0] !== title && k[0].offsetParent !== null) { k[0].click(); return 'FIRSTCHILD_PREV'; }\n\t\t}\n\t}\n\treturn 'NO_PREV';\n""",Chrome 149.0.7827.114,,,16-06-2026 08:18:18,16-06-2026 08:18:18,0.002s,PASSED
+"BLUE_COUNT_JS = ""\n\tvar cells = document.querySelectorAll('div.picker-day');\n\tvar n = 0;\n\tfor (var i = 0; i < cells.length; i++) {\n\t\tvar d = cells[i]; if (d.offsetParent === null) continue;\n\t\tvar t = (d.textContent || '').trim();\n\t\tif (!(t.length >= 1 && t.length <= 2 && !isNaN(parseInt(t)) && parseInt(t).toString() === t)) continue;\n\t\tvar bg = window.getComputedStyle(d).backgroundColor || '';\n\t\tvar s = bg.indexOf('('), e = bg.indexOf(')'); if (s === -1 || e === -1) continue;\n\t\tvar p = bg.substring(s + 1, e).split(','); if (p.length < 3) continue;\n\t\tvar r = parseInt(p[0].trim()), g = parseInt(p[1].trim()), b = parseInt(p[2].trim());\n\t\tif (!isNaN(r) && !isNaN(g) && !isNaN(b) && b > r + 20 && b > g + 20) { n++; }\n\t}\n\treturn n;\n""",Chrome 149.0.7827.114,,,16-06-2026 08:18:18,16-06-2026 08:18:18,0.002s,PASSED
+"CLICK_BLUE_JS = ""\n\tvar cells = document.querySelectorAll('div.picker-day');\n\tvar blues = [];\n\tfor (var i = 0; i < cells.length; i++) {\n\t\tvar d = cells[i]; if (d.offsetParent === null) continue;\n\t\tvar t = (d.textContent || '').trim();\n\t\tif (!(t.length >= 1 && t.length <= 2 && !isNaN(parseInt(t)) && parseInt(t).toString() === t)) continue;\n\t\tvar bg = window.getComputedStyle(d).backgroundColor || '';\n\t\tvar s = bg.indexOf('('), e = bg.indexOf(')'); if (s === -1 || e === -1) continue;\n\t\tvar p = bg.substring(s + 1, e).split(','); if (p.length < 3) continue;\n\t\tvar r = parseInt(p[0].trim()), g = parseInt(p[1].trim()), b = parseInt(p[2].trim());\n\t\tif (!isNaN(r) && !isNaN(g) && !isNaN(b) && b > r + 20 && b > g + 20) { blues.push(d); }\n\t}\n\tvar idx = __IDX__;\n\tif (idx < blues.length) { blues[idx].click(); return JSON.stringify({clicked: true, day: (blues[idx].textContent || '').trim(), total: blues.length}); }\n\treturn JSON.stringify({clicked: false, total: blues.length});\n""",Chrome 149.0.7827.114,,,16-06-2026 08:18:18,16-06-2026 08:18:18,0.001s,PASSED
+"READ_PANEL_JS = ""\n\tvar allText = document.body.innerText || '';\n\tvar lower = allText.toLowerCase();\n\tvar hidx = lower.indexOf('login record as of');\n\tvar scope = (hidx !== -1) ? lower.substring(hidx, hidx + 1500) : '';\n\tvar hasHeader = hidx !== -1;\n\tvar hasNegative = scope.indexOf('no login history') !== -1 || scope.indexOf('no records') !== -1 || allText.indexOf('이력이 없') !== -1;\n\tvar hasSuccess = scope.indexOf('success') !== -1 || scope.indexOf('성공') !== -1;\n\tvar hasFailure = scope.indexOf('failure') !== -1 || scope.indexOf('failed') !== -1 || scope.indexOf('실패') !== -1;\n\tvar hasIp = scope.indexOf('.') !== -1 && (scope.indexOf('ip') !== -1 || scope.split('.').length >= 4);\n\tvar hasTime = scope.indexOf(':') !== -1 || scope.indexOf('am') !== -1 || scope.indexOf('pm') !== -1;\n\tvar hasRows = hasHeader && !hasNegative && (hasSuccess || hasFailure);\n\treturn JSON.stringify({hasHeader: hasHeader, hasNegative: hasNegative, hasSuccess: hasSuccess, hasFailure: hasFailure, hasIp: hasIp, hasTime: hasTime, hasRows: hasRows});\n""",Chrome 149.0.7827.114,,,16-06-2026 08:18:18,16-06-2026 08:18:18,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:18:18,16-06-2026 08:18:43,24.234s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:18:43,16-06-2026 08:18:43,0.098s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:18:43,16-06-2026 08:18:43,0.003s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:18:43,16-06-2026 08:18:44,1.230s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10094_실패 로그인 후 이력 레코드 검증,Chrome 149.0.7827.114,"[C10094] Make a failed login and verify the Login History record
+Role: Domain User
+Section: KillerID/User Profile
+
+📋 사전 조건:
+- demo3 의 valid password = netkiller567!
+- demo3 의 invalid password (테스트 용) = WrongPW123!
+- Sandbox 환경
+
+🧪 단계:
+1. KillerID login page 진입
+2. invalid credentials (demo3 + WrongPW123!) 입력
+3. '관리자 모드 또는 내 프로필로 로그인' 체크박스 활성화
+4. Sign In 클릭 → login fail (invalid password)
+5. valid credentials 로 다시 login (demo3 + netkiller567!)
+6. 'Login History' 버튼 클릭
+7. 달력 의 current day (오늘 날짜) 클릭
+
+✅ 결과값:
+- 해당 날짜 의 로그인 이력 records 에서 가장 최근 record 가:
+  - Event = 'Login Failure' 또는 'Failure' (실패)
+  - Time = 방금 시도 의 timestamp
+  - IP Address 표시
+- 즉 방금 의 실패 로그인 시도 가 정확 히 기록 됨
+
+🔧 자동화 노트:
+- ⚠️ state-tracking — server log 에 failed login event 생성
+- ⚠️ 주의: invalid login 1회 만 — demo3 의 5회 lock 위험 X (5회 미만)
+- 사전 조건: 없 음 (이 case 가 login 시도 의 일부)
+- Verify 방법:
+  * 1) invalid login 시도 후 URL = /page/login (login fail 확인)
+  * 2) valid login 으로 정상 진입
+  * 3) Login History popup 의 records 에서 'Failure' / 'Failed' keyword 표시 확인
+- Cleanup: closeBrowser (state 변경 = invalid login attempt 만 — server log 에 누적, teardown 불필요)
+- ⚠️ NEXT-RUN 주의: 이 case 직후 demo3 cool-down 짧 게 권장 — 단 1회 invalid 이므로 영향 미미",,16-06-2026 08:18:44,16-06-2026 08:19:23,38.929s,PASSED
+"TARGET_EMAIL = ""demo3@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,16-06-2026 08:18:44,16-06-2026 08:18:44,0.001s,PASSED
+"DEMO3_PLAIN_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 08:18:44,16-06-2026 08:18:44,0.001s,PASSED
+"WRONG_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,16-06-2026 08:18:44,16-06-2026 08:18:44,0.001s,PASSED
+"PREV_JS = ""\n\tvar all = document.querySelectorAll('a, button, span, th, i, div');\n\tfor (var i = 0; i < all.length; i++) {\n\t\tvar c = all[i]; if (c.offsetParent === null) continue;\n\t\tvar ng = (((c.getAttribute('ng-click') || '') + ' ' + (c.getAttribute('onclick') || ''))).toLowerCase();\n\t\tif (ng.indexOf('prev') !== -1 || ng.indexOf('previous') !== -1 || ng.indexOf('back') !== -1 || ng.indexOf('lastmonth') !== -1) { c.click(); return 'NG_PREV'; }\n\t}\n\tvar arrows = ['<', '‹', '❮', '◄', '«', '⟨', '←', '〈'];\n\tfor (var i = 0; i < all.length; i++) {\n\t\tvar c = all[i]; if (c.offsetParent === null) continue;\n\t\tif (c.children.length !== 0) continue;\n\t\tvar t = (c.textContent || '').trim();\n\t\tfor (var a = 0; a < arrows.length; a++) { if (t === arrows[a]) { c.click(); return 'GLYPH_PREV'; } }\n\t}\n\tfor (var i = 0; i < all.length; i++) {\n\t\tvar c = all[i]; if (c.offsetParent === null) continue;\n\t\tvar cls = ((c.className || '') + '').toLowerCase();\n\t\tif (cls.indexOf('prev') !== -1 || cls.indexOf('back') !== -1) { c.click(); return 'CLASS_PREV'; }\n\t\tvar ic = c.querySelector ? c.querySelector('i, svg') : null;\n\t\tvar icls = ic ? ((((ic.getAttribute && ic.getAttribute('class')) || (ic.className || '')) + '')).toLowerCase() : '';\n\t\tif (icls.indexOf('chevron-left') !== -1 || icls.indexOf('angle-left') !== -1 || icls.indexOf('arrow-left') !== -1 || icls.indexOf('caret-left') !== -1) { c.click(); return 'ICON_PREV'; }\n\t}\n\tvar months = ['january','february','march','april','may','june','july','august','september','october','november','december'];\n\tvar title = null;\n\tfor (var i = 0; i < all.length; i++) {\n\t\tvar c = all[i]; if (c.offsetParent === null) continue;\n\t\tvar t = (c.textContent || '').trim().toLowerCase();\n\t\tif (t.length < 25 && t.indexOf('20') !== -1) {\n\t\t\tfor (var m = 0; m < 12; m++) { if (t.indexOf(months[m]) !== -1) { title = c; break; } }\n\t\t}\n\t\tif (title) break;\n\t}\n\tif (title) {\n\t\tvar sib = title.previousElementSibling;\n\t\tif (sib && sib.offsetParent !== null) { sib.click(); return 'SIBLING_PREV'; }\n\t\tif (title.parentElement) {\n\t\t\tvar k = title.parentElement.children;\n\t\t\tif (k.length && k[0] !== title && k[0].offsetParent !== null) { k[0].click(); return 'FIRSTCHILD_PREV'; }\n\t\t}\n\t}\n\treturn 'NO_PREV';\n""",Chrome 149.0.7827.114,,,16-06-2026 08:18:44,16-06-2026 08:18:44,0.001s,PASSED
+"BLUE_COUNT_JS = ""\n\tvar cells = document.querySelectorAll('div.picker-day');\n\tvar n = 0;\n\tfor (var i = 0; i < cells.length; i++) {\n\t\tvar d = cells[i]; if (d.offsetParent === null) continue;\n\t\tvar t = (d.textContent || '').trim();\n\t\tif (!(t.length >= 1 && t.length <= 2 && !isNaN(parseInt(t)) && parseInt(t).toString() === t)) continue;\n\t\tvar bg = window.getComputedStyle(d).backgroundColor || '';\n\t\tvar s = bg.indexOf('('), e = bg.indexOf(')'); if (s === -1 || e === -1) continue;\n\t\tvar p = bg.substring(s + 1, e).split(','); if (p.length < 3) continue;\n\t\tvar r = parseInt(p[0].trim()), g = parseInt(p[1].trim()), b = parseInt(p[2].trim());\n\t\tif (!isNaN(r) && !isNaN(g) && !isNaN(b) && b > r + 20 && b > g + 20) { n++; }\n\t}\n\treturn n;\n""",Chrome 149.0.7827.114,,,16-06-2026 08:18:44,16-06-2026 08:18:44,0.001s,PASSED
+"CLICK_BLUE_JS = ""\n\tvar cells = document.querySelectorAll('div.picker-day');\n\tvar blues = [];\n\tfor (var i = 0; i < cells.length; i++) {\n\t\tvar d = cells[i]; if (d.offsetParent === null) continue;\n\t\tvar t = (d.textContent || '').trim();\n\t\tif (!(t.length >= 1 && t.length <= 2 && !isNaN(parseInt(t)) && parseInt(t).toString() === t)) continue;\n\t\tvar bg = window.getComputedStyle(d).backgroundColor || '';\n\t\tvar s = bg.indexOf('('), e = bg.indexOf(')'); if (s === -1 || e === -1) continue;\n\t\tvar p = bg.substring(s + 1, e).split(','); if (p.length < 3) continue;\n\t\tvar r = parseInt(p[0].trim()), g = parseInt(p[1].trim()), b = parseInt(p[2].trim());\n\t\tif (!isNaN(r) && !isNaN(g) && !isNaN(b) && b > r + 20 && b > g + 20) { blues.push(d); }\n\t}\n\tvar idx = __IDX__;\n\tif (idx < blues.length) { blues[idx].click(); return JSON.stringify({clicked: true, day: (blues[idx].textContent || '').trim(), total: blues.length}); }\n\treturn JSON.stringify({clicked: false, total: blues.length});\n""",Chrome 149.0.7827.114,,,16-06-2026 08:18:44,16-06-2026 08:18:44,0.001s,PASSED
+"READ_PANEL_JS = ""\n\tvar allText = document.body.innerText || '';\n\tvar lower = allText.toLowerCase();\n\tvar hidx = lower.indexOf('login record as of');\n\tvar scope = (hidx !== -1) ? lower.substring(hidx, hidx + 1500) : '';\n\tvar hasHeader = hidx !== -1;\n\tvar hasNegative = scope.indexOf('no login history') !== -1 || scope.indexOf('no records') !== -1 || allText.indexOf('이력이 없') !== -1;\n\tvar hasSuccess = scope.indexOf('success') !== -1 || scope.indexOf('성공') !== -1;\n\tvar hasFailure = scope.indexOf('failure') !== -1 || scope.indexOf('failed') !== -1 || scope.indexOf('실패') !== -1;\n\tvar hasIp = scope.indexOf('.') !== -1 && (scope.indexOf('ip') !== -1 || scope.split('.').length >= 4);\n\tvar hasTime = scope.indexOf(':') !== -1 || scope.indexOf('am') !== -1 || scope.indexOf('pm') !== -1;\n\tvar hasRows = hasHeader && !hasNegative && (hasSuccess || hasFailure);\n\treturn JSON.stringify({hasHeader: hasHeader, hasNegative: hasNegative, hasSuccess: hasSuccess, hasFailure: hasFailure, hasIp: hasIp, hasTime: hasTime, hasRows: hasRows});\n""",Chrome 149.0.7827.114,,,16-06-2026 08:18:44,16-06-2026 08:18:44,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,16-06-2026 08:18:44,16-06-2026 08:19:21,37.186s,PASSED
+Finally,Chrome 149.0.7827.114,,,16-06-2026 08:19:21,16-06-2026 08:19:21,0.110s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:19:21,16-06-2026 08:19:21,0.005s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,16-06-2026 08:19:21,16-06-2026 08:19:23,1.425s,PASSED

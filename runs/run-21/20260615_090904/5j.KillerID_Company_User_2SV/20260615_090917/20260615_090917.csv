@@ -1,0 +1,105 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+5j.KillerID_Company_User_2SV,Chrome 149.0.7827.114,Sprint 5f - KillerID_User Profile/2SV 자동화 가능 3 cases (C10099/C10104/C10117). 19 cases 중 13 cases (OTP/FIDO/SMS/프린트/2SV 로그인 등) 는 자동화 불가 — manual-only 분류. 각 case self-contained (setup ON + main + teardown OFF — demo5 항상 OFF 로 종료). state-changing 최고 위험 (Rule #6) — loading-bg 대기 + Edit 모드 재진입 시 password popup skip 패턴 적용.,,15-06-2026 10:42:56,15-06-2026 10:48:03,5m - 7.326s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10099_2SV 토글 온 메소드 미설정,Chrome 149.0.7827.114,"[C10099] Toggle on the 2SV with no methods set
+Role: Domain User (demo3)
+Section: KillerID/User Profile/2SV
+
+📋 사전 조건:
+- 회사(Company) 2SV = OFF (사용자 직접 2SV 토글 가능 조건 — spec 6.5)
+- demo3 2SV = OFF (no methods set)
+- demo3 로 Profile 모드 로그인
+
+🧪 단계:
+1. demo3 Profile 로그인
+2. Security 탭 진입
+3. 2SV 토글 ON (method 미설정 상태)
+
+✅ 결과값:
+- '2SV Authentication Code Setup form' 표시
+  (method 없이 토글 ON 시 Authenticator Code 설정 form 이 기본 노출)
+
+🔧 자동화 노트:
+- 🚨 STATE-CHANGING: demo3 2SV 토글 ON
+- ⚠️ MANDATORY Teardown: 2SV 토글 OFF 복원 (회사 2SV OFF 전제 — spec 6.5)
+  → teardown 누락 시 demo3 후속 로그인 이 2SV setup form 으로 막힘 (STATE_TEARDOWN_GUARANTEE 치명적)
+- Verify: setup form 의 'Authenticator' / 'Authentication Code' / 'Setup' keyword + QR/secret 영역 표시
+- Spy 필요 (Gate 3): Security 탭 2SV 토글, Authenticator setup form. 또는 JS 우회.
+- Rule #15 안전: regex 없음, indexOf/=== 만 사용",,15-06-2026 10:42:56,15-06-2026 10:44:37,1m - 40.628s,PASSED
+"TARGET_EMAIL = ""demo5@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:42:57,15-06-2026 10:42:57,0.003s,PASSED
+"TARGET_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,15-06-2026 10:42:57,15-06-2026 10:42:57,0.003s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:42:57,15-06-2026 10:42:57,0.007s,PASSED
+waitForLoadingHidden = { int maxSec -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:42:57,15-06-2026 10:42:57,0.005s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:42:57,15-06-2026 10:44:36,1m - 39.080s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:44:36,15-06-2026 10:44:36,0.117s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:44:36,15-06-2026 10:44:36,0.004s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:44:36,15-06-2026 10:44:37,0.857s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10104_로그인 폼 2SV 대체 방법 검증,Chrome 149.0.7827.114,"[C10104] Verify the alternative 2SV methods for setting via the login form
+Role: Domain User (demo3)
+Section: KillerID/User Profile/2SV
+
+📋 사전 조건:
+- 회사(Company) 2SV = OFF
+- demo3 2SV = toggled on, no methods set
+- demo3 로 로그인 (2SV setup form 진입 상태)
+
+🧪 단계:
+1. demo3 로그인 → 2SV setup form (toggle on, no methods)
+2. 대체(alternative) 2SV method 선택 옵션 확인
+
+✅ 결과값:
+- 사용자가 설정 가능한 2SV method 목록 표시:
+  - Authenticator Code
+  - FIDO USB Key
+  - Text Message
+
+🔧 자동화 노트:
+- 🚨 STATE-CHANGING (사전: demo3 2SV toggled on) → MANDATORY Teardown: 2SV OFF 복원
+- Verify: 'Authenticator' + 'FIDO' (또는 'USB Key') + 'Text Message' keyword 3개 표시
+- ⚠️ FIDO NFC([Mobile]) 는 PC web 에서 제외 — Authenticator / FIDO USB / Text Message 3개 만
+- 독립 실행 위해: setup 에서 demo3 2SV ON 보장 → main verify → teardown 2SV OFF
+- Spy 필요 (Gate 3): setup form 의 method 선택 영역. 또는 JS body scan 우회.
+- Rule #15 안전: regex 없음, indexOf/toLowerCase 만 사용",,15-06-2026 10:44:37,15-06-2026 10:46:11,1m - 34.708s,PASSED
+"TARGET_EMAIL = ""demo5@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:44:37,15-06-2026 10:44:37,0.001s,PASSED
+"TARGET_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,15-06-2026 10:44:37,15-06-2026 10:44:37,0.001s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:44:37,15-06-2026 10:44:37,0.002s,PASSED
+waitForLoadingHidden = { int maxSec -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:44:37,15-06-2026 10:44:37,0.001s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:44:37,15-06-2026 10:46:02,1m - 25.266s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:46:02,15-06-2026 10:46:11,8.285s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:46:11,15-06-2026 10:46:11,0.001s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:46:11,15-06-2026 10:46:11,0.839s,PASSED
+,,,,,,,
+Test Cases/KillerID_User/C10117_2SV 토글 오프,Chrome 149.0.7827.114,"[C10117] Toggle off the 2SV
+Role: Domain User (demo3)
+Section: KillerID/User Profile/2SV
+
+📋 사전 조건:
+- 회사(Company) 2SV = OFF (사용자 직접 2SV 해제 가능 조건 — spec 6.5)
+- demo3 2SV = toggled on
+
+🧪 단계:
+1. demo3 Profile 로그인 → Security 탭
+2. 2SV 토글 OFF
+3. 로그아웃 후 재로그인
+
+✅ 결과값:
+- demo3 가 KillerID Profile 로 정상 로그인
+- 2SV 인증 challenge 없음 (재로그인 시 OTP/2SV form 안 물음)
+
+🔧 자동화 노트:
+- 🟢 이 케이스 자체 가 2SV OFF (복원 방향) — 단 사전 2SV ON 필요
+- ⚠️ 독립 실행: setup 에서 demo3 2SV ON 보장 → main 으로 OFF → 재로그인 verify
+  (회사 2SV OFF 전제 — spec 6.5, 아니면 사용자 직접 해제 불가)
+- Verify: OFF 후 재로그인 시 /page/index 도달 + 2SV/OTP form 미표시
+- 최종 상태: demo3 2SV = OFF (깨끗) → 별도 teardown 불필요 (case 자체 가 OFF 로 종료)
+- Spy 필요 (Gate 3): Security 탭 2SV 토글. 또는 JS 우회.
+- Rule #15 안전: regex 없음, indexOf/=== 만 사용",,15-06-2026 10:46:11,15-06-2026 10:48:03,1m - 51.812s,PASSED
+"TARGET_EMAIL = ""demo5@demo.netkillersoft.com""",Chrome 149.0.7827.114,,,15-06-2026 10:46:12,15-06-2026 10:46:12,0.000s,PASSED
+"TARGET_PW = ""***REDACTED***""",Chrome 149.0.7827.114,,,15-06-2026 10:46:12,15-06-2026 10:46:12,0.000s,PASSED
+snap = { java.lang.String label -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:46:12,15-06-2026 10:46:12,0.001s,PASSED
+waitForLoadingHidden = { int maxSec -> ... },Chrome 149.0.7827.114,,,15-06-2026 10:46:12,15-06-2026 10:46:12,0.002s,PASSED
+try,Chrome 149.0.7827.114,,,15-06-2026 10:46:12,15-06-2026 10:48:02,1m - 50.400s,PASSED
+Finally,Chrome 149.0.7827.114,,,15-06-2026 10:48:02,15-06-2026 10:48:02,0.097s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:48:02,15-06-2026 10:48:02,0.002s,PASSED
+Start listener action : afterTestCase,Chrome 149.0.7827.114,,,15-06-2026 10:48:02,15-06-2026 10:48:03,1.138s,PASSED
